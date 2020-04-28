@@ -1,0 +1,99 @@
+description:
+  set: Bischoff & Ratcliff
+  name: '03.001'
+constraints:
+- name: orientation
+- name: support
+objectives:
+- name: average_fill_rate
+  weight: 1.0
+  priority: 1
+- name: item_count
+  weight: 1.0
+  priority: 2
+data:
+  containerkinds:
+  - id: 1
+    quantity: 1
+    loadingspaces:
+    - id: 1
+      position: 0,0,0
+      size:
+        length: 587
+        width: 233
+        height: 220
+  palletkinds: []
+  boxkinds: []
+  itemkinds:
+  - id: 1
+    color: '#949494'
+    quantity: 24
+    support: 1.0
+    size:
+      length: 108
+      width: 76
+      height: 30
+    orientations: LWH,WLH
+  - id: 2
+    color: '#0173B2'
+    quantity: 9
+    support: 1.0
+    size:
+      length: 110
+      width: 43
+      height: 25
+    orientations: HLW,LHW,LWH,WLH
+  - id: 3
+    color: '#DE8F05'
+    quantity: 8
+    support: 1.0
+    size:
+      length: 92
+      width: 81
+      height: 55
+    orientations: HWL,WHL,HLW,LHW,LWH,WLH
+  - id: 4
+    color: '#029E73'
+    quantity: 11
+    support: 1.0
+    size:
+      length: 81
+      width: 33
+      height: 28
+    orientations: HLW,LHW,LWH,WLH
+  - id: 5
+    color: '#D55E00'
+    quantity: 11
+    support: 1.0
+    size:
+      length: 120
+      width: 99
+      height: 73
+    orientations: HWL,WHL,HLW,LHW,LWH,WLH
+  - id: 6
+    color: '#CC78BC'
+    quantity: 10
+    support: 1.0
+    size:
+      length: 111
+      width: 70
+      height: 48
+    orientations: HLW,LHW,LWH,WLH
+  - id: 7
+    color: '#CA9161'
+    quantity: 12
+    support: 1.0
+    size:
+      length: 98
+      width: 72
+      height: 46
+    orientations: HLW,LHW,LWH,WLH
+  - id: 8
+    color: '#FBAFE4'
+    quantity: 9
+    support: 1.0
+    size:
+      length: 95
+      width: 66
+      height: 31
+    orientations: LWH,WLH
