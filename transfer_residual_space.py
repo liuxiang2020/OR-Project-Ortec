@@ -5,7 +5,6 @@ def create_residual_space(spaceStack):
     nextSpace = spaceStack.pop()
     interSec_x = nextSpace[0][0] + nextSpace[1][0]
     interSec_y = nextSpace[0][1] + nextSpace[1][1]
-    interSec_z = nextSpace[0][2] + nextSpace[1][2]
     if curSpace[0][0] == interSec_x:
         nextSpace[1][0] += curSpace[1][0]
     elif curSpace[0][1] == interSec_y:
