@@ -31,7 +31,7 @@ def create_simple_blocks(itemkinds, containerSize):
 #Creating general blocks from simple blocks
 def create_general_blocks(itemkinds, containerSize):
     general_blocks_list =create_simple_blocks(itemkinds, containerSize)
-    for Creation_Iterations in range (1, 10):
+    for Creation_Iterations in range (1, 2):
         a = len(general_blocks_list)
         for i in range(0, a):
             block_i = general_blocks_list[i]
@@ -52,10 +52,18 @@ def create_general_blocks(itemkinds, containerSize):
                         g_block_size[2]<containerSize[2]):
                         gen_block_volume = g_block_size[0]*g_block_size[1]*g_block_size[2]
                         if ((block_i[4] + block_j[4])/gen_block_volume)>filling_rate:
-                            if block_item_quantity = 
+                            if block_i[0]==block_j[0] and block_i[3] == block_j[3]:
+                                gen_block_item_id = block_i[0]
+                                gen_block_item_quantity = []
+                                block_orientations = block_i[3]
+                                for i in range(0, len(block_i[1])): 
+                                    gen_block_item_quantity.append(block_i[1][i] + block_j[1][i]) 
+
+                            else:
                                 gen_block_item_id = block_i[0] + block_j[0]
                                 gen_block_item_quantity = block_i[1] + block_j[1]
                                 block_orientations = block_i[3] + block_j[3]
-                                block_volume_loss = gen_block_volume - (block_i[4] + block_j[4])
-                                general_blocks_list.append([gen_block_item_id, gen_block_item_quantity, g_block_size, block_orientations, gen_block_volume, block_volume_loss])
+                            
+                            block_volume_loss = gen_block_volume - (block_i[4] + block_j[4])
+                            general_blocks_list.append([gen_block_item_id, gen_block_item_quantity, g_block_size, block_orientations, gen_block_volume, block_volume_loss])
     return general_blocks_list
