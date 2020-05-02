@@ -30,7 +30,7 @@ def Generate_Candidate_Block_List(currentSpace, generalBlockList, item_available
             gbVolume = gb[2][0]*gb[2][1]*gb[2][2]          
             if (spaceVolume <= 2*gbVolume):  
                 if Check_availablility(gb,currentSpace) == True:
-                    fitness = spaceVolume- gbVolume
+                    fitness = 2*gbVolume-spaceVolume
                     candidateBlockList.append((gb,fitness))
                     
     candidateBlockList.sort(key=lambda x:x[1],reverse=True)
