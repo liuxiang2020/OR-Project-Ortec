@@ -24,10 +24,10 @@ def Generate_Candidate_Block_List(currentSpace, generalBlockList, item_available
     S = currentSpace 
     for gb in generalBlockList:
         #Check block size and space size 
-        if (gb[2][0] <= S[0] and gb[2][1] <= S[1] and gb[2][2] <= S[2] ):    
+        if (gb.get_size()[0] <= S[0] and gb.get_size()[1] <= S[1] and gb.get_size()[2] <= S[2] ):    
             #Check fitness
             spaceVolume = S[0]*S[1]*S[2]
-            gbVolume = gb[2][0]*gb[2][1]*gb[2][2]          
+            gbVolume = gb.get_volume()
             if (spaceVolume <= 2*gbVolume):  
                 if Check_availablility(gb,currentSpace) == True:
                     fitness = 2*gbVolume-spaceVolume
