@@ -4,7 +4,7 @@ import Space.py
 import State.py
 #from OR-Project-ORTEC import *
 """
-NOTE: Space.py add information of filled blocks and utilization rate
+NOTE:  Space.py add information of filled blocks and utilization rate
 """
 """
 packState: A partial packing plan and a dynamically
@@ -36,6 +36,6 @@ def search_block(packState, candidateBlockList):
             bestIndex = i
             bestUtilization = Sol.get_utilization()
     #return the suitable block for the residual space 
-    return candidateBlockList[bestIndex]
+    return candidateBlockList[bestIndex] 
 
     
