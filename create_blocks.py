@@ -1,4 +1,9 @@
-from Functions import *
+import numpy as np
+from Block import Block
+
+def Size2Pos( size, orientation='LWH' ):
+    mask = { 'L': 'length', 'W': 'width', 'H': 'height' }
+    return np.asarray( [ size[mask[o]] for o in list(orientation) ] ).astype(int)
 
 #Creating Simple Blocks from item boxes
 def create_simple_blocks(itemkinds, containerSize):
@@ -18,20 +23,19 @@ def create_simple_blocks(itemkinds, containerSize):
                         block_height = boxsize[2]*nz
                         if (block_length < containerlength and block_width < containerwidth and 
                             block_height < containerheight and nx*ny*nz <= quantity_boxes):
-                            block_item_id = [itemkinds[itemkind]['id']]
-                            block_item_quantity = [nx*ny*nz]
-                            block_size = [block_length, block_width, block_height]
-                            block_orientation = [orientation]
-                            block_volume = block_length*block_width*block_height
-                            volume_loss = 0
-                            
-                            simple_block_list.append([block_item_id, block_item_quantity, block_size, block_orientation, block_volume, volume_loss])       
+                            block = Block(itemkinds[itemkind]['id'])
+                            block.set_item_quantity(nx*ny*nz)
+                            block.set_size([block_length, block_width, block_height])
+                            block.set_orientation([orientation])
+                            block.set_volume(block_length,block_width,block_height)
+                            block.set_volume_loss(0)
+                            simple_block_list.append(block)       
     return simple_block_list
 
 #Creating general blocks from simple blocks
 def create_general_blocks(itemkinds, containerSize):
     general_blocks_list =create_simple_blocks(itemkinds, containerSize)
-    for Creation_Iterations in range (1, 2):
+    for _ in range (1, 2):
         a = len(general_blocks_list)
         for i in range(0, a):
             block_i = general_blocks_list[i]
@@ -41,29 +45,33 @@ def create_general_blocks(itemkinds, containerSize):
                 for dr in range(len(orientation)):
                     filling_rate = 0.98
                     g_block_size = [0,0,0]
-                    g_block_size[dr] = block_i[2][orientation[dr]] + block_j[2][orientation[dr]]
-                    g_block_size[dr-2] = max(block_i[2][orientation[dr]-2], block_j[2][orientation[dr]-2])
-                    g_block_size[dr-1] = max(block_i[2][orientation[dr]-1], block_j[2][orientation[dr]-1])
+                    g_block_size[dr] = block_i.get_size()[orientation[dr]] + block_j.get_size()[orientation[dr]]
+                    g_block_size[dr-2] = max(block_i.get_size()[orientation[dr]-2], block_j.get_size()[orientation[dr]-2])
+                    g_block_size[dr-1] = max(block_i.get_size()[orientation[dr]-1], block_j.get_size()[orientation[dr]-1])
                     if dr < 2:
-                        if block_i[2][2] != block_j[2][2]:
+                        if block_i.get_size()[2] != block_j.get_size()[2]:
                             continue     
                     if (g_block_size[0]<containerSize[0] and 
                         g_block_size[1]<containerSize[1] and 
                         g_block_size[2]<containerSize[2]):
                         gen_block_volume = g_block_size[0]*g_block_size[1]*g_block_size[2]
-                        if ((block_i[4] + block_j[4])/gen_block_volume)>filling_rate:
-                            if block_i[0]==block_j[0] and block_i[3] == block_j[3]:
-                                gen_block_item_id = block_i[0]
+                        if ((block_i.get_volume() + block_j.get_volume())/gen_block_volume)>filling_rate:
+                            if (block_i.get_id() == block_j.get_id() and
+                                block_i.get_orientation() == block_j.get_orientation()):
+                                gen_block = Block(block_i.get_id())
+                                gen_block.set_item_quantity(0)
+                                gen_block.set_orientation(block_i.get_orientation())
                                 gen_block_item_quantity = []
-                                block_orientations = block_i[3]
-                                for i in range(0, len(block_i[1])): 
-                                    gen_block_item_quantity.append(block_i[1][i] + block_j[1][i]) 
-
+                                for i in range(0, len(block_i.get_orientation())): 
+                                    gen_block_item_quantity.append(block_i.get_orientation()[i] + block_j.get_orientation()[i]) 
+                                gen_block.set_item_quantity(gen_block_item_quantity)
                             else:
-                                gen_block_item_id = block_i[0] + block_j[0]
-                                gen_block_item_quantity = block_i[1] + block_j[1]
-                                block_orientations = block_i[3] + block_j[3]
+                                gen_block = Block(block_i.get_id() + block_j.get_id())
+                                gen_block_item_quantity = block_i.get_item_quantity() + block_j.get_item_quantity()
+                                block_orientations = block_i.get_orientation() + block_j.get_orientation()
+                                gen_block.set_orientation(block_orientations)
                             
-                            block_volume_loss = gen_block_volume - (block_i[4] + block_j[4])
-                            general_blocks_list.append([gen_block_item_id, gen_block_item_quantity, g_block_size, block_orientations, gen_block_volume, block_volume_loss])
+                            block_volume_loss = gen_block_volume - (block_i.get_volume() + block_j.get_volume())
+                            gen_block.set_volume_loss(block_volume_loss)
+                            general_blocks_list.append(gen_block)
     return general_blocks_list
