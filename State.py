@@ -29,6 +29,4 @@ class State:
 
     def set_utilization(self,utilization):
         return self.utilization = utilization
-     
-    # def __repr__(self):
-    #     return "[%s,%s,"% (self.corner , self.size)+self.kind+"]" 
+   
