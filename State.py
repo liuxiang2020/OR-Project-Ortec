@@ -33,4 +33,3 @@ class State:
         self.utilization = utilization
         return self.utilization
 
-    

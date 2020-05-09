@@ -33,3 +33,5 @@ def update_available_boxes(available_boxes, added_block):
         box_quantity = block[1][i]
         boxes[box_id-1] = boxes[box_id-1]-box_quantity
     return boxes
+
+
