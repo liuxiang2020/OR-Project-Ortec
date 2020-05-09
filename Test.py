@@ -105,5 +105,5 @@ layout:
 
 solution = SimpleAlgorithm("br01.001.yaml", FullLayerArrangements)
 import yaml
-with open(r'C:\Users\dungn\Desktop\OR-Practice\store_file.yaml', 'w') as file:
+with open('store_file.yaml', 'w') as file:
     documents = yaml.dump(solution, file)
