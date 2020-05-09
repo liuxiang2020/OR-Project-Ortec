@@ -5,6 +5,7 @@ class Block:
         self.volume = 0
         self.size = 0
         self.orientation = 0
+        self.fitness = 0
 
     def get_id(self):
         return self.id
@@ -24,6 +25,9 @@ class Block:
     def get_volume_loss(self):
         return self.volume_loss
 
+    def get_fitness(self):
+        return self.fitness
+
     def set_item_quantity(self, quantity):
         self.quantity = quantity
 
@@ -39,6 +43,9 @@ class Block:
     def set_volume_loss(self, volume_loss):
         self.volume_loss = volume_loss
 
+    def set_fitness(self, fitness):
+        self.fitness = fitness
+
     def __repr__(self):
-        return "{id: %s\n, quantity:%s\n, volume: %s\n, size: %s\n, orientation:%s" \
-               % (self.id, self.quantity, self.volume, self.size, self.orientation) + "}\n"
+        return "{id: %s\n, quantity:%s\n, volume: %s\n, size: %s\n, orientation:%s\n, fitness:%s" \
+               % (self.id, self.quantity, self.volume, self.size, self.orientation,self.fitness) + "}\n"

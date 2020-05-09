@@ -25,8 +25,8 @@ def create_simple_blocks(itemkinds, containerSize):
                         block_height = boxsize[2] * nz
                         if (block_length < containerlength and block_width < containerwidth and
                                 block_height < containerheight and nx * ny * nz <= quantity_boxes):
-                            block = Block(itemkinds[itemkind]['id'])
-                            block.set_item_quantity(nx * ny * nz)
+                            block = Block([itemkinds[itemkind]['id']])
+                            block.set_item_quantity([nx * ny * nz])
                             block.set_size([block_length, block_width, block_height])
                             block.set_orientation([orientation])
                             volume = block_height * block_length * block_width
@@ -70,20 +70,24 @@ def create_general_blocks(itemkinds, containerSize):
                                 gen_block.set_item_quantity(0)
                                 gen_block.set_orientation(block_i.get_orientation())
                                 gen_block_item_quantity = []
-                                for i in range(0, len(block_i.get_orientation())):
+                                for i in range(len(block_i.get_id())):
                                     gen_block_item_quantity.append(
                                         # TODO set quantity?
-                                        block_i.get_orientation()[i] + block_j.get_orientation()[i])
+                                        block_i.get_item_quantity()[i] + block_j.get_item_quantity()[i])
                                 gen_block.set_item_quantity(gen_block_item_quantity)
+
                             else:
                                 gen_block = Block(block_i.get_id() + block_j.get_id())
                                 # TODO: add set_volume
                                 gen_block.set_volume(gen_block_volume)
+                                # TODO
                                 gen_block_item_quantity = block_i.get_item_quantity() + block_j.get_item_quantity()
                                 block_orientations = block_i.get_orientation() + block_j.get_orientation()
                                 gen_block.set_orientation(block_orientations)
+                                gen_block.set_item_quantity(gen_block_item_quantity)
 
                             block_volume_loss = gen_block_volume - (block_i.get_volume() + block_j.get_volume())
+                            gen_block.set_size([g_block_size[0], g_block_size[1], g_block_size[2]])
                             gen_block.set_volume_loss(block_volume_loss)
                             general_blocks_list.append(gen_block)
     return general_blocks_list
