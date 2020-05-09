@@ -6,7 +6,7 @@
 # container, then another block which requires more boxes of this
 # type than the available left-over 
 
-def Check_availabiliy(gb, currentSpace):    
+def Check_availabiliy(gb, currentSpace, item_available):    
     for i in range(len(gb[0])):
         if item_available[gb[i]] >= gb[1][i]:
             continue;

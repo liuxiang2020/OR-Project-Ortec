@@ -34,3 +34,7 @@ class Block:
 
     def set_volume_loss(self, volume_loss):
         self.volume_loss = volume_loss
+
+    def __repr__(self):
+        return "{id: %d\n, quantity:%d\n, volume: %d\n, size: %s\n, orientation:%s" \
+               % (self.id , self.quantity, self.volume, self.size, self.orientation )+"}\n"

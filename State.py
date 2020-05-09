@@ -18,15 +18,17 @@ class State:
     def get_utilization(self):
         return self.utilization
     
-     def set_residualSpaceList(self, residualSpaceList):
-        return self.residualSpaceList = residualSpaceList
-    
+    def set_residualSpaceList(self, residualSpaceList):
+        self.residualSpaceList = residualSpaceList
+        return self.residualSpaceList
     def set_occupiedSpaceList(self,occupiedSpaceList):
-        return self.occupiedSpaceList = occupiedSpaceList
+        self.occupiedSpaceList = occupiedSpaceList
+        return self.occupiedSpaceList
 
     def set_filledBlocks(self, filledBlocks):
-        return self.filledBlocks = filledBlocks
+        self.filledBlocks = filledBlocks
+        return self.filledBlocks
 
     def set_utilization(self,utilization):
-        return self.utilization = utilization
-   
+        self.utilization = utilization
+        return self.utilization

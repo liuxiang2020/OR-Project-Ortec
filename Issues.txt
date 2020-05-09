@@ -1,0 +1,4 @@
+1. create_simple block: can block size exactly the container size?
+    for example can 4 blocks with [l,w,h] = 50,50,50 filled in a container size [100,50,100]?
+    currently our code is not allowed unless the container size is [101,51,101]
+2. need to track the availability of blocks
