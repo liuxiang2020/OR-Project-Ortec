@@ -47,5 +47,5 @@ class Block:
         self.fitness = fitness
 
     def __repr__(self):
-        return "{id: %s\n, quantity:%s\n, volume: %s\n, size: %s\n, orientation:%s\n, fitness:%s" \
-               % (self.id, self.quantity, self.volume, self.size, self.orientation,self.fitness) + "}\n"
+        return "{id: %s\n, quantity:%s\n, volume: %s\n, size: %s\n, orientation:%s\n, fitness:%s\n, volumeloss:%s" \
+               % (self.id, self.quantity, self.volume, self.size, self.orientation,self.fitness,self.volume_loss) + "}\n"

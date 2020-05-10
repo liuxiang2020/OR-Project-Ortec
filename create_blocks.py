@@ -17,14 +17,14 @@ def create_simple_blocks(itemkinds, containerSize):
         quantity_boxes = itemkinds[itemkind]['quantity']
         for orientation in itemkinds[itemkind]['orientations'].split(','):
             boxsize = Size2Pos(itemkinds[itemkind]['size'], orientation)
-            for nx in range(1, quantity_boxes):
-                for ny in range(1, quantity_boxes):
-                    for nz in range(1, quantity_boxes):
+            for nx in range(1, quantity_boxes + 1):
+                for ny in range(1, quantity_boxes + 1):
+                    for nz in range(1, quantity_boxes + 1):
                         block_length = boxsize[0] * nx
                         block_width = boxsize[1] * ny
                         block_height = boxsize[2] * nz
-                        if (block_length < containerlength and block_width < containerwidth and
-                                block_height < containerheight and nx * ny * nz <= quantity_boxes):
+                        if (block_length <= containerlength and block_width <= containerwidth and
+                                block_height <= containerheight and nx * ny * nz <= quantity_boxes):
                             block = Block([itemkinds[itemkind]['id']])
                             block.set_item_quantity([nx * ny * nz])
                             block.set_size([block_length, block_width, block_height])
@@ -57,9 +57,9 @@ def create_general_blocks(itemkinds, containerSize):
                     if dr < 2:
                         if block_i.get_size()[2] != block_j.get_size()[2]:
                             continue
-                    if (g_block_size[0] < containerSize[0] and
-                            g_block_size[1] < containerSize[1] and
-                            g_block_size[2] < containerSize[2]):
+                    if (g_block_size[0] <= containerSize[0] and
+                            g_block_size[1] <= containerSize[1] and
+                            g_block_size[2] <= containerSize[2]):
                         gen_block_volume = g_block_size[0] * g_block_size[1] * g_block_size[2]
                         if ((block_i.get_volume() + block_j.get_volume()) / gen_block_volume) > filling_rate:
                             if (block_i.get_id() == block_j.get_id() and
@@ -89,5 +89,16 @@ def create_general_blocks(itemkinds, containerSize):
                             block_volume_loss = gen_block_volume - (block_i.get_volume() + block_j.get_volume())
                             gen_block.set_size([g_block_size[0], g_block_size[1], g_block_size[2]])
                             gen_block.set_volume_loss(block_volume_loss)
-                            general_blocks_list.append(gen_block)
+                            too_many_items = False
+                            for itemkind in range(len(itemkinds)):
+                                quantity_boxes = itemkinds[itemkind]['quantity']
+                                used_boxes = 0
+                                for i in range(len(gen_block_item_quantity)):
+                                    if gen_block.get_id()[i] == itemkinds[itemkind]['id']:
+                                        used_boxes += gen_block_item_quantity[i]
+                                if used_boxes < quantity_boxes:
+                                    too_many_items = True
+                            if not too_many_items:
+                                general_blocks_list.append(gen_block)
+                                                        
     return general_blocks_list
