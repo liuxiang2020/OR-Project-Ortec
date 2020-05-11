@@ -96,7 +96,7 @@ def create_general_blocks(itemkinds, containerSize):
                                 for i in range(len(gen_block_item_quantity)):
                                     if gen_block.get_id()[i] == itemkinds[itemkind]['id']:
                                         used_boxes += gen_block_item_quantity[i]
-                                if used_boxes < quantity_boxes:
+                                if used_boxes > quantity_boxes:
                                     too_many_items = True
                             if not too_many_items:
                                 general_blocks_list.append(gen_block)
