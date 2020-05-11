@@ -39,6 +39,7 @@ def create_simple_blocks(itemkinds, containerSize):
 # Creating general blocks from simple blocks
 def create_general_blocks(itemkinds, containerSize):
     general_blocks_list = create_simple_blocks(itemkinds, containerSize)
+    general_blocks_list = filter_redundant_blocks(general_blocks_list)
     for _ in range(1, 2):
         a = len(general_blocks_list)
         for i in range(0, a):
@@ -96,9 +97,28 @@ def create_general_blocks(itemkinds, containerSize):
                                 for i in range(len(gen_block_item_quantity)):
                                     if gen_block.get_id()[i] == itemkinds[itemkind]['id']:
                                         used_boxes += gen_block_item_quantity[i]
-                                if used_boxes < quantity_boxes:
+                                if used_boxes > quantity_boxes:
                                     too_many_items = True
                             if not too_many_items:
                                 general_blocks_list.append(gen_block)
-                                                        
+        general_blocks_list = filter_redundant_blocks(general_blocks_list)                                                    
     return general_blocks_list
+
+def filter_redundant_blocks(blocklist):
+    a = len(blocklist)
+    redundant_blocks = []
+    for i in range(0, a):
+        block_i = blocklist[i]
+        for j in range(i + 1, a):
+            block_j = blocklist[j]
+            if (block_i.get_id() == block_j.get_id() and
+                block_i.get_size() == block_j.get_size() and
+                block_i.get_item_quantity() == block_j.get_item_quantity()):
+                redundant_blocks.append(j)
+    redundant_blocks = list(set(redundant_blocks))
+    redundant_blocks = sorted(redundant_blocks)
+    x = 0
+    for i in redundant_blocks:
+      blocklist.pop(i-x)
+      x += 1
+    return blocklist
