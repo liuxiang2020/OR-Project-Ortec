@@ -6,3 +6,4 @@ volume, change datatype or calculate the LWH  --- resolved volume issues in bran
 3. need to track the availability of blocks
 4. changed Block variable id to a list of id for both simple block and general blocks, same with quantity
 5. create_general_blocks have a lot same boxes arrange plan, need to remove redundancy
+6. create_residual_space, inside the function we can try update the state.occupiedspace
