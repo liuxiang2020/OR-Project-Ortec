@@ -6,7 +6,7 @@
 # container, then another block which requires more boxes of this
 # type than the available left-over 
 from Block import Block
-from test_algo import *
+#from test_algo import *
 
 def check_availability (gb, item_available):
     for i in range(len(gb.get_id())):
