@@ -14,4 +14,4 @@ class Space:
         return self.kind
 
     def __repr__(self):
-        return "[%s,%s," % (self.corner, self.size) + self.kind + "]"
+        return "Space{%s,%s," % (self.corner, self.size) + self.kind + "}"
