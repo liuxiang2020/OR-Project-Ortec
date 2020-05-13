@@ -1,3 +1,12 @@
+"""
+Class Block :
+- block_ids: a list of blocks (We give each block an id) eg. [Block A, Block B]
+- id_quantity: a dictionary consist of id and its corresponding quantity eg. {id: quantity, id:quantity}
+- size: block size, a list of [L,W,H] eg. [100, 40, 100]
+- orientation:
+- fitness:
+"""
+
 class Block:
     def __init__(self, block_id):
         self.id = block_id
