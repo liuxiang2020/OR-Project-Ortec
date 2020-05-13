@@ -1,11 +1,25 @@
 class State:
-    def __init__(self, residualSpaceList, occupiedSpaceList, filledBlocks, utilization):
+    def __init__(self, residualSpaceList, occupiedSpaceList, filledBlocks):
         self.residualSpaceList = residualSpaceList
         self.occupiedSpaceList = occupiedSpaceList
+        self.planListSpace = []
+        self.planListBlock =[]
         self.filledBlocks = filledBlocks
-        self.utilization = utilization
-       
+        self.utilization = 0
+        self.available = {} 
+
+    def add_block_planListBlock(self, block):
+        self.planListBlock.append(block)
+
+    def add_space_planListSpace(self, space):
+        self.planListSpace.append(space)
+
+    def add_block_occupiedSpaceList(self, block):
+        self.occupiedSpaceList.append(block)
     
+    def add_space_residualSpaceList(self, space):
+        self.residualSpaceList.append(space)
+
     def get_residualSpaceList(self):
         return self.residualSpaceList
     
@@ -17,6 +31,13 @@ class State:
 
     def get_utilization(self):
         return self.utilization
+
+    def get_available_items(self):
+        return self.available
+
+    def set_available_items(self, available):
+        self.available  = available
+        return self.available
     
     def set_residualSpaceList(self, residualSpaceList):
         self.residualSpaceList = residualSpaceList
@@ -33,3 +54,6 @@ class State:
         self.utilization = utilization
         return self.utilization
 
+    def __repr__(self):
+        return "{res: %s\n, occu:%s\n, fill: %s\n, ut: %s\n, avail:%s\n" \
+               % (self.residualSpaceList, self.occupiedSpaceList, self.filledBlocks, self.utilization, self.available) + "}\n"

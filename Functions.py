@@ -24,14 +24,18 @@ def qsort_candidate_fitness(arr):
     else:
         return qsort_candidate_fitness([x for x in arr[1:] if less_than(x, arr[0])]) + [arr[0]] + qsort_candidate_fitness([x for x in arr[1:] if more_than(x, arr[0])])
 
+"""
+available_boxes: dictionary key:value <-> id:quantity
+added_block: block
+"""
 
 def update_available_boxes(available_boxes, added_block):
     boxes = available_boxes
     block = added_block
-    for i in range(len(block[1])):
-        box_id = block[0][i]
-        box_quantity = block[1][i]
-        boxes[box_id-1] = boxes[box_id-1]-box_quantity
+    box_id = block.get_id()
+    box_quantity = block.get_item_quantity()
+    for i in range(len(box_id)):
+        boxes[box_id[i]]  = boxes[box_id[i]] - box_quantity[i]
     return boxes
 
 
