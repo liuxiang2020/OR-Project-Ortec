@@ -10,6 +10,7 @@ def Size2Pos(size, orientation='LWH'):
 # Creating Simple Blocks from item boxes
 def create_simple_blocks(itemkinds, containerSize):
     simple_block_list = []
+    unique_ids = 0
     containerlength = containerSize[0]
     containerwidth = containerSize[1]
     containerheight = containerSize[2]
@@ -25,21 +26,25 @@ def create_simple_blocks(itemkinds, containerSize):
                         block_height = boxsize[2] * nz
                         if (block_length <= containerlength and block_width <= containerwidth and
                                 block_height <= containerheight and nx * ny * nz <= quantity_boxes):
-                            block = Block([itemkinds[itemkind]['id']])
+                            block = Block([itemkinds[itemkind]['id']], True)
                             block.set_item_quantity([nx * ny * nz])
                             block.set_size([block_length, block_width, block_height])
                             block.set_orientation([orientation])
                             volume = block_height * block_length * block_width
                             block.set_volume(volume)
                             block.set_volume_loss(0)
+                            block.set_added_direction(0)
+                            block.set_dr_quantity((nx, ny, nz))
+                            block.set_unique_id(unique_ids)
+                            unique_ids += 1
                             simple_block_list.append(block)
-    return simple_block_list
+    simple_block_list = filter_redundant_blocks(simple_block_list)                       
+    return simple_block_list, unique_ids
 
 
 # Creating general blocks from simple blocks
 def create_general_blocks(itemkinds, containerSize):
-    general_blocks_list = create_simple_blocks(itemkinds, containerSize)
-    general_blocks_list = filter_redundant_blocks(general_blocks_list)
+    general_blocks_list, unique_ids = create_simple_blocks(itemkinds, containerSize)
     for _ in range(1, 2):
         a = len(general_blocks_list)
         for i in range(0, a):
@@ -55,9 +60,23 @@ def create_general_blocks(itemkinds, containerSize):
                                                block_j.get_size()[orientation[dr] - 2])
                     g_block_size[dr - 1] = max(block_i.get_size()[orientation[dr] - 1],
                                                block_j.get_size()[orientation[dr] - 1])
+                    if dr == 2:
+                        if (block_i.get_size()[orientation[0]] <= block_j.get_size()[orientation[0]] and
+                            block_i.get_size()[orientation[1]] <= block_j.get_size()[orientation[1]]):
+                            upper_face = (block_i.get_size()[orientation[0]],block_i.get_size()[orientation[1]])
+                        elif (block_i.get_size()[orientation[0]] >= block_j.get_size()[orientation[0]] and
+                            block_i.get_size()[orientation[1]] >= block_j.get_size()[orientation[1]]):
+                            upper_face = (block_j.get_size()[orientation[0]],block_j.get_size()[orientation[1]])
+                        else:
+                            continue
+
                     if dr < 2:
                         if block_i.get_size()[2] != block_j.get_size()[2]:
                             continue
+                        if dr == 0:
+                            upper_face = (block_i.get_size()[0]+block_j.get_size()[0],min(block_i.get_size()[1],block_j.get_size()[1]))
+                        if dr == 1:
+                            upper_face = (min(block_i.get_size()[0],block_j.get_size()[0]), block_i.get_size()[1]+block_j.get_size()[1])    
                     if (g_block_size[0] <= containerSize[0] and
                             g_block_size[1] <= containerSize[1] and
                             g_block_size[2] <= containerSize[2]):
@@ -100,6 +119,11 @@ def create_general_blocks(itemkinds, containerSize):
                                 if used_boxes > quantity_boxes:
                                     too_many_items = True
                             if not too_many_items:
+                                gen_block.set_unique_id(unique_ids)
+                                unique_ids += 1
+                                gen_block.set_block_uids((block_i.get_unique_id(), block_j.get_unique_id()))
+                                gen_block.set_upper_face = upper_face
+                                gen_block.set_added_direction((dr))
                                 general_blocks_list.append(gen_block)
         general_blocks_list = filter_redundant_blocks(general_blocks_list)                                                    
     return general_blocks_list

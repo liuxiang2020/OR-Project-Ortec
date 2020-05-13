@@ -1,7 +1,7 @@
 from Space import Space
 
 
-def create_residual_space(blockSize, containerSize, spaceStack):
+def create_residual_space(block, containerSize, spaceStack):
     # space = spaceStack.top()
     space = spaceStack.pop()
     cornerx = [0, 0, 0]
@@ -10,14 +10,15 @@ def create_residual_space(blockSize, containerSize, spaceStack):
     sizex = [0, 0, 0]
     sizey = [0, 0, 0]
     sizez = [0, 0, 0]
+    blockSize = block.get_size()
     w = space.get_size()[0]
     l = space.get_size()[1]
     h = space.get_size()[2]
     deltaw = w - blockSize[0]
     deltal = l - blockSize[1]
     deltah = h - blockSize[2]
-    sizez[0] = blockSize[0]
-    sizez[1] = blockSize[1]
+    sizez[0] = block.get_upper_face[0]
+    sizez[1] = block.get_upper_face[1]
     sizez[2] = deltah
     x = space.get_corner()[0]
     y = space.get_corner()[1]

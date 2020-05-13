@@ -50,22 +50,17 @@ def find_solution(itemKinds, containerSize, available):
             packState.add_space_planListSpace(considered_space)
             # TODO: needs check -- checked
             available_boxes = update_available_boxes(available_boxes, packed_block)
-            block_size = packed_block.get_size()
 
             # print("available boxes quantity", available_boxes,"\n",
             #       "with choosen block size", block_size)
-            space_list = create_residual_space(block_size, containerSize, space_list)
+            space_list = create_residual_space(packed_block, containerSize, space_list)
 
             # print("residual space", space_list)
         else:
-            i = 0
             if len(space_list) <= 1:
                 break
             else:
                 space_list = transfer_residual_space(space_list)
-            i += 1
-            if i == 10:
-                break
     packState.set_residualSpaceList(space_list)
     packState.set_available_items(available_boxes)
     # print("packstate", packState)
