@@ -31,11 +31,13 @@ available: dictionary, key:value  <-> id:quantity
 
 def find_solution(itemKinds, containerSize, available):
     block_list = create_general_blocks(itemKinds, containerSize)
-    space = Space([0, 0, 0], containerSize, 'x')
+    space = Space([0, 0, 0], containerSize, 'x', [0,0,0])
     space_list = [space]
     packState = State(space_list)
     available_boxes = available
-    for i in range(len(space_list)):
+    packState.set_available_items(available)
+    i = 0
+    while True:
         considered_space = space_list[i]
 
         # print("in space", considered_space)
