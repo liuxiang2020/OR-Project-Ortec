@@ -2,6 +2,10 @@ import numpy as np
 from Block import Block
 from Space import Space
 from State import State
+from time import sleep
+from create_residual_space import create_residual_space
+from progressively_refined_tree_search import Progressively_Refined_Tree_Search
+
 
 # from OR-Project-ORTEC import *
 """
@@ -18,25 +22,10 @@ candidateBlockList: a (type)List wil candiate (type)Blocks
 MAX_SIZE = 10
 
 
-def Progressively_Refined_Tree_Search(block, state):
-    # test return
-    res_space = [Space([0, 0, 0], [1, 1, 1], 'x')]
-    occupied_space = [Space([0, 0, 0], [100, 50, 100], 'x')]
-    filled_block = [Block(2)]
-    filled_block[0].set_size([100, 50, 100])
-    filled_block[0].set_item_quantity(4)
-    filled_block[0].set_volume(500000)
-    filled_block[0].set_orientation(['LHW'])
-    filled_block[0].set_volume_loss(1)
-    s = State(res_space, occupied_space, filled_block)
-    s.set_utilization(0.98)
-    return s
-
-
 bestUtilization = 0.9
 
 
-def search_block(packState, candidateBlockList):
+def search_block(packState, candidateBlockList, block_list, available_boxes, containerSize):
     size = len(candidateBlockList) - 1
     # if only wants to limited the length of list, just limit the loop times?
     # if size > MAX_SIZE:
@@ -52,7 +41,7 @@ def search_block(packState, candidateBlockList):
         currBlock = candidateBlockList[i]
         # Sol is a packState, assume it has a total utilization
         print("curr in search blokc before progress", currState, currBlock)
-        Sol = Progressively_Refined_Tree_Search(currBlock, currState);
+        Sol = Progressively_Refined_Tree_Search(currBlock, currState, block_list, available_boxes, containerSize)
         print("Sol returned in searchblock", Sol)
         if Sol.get_utilization() > bestUtilization:
             print("curr sol.get_utilization", i, currBlock, Sol.get_filledBlocks)

@@ -9,9 +9,9 @@ from State import State
 from create_blocks import *
 from inspect import currentframe, getframeinfo
 from venv import *
-from create_general_candidate_block import *
+from create_general_candidate_block import generate_candidate_block_list
 from create_residual_space import *
-from search_block import *
+from search_block import search_block
 import traceback
 from find_solution import find_solution
 
@@ -70,8 +70,8 @@ def parse_yaml(yamlfile: yaml) -> object:
 
 if __name__ == "__main__":
     # get container and boxes file information
-    instance = parse_args()
-
+    #instance = parse_args()
+    instance = 'br00.000.yaml'
     # parse_instance files and update available items
     containerSize, itemKinds = parse_yaml(instance)
 
@@ -102,4 +102,6 @@ if __name__ == "__main__":
     # # state.set_occupiedSpaceList(state.get_r)
     # print(residualSpace)
 
+    print(50*'#')
+    print(state)
     print("Everything passed")
