@@ -1,33 +1,35 @@
-class State:
-    def __init__(self, residualSpaceList, occupiedSpaceList, filledBlocks):
-        self.residualSpaceList = residualSpaceList
-        self.occupiedSpaceList = occupiedSpaceList
-        self.planListSpace = []
-        self.planListBlock =[]
-        self.filledBlocks = filledBlocks
-        self.utilization = 0
-        self.available = {} 
+"""
+Class State:
+residualSpaceList: a list of residual space list. eg. [Space A, Space B]
+planListSpace: a list of occupied Space eg. ..
+planListSpace: a list of filled Blocks eg [Block A, Block B]
+utilization: record current utilization rate
+available: record currently available items, it is a dictionary of id: quantity
+"""
 
+class State:
+    def __init__(self, residualSpaceList):
+        self.residualSpaceList = residualSpaceList
+        self.planListSpace = []
+        self.planListBlock = []
+        self.utilization = 0
+        self.available = {}
+
+    # TODO rest of the three methods maybe has the similar function?
     def add_block_planListBlock(self, block):
         self.planListBlock.append(block)
 
     def add_space_planListSpace(self, space):
         self.planListSpace.append(space)
 
-    def add_block_occupiedSpaceList(self, block):
-        self.occupiedSpaceList.append(block)
-    
-    def add_space_residualSpaceList(self, space):
-        self.residualSpaceList.append(space)
-
     def get_residualSpaceList(self):
         return self.residualSpaceList
     
-    def get_occupiedSpaceList(self):
-        return self.occupiedSpaceList
+    def get_planListSpace(self):
+        return self.planListSpace
 
-    def get_filledBlocks(self):
-        return self.filledBlocks
+    def get_planListBlock(self):
+        return self.planListBlock
 
     def get_utilization(self):
         return self.utilization
@@ -35,20 +37,14 @@ class State:
     def get_available_items(self):
         return self.available
 
+
     def set_available_items(self, available):
         self.available  = available
         return self.available
-    
+
     def set_residualSpaceList(self, residualSpaceList):
         self.residualSpaceList = residualSpaceList
         return self.residualSpaceList
-    def set_occupiedSpaceList(self,occupiedSpaceList):
-        self.occupiedSpaceList = occupiedSpaceList
-        return self.occupiedSpaceList
-
-    def set_filledBlocks(self, filledBlocks):
-        self.filledBlocks = filledBlocks
-        return self.filledBlocks
 
     def set_utilization(self,utilization):
         self.utilization = utilization
@@ -56,4 +52,5 @@ class State:
 
     def __repr__(self):
         return "{res: %s\n, occu:%s\n, fill: %s\n, ut: %s\n, avail:%s\n" \
-               % (self.residualSpaceList, self.occupiedSpaceList, self.filledBlocks, self.utilization, self.available) + "}\n"
+               % (self.residualSpaceList, self.planListSpace, self.planListBlock, self.utilization, self.available) + "}\n"
+

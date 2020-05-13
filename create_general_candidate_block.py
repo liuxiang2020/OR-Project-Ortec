@@ -16,11 +16,6 @@ def check_availability (gb, item_available):
         else:
             return False
     return True
-#
-# available = {(1, 10), (2, 33), (3, 39)}
-#
-# # [216, 228, 150]
-# curr_Space = [220, 230, 155]
 
 
 def generate_candidate_block_list(currentSpace, generalBlockList, item_available):
