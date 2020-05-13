@@ -15,7 +15,7 @@ def calc_L(k,m):
 
 def progressively_refined_tree_search(block, state):
     # currState = state
-    space=state.get_residualSpaceList.pop()
+    space=(state.get_residualSpaceList())[-1]
     # TODO: is there an difference between plan and occupied list?
     state.add_space_planListSpace(space)
     state.add_block_planListBlock(block)

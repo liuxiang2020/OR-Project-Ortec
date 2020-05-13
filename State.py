@@ -1,8 +1,17 @@
+"""
+Class State:
+residualSpaceList: a list of residual space list. eg. [Space A, Space B]
+planListSpace: a list of occupied Space eg. ..
+planListSpace: a list of filled Blocks eg [Block A, Block B]
+utilization: record current utilization rate
+available: record currently available items, it is a dictionary of id: quantity
+"""
+
 class State:
-    def __init__(self, residualSpaceList, planListSpace,planListBlock):
+    def __init__(self, residualSpaceList):
         self.residualSpaceList = residualSpaceList
-        self.planListSpace = planListSpace
-        self.planListBlock = planListBlock
+        self.planListSpace = []
+        self.planListBlock = []
         self.utilization = 0
         self.available = {}
 
@@ -28,13 +37,14 @@ class State:
     def get_available_items(self):
         return self.available
 
+
     def set_available_items(self, available):
         self.available  = available
         return self.available
 
-    def set_filledBlocks(self, filledBlocks):
-        self.filledBlocks = filledBlocks
-        return self.filledBlocks
+    def set_residualSpaceList(self, residualSpaceList):
+        self.residualSpaceList = residualSpaceList
+        return self.residualSpaceList
 
     def set_utilization(self,utilization):
         self.utilization = utilization
@@ -42,22 +52,5 @@ class State:
 
     def __repr__(self):
         return "{res: %s\n, occu:%s\n, fill: %s\n, ut: %s\n, avail:%s\n" \
-               % (self.residualSpaceList, self.occupiedSpaceList, self.filledBlocks, self.utilization, self.available) + "}\n"
+               % (self.residualSpaceList, self.planListSpace, self.planListBlock, self.utilization, self.available) + "}\n"
 
-
-    # def add_block_occupiedSpaceList(self, block):
-    #     self.occupiedSpaceList.append(block)
-    # # TODO do i need it since we are updating inside the create residul space and we just totally create a new list
-    # def add_space_residualSpaceList(self, space):
-    #     self.SpaceList.append(space)
-
-    # Added
-    # def add_block_filledbockList(self, block):
-    #     self.filledBlocks.append(block)
-
-    # def set_residualSpaceList(self, residualSpaceList):
-    #     self.residualSpaceList = residualSpaceList
-    #     return self.residualSpaceList
-    # def set_occupiedSpaceList(self,occupiedSpaceList):
-    #     self.occupiedSpaceList = occupiedSpaceList
-    #     return self.occupiedSpaceList

@@ -33,9 +33,7 @@ def find_solution(itemKinds, containerSize, available):
     block_list = create_general_blocks(itemKinds, containerSize)
     space = Space([0, 0, 0], containerSize, 'x')
     space_list = [space]
-    packState = State(space_list,[],[])
-    # solution_block_list = []
-    # solution_space_list = []
+    packState = State(space_list)
     available_boxes = available
     for i in range(len(space_list)):
         considered_space = space_list[i]
