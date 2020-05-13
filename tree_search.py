@@ -1,5 +1,5 @@
 from create_residual_space import create_residual_space
-from create_general_candidate_block import Generate_Candidate_Block_List
+from create_general_candidate_block import generate_candidate_block_list
 from Build_m1_Tree import Build_m1_Tree
 import math
 K = 3
@@ -14,17 +14,20 @@ def calc_L(k,m):
     return numerator/denominator
 
 def progressively_refined_tree_search(block, state):
+    # currState = state
     space=state.get_residualSpaceList.pop()
-    state.plan.spaceList.append(space)
-    state.plan.blockList.append(block)
-    #TODO
-    create_residual_space(state.Spacelist, containerSize, spaceStack)
-    #TODO
-    cBlocKList = Generate_Candidate_Block_List(space, block, item_available)
+    # TODO: is there an difference between plan and occupied list?
+    state.add_space_planListSpace(space)
+    state.add_block_planListBlock(block)
+    #TODO first input is actually the block_size, set container Size to be global variable , spacestack is the previous residual space list
+    residual_space_list = create_residual_space(block.get_size(), containerSize, state.get_residualSpaceList())
+    state.set_residualSpaceList(residual_space_list)
+    #TODO is cblocklist used?
+    cBlocKList = generate_candidate_block_list(space, block, state.get_available_items())
     best_solution = state
-    #TODO
+    #TODO there are globle variable M_zero may be you want to use it?
     m = 1
-    #TODO
+    #TODO ?
     for i in range(STAGE_L-1):
         bkTab = []
         m = m*SCALE

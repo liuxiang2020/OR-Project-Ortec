@@ -31,32 +31,34 @@ available: dictionary, key:value  <-> id:quantity
 
 def find_solution(itemKinds, containerSize, available):
     block_list = create_general_blocks(itemKinds, containerSize)
-    print("in find solution, create general blocks",block_list)
     space = Space([0, 0, 0], containerSize, 'x')
     space_list = [space]
-    start_state = State(space_list,[],[])
-    solution_block_list = []
-    solution_space_list = []
+    packState = State(space_list,[],[])
+    # solution_block_list = []
+    # solution_space_list = []
     available_boxes = available
     for i in range(len(space_list)):
-        print(lineno(), "in loop with number" ,i)
         considered_space = space_list[i]
-        print("in space", considered_space)
-        candidate_list = generate_candidate_block_list(considered_space.get_size(), block_list, available_boxes)
-        print("with space", considered_space, "the candidate_list", candidate_list)
-        if candidate_list:
-            packed_block = search_block(start_state, candidate_list, block_list, available_boxes, containerSize)
-            print("if candidate list is not zero, packed block",packed_block)
-            solution_block_list.append(packed_block)
-            solution_space_list.append(considered_space)
 
+        # print("in space", considered_space)
+        candidate_list = generate_candidate_block_list(considered_space.get_size(), block_list, available_boxes)
+
+        # print("with space", considered_space, "the candidate_list", candidate_list)
+        if candidate_list:
+            packed_block = search_block(packState, candidate_list, block_list, available_boxes, containerSize)
+
+            # print("if candidate list is not zero, packed block",packed_block)
+            packState.add_block_planListBlock(packed_block)
+            packState.add_space_planListSpace(considered_space)
             # TODO: needs check -- checked
             available_boxes = update_available_boxes(available_boxes, packed_block)
             block_size = packed_block.get_size()
-            print("available boxes quantity", available_boxes,"\n",
-                  "with choosen block size", block_size)
+
+            # print("available boxes quantity", available_boxes,"\n",
+            #       "with choosen block size", block_size)
             space_list = create_residual_space(block_size, containerSize, space_list)
-            print("residual space", space_list)
+
+            # print("residual space", space_list)
         else:
             i = 0
             if len(space_list) <= 1:
@@ -66,8 +68,7 @@ def find_solution(itemKinds, containerSize, available):
             i += 1
             if i == 10:
                 break
-
-    currState = State(space_list, solution_space_list, solution_block_list)
-    currState.set_available_items(available_boxes)
-    print("currstate", currState)
-    return currState
+    packState.set_residualSpaceList(space_list)
+    packState.set_available_items(available_boxes)
+    # print("packstate", packState)
+    return packState
