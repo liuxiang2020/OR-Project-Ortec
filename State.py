@@ -6,6 +6,7 @@ planListSpace: a list of filled Blocks eg [Block A, Block B]
 utilization: record current utilization rate
 available: record currently available items, it is a dictionary of id: quantity
 """
+from Functions import update_available_boxes
 
 class State:
     def __init__(self, residualSpaceList):
@@ -37,18 +38,17 @@ class State:
     def get_available_items(self):
         return self.available
 
+    def update_available_items(self, block):
+        self.available = update_available_boxes(self.available, block)
 
     def set_available_items(self, available):
         self.available  = available
-        return self.available
 
     def set_residualSpaceList(self, residualSpaceList):
         self.residualSpaceList = residualSpaceList
-        return self.residualSpaceList
 
     def set_utilization(self,utilization):
         self.utilization = utilization
-        return self.utilization
 
     def __repr__(self):
         return "{res: %s\n, occu:%s\n, fill: %s\n, ut: %s\n, avail:%s\n" \
