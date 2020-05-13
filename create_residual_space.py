@@ -17,8 +17,8 @@ def create_residual_space(block, containerSize, spaceStack):
     deltaw = w - blockSize[0]
     deltal = l - blockSize[1]
     deltah = h - blockSize[2]
-    sizez[0] = block.get_upper_face[0]
-    sizez[1] = block.get_upper_face[1]
+    sizez[0] = block.get_upper_face()[0]
+    sizez[1] = block.get_upper_face()[1]
     sizez[2] = deltah
     x = space.get_corner()[0]
     y = space.get_corner()[1]
@@ -79,9 +79,9 @@ def create_residual_space(block, containerSize, spaceStack):
             cornerx[1] = y
             cornery[0] = x + deltaw
             cornery[1] = y
-        spaceStack.append(Space(cornerz, sizez, 'z'))
-        spaceStack.append(Space(cornery, sizey, 'y'))
-        spaceStack.append(Space(cornerx, sizex, 'x'))
+        spaceStack.append(Space(cornerz, sizez, 'z',calc_corner_for_placement(cornerz,sizez,containerSize)))
+        spaceStack.append(Space(cornery, sizey, 'y',calc_corner_for_placement(cornery,sizey,containerSize)))
+        spaceStack.append(Space(cornerx, sizex, 'x',calc_corner_for_placement(cornerx,sizex,containerSize)))
     else:
         sizex[0] = deltaw
         sizex[1] = l - deltal
@@ -100,7 +100,34 @@ def create_residual_space(block, containerSize, spaceStack):
             cornerx[1] = y + deltal
             cornery[0] = x
             cornery[1] = y
-        spaceStack.append(Space(cornerz, sizez, 'z'))
-        spaceStack.append(Space(cornerx, sizex, 'x'))
-        spaceStack.append(Space(cornery, sizey, 'y'))
+        spaceStack.append(Space(cornerz, sizez, 'z',calc_corner_for_placement(cornerz,sizez,containerSize)))
+        spaceStack.append(Space(cornerx, sizex, 'x',calc_corner_for_placement(cornerx,sizex,containerSize)))
+        spaceStack.append(Space(cornery, sizey, 'y',calc_corner_for_placement(cornery,sizey,containerSize)))
     return spaceStack
+
+def calc_corner_for_placement(corner,size,containerSize):
+    x = corner[0]
+    y = corner[1]
+    w = size[0]
+    l = size[1]
+    res_corner = [0,0,0]
+    if (x + y <= y + abs(x + w - containerSize[0]) and
+            x + y <= x + abs(y + l - containerSize[1]) and
+            x + y <= abs(x + w - containerSize[0]) + abs(y + l - containerSize[1])):
+        res_corner = corner
+    elif (y + abs(x + w - containerSize[0]) <= x + abs(y + l - containerSize[1]) and
+          y + abs(x + w - containerSize[0]) <= abs(x + w - containerSize[0]) + abs(y + l - containerSize[1])):
+        res_corner[0] = corner[0]
+        res_corner[1] = corner[1] + w
+        res_corner[2] = corner[2]
+    elif x + abs(y + l - containerSize[1]) <= abs(x + w - containerSize[0]) + abs(y + l - containerSize[1]):
+        res_corner[0] = corner[0]
+        res_corner[1] = corner[1]
+        res_corner[2] = corner[2] + l
+    else:
+        res_corner[0] = corner[0]
+        res_corner[1] = corner[1] + w
+        res_corner[2] = corner[2] + l
+    return res_corner
+    
+    

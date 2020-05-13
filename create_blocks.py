@@ -35,6 +35,7 @@ def create_simple_blocks(itemkinds, containerSize):
                             block.set_volume_loss(0)
                             block.set_added_direction(0)
                             block.set_dr_quantity((nx, ny, nz))
+                            block.set_upper_face((block_length,block_width))
                             block.set_unique_id(unique_ids)
                             unique_ids += 1
                             simple_block_list.append(block)
