@@ -7,7 +7,6 @@ Class Block :
 - fitness:
 """
 
-
 class Block:
     def __init__(self, block_id):
         self.id = block_id
