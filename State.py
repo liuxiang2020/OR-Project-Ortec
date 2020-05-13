@@ -15,13 +15,17 @@ class State:
         self.planListBlock = []
         self.utilization = 0
         self.available = {}
+        self.space_volume = 0
+        self.block_volume = 0
 
     # TODO rest of the three methods maybe has the similar function?
     def add_block_planListBlock(self, block):
         self.planListBlock.append(block)
-
+        self.block_volume += block.get_volume()
     def add_space_planListSpace(self, space):
+
         self.planListSpace.append(space)
+        self.space_volume += (space.get_size()[0] * space.get_size()[1] * space.get_size()[2])
 
     def get_residualSpaceList(self):
         return self.residualSpaceList
@@ -47,8 +51,11 @@ class State:
     def set_residualSpaceList(self, residualSpaceList):
         self.residualSpaceList = residualSpaceList
 
-    def set_utilization(self,utilization):
-        self.utilization = utilization
+    def update_utilization(self):
+        if self.space_volume == 0:
+            self.utilization = 0
+        else:
+            self.utilization = self.block_volume/self.space_volume
 
     def __repr__(self):
         return "{res: %s\n, occu:%s\n, fill: %s\n, ut: %s\n, avail:%s\n" \
