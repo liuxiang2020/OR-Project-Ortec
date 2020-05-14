@@ -19,8 +19,7 @@ def build_m1_tree(block, state, m, k, j, block_list):
 
     if cBlocKList:
         for i in range(min(len(cBlocKList), m-1)):
-            # prevState = copy.deepcopy(state) maybe need copy. But no change in result. Calculating time is higher
-            prevState = state
+            prevState = copy.deepcopy(state)
             prevSpace = prevState.get_residualSpaceList()[-1]
             cBlock = cBlocKList[i]
             prevState.add_block_to_space(cBlock, prevSpace)
