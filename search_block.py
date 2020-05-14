@@ -44,7 +44,7 @@ def search_block(packState, candidateBlockList, block_list, available_boxes, con
         Sol = Progressively_Refined_Tree_Search(currBlock, currState, block_list, containerSize)
         print("Sol returned in searchblock", Sol)
         if Sol.get_utilization() > bestUtilization:
-            print("curr sol.get_utilization", i, currBlock, Sol.get_filledBlocks)
+            print("curr sol.get_utilization", i, currBlock, Sol.get_planListBlock())
 
             bestIndex = i
             bestUtilization = Sol.get_utilization()

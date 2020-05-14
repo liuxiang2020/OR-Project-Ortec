@@ -27,35 +27,33 @@ def Progressively_Refined_Tree_Search(block, state, block_list, containerSize):
     state.add_space_planListSpace(space)
     available_boxes = update_available_boxes(state.get_available_items(), block)
     state.set_available_items(available_boxes)
-    state.set_utilization(0.2) #TODO
+    state.update_utilization()
+
     _ = create_residual_space(block, containerSize, state.get_residualSpaceList())
 
     # Generate Blocklist for new spaces?
     cBlocKList = generate_candidate_block_list(space.get_size(), block_list, state.get_available_items())
-
     #current best solution is putting just one block in the empty size
     best_solution = state 
 
-    print('Current BestSL')
-    print(best_solution)
-    
-    m = 1
-    for _ in range(STAGE_L-1):
-        bkTab = [] # packing strategy # maybe need a own datatype..
-        m = m*SCALE
-        #what is L?
-        L = int(calc_L(K,m))
-        print(L)
-        bkTab.append(build_m1_tree(block, state, m, K, 0, block_list, containerSize))
-        for j in range(1, L):
-            if(len(bkTab[j-1])-1 > 0):
-                for d in len(bkTab[j-1])-1:
-                    nState = bkTab[j-1][d][0]
-                    nBlock = bkTab[j-1][d][1]
-                    bkTab.append(build_m1_tree(nBlock, nState, m, K, j, block_list, containerSize))
-        for j in range(1,L):
-            if bkTab[j][0][0].get_utilization() > best_solution.get_utilization():
-                best_solution = bkTab[j][0][0]
+    if cBlocKList:
+        m = 1
+        for _ in range(STAGE_L-1):
+            bkTab = [] # packing strategy # maybe need a own datatype..
+            m = m*SCALE
+            #what is L?
+            L = int(calc_L(K,m))
+            print(L)
+            bkTab.append(build_m1_tree(block, state, m, K, 0, block_list, containerSize))
+            for j in range(1, L):
+                if(len(bkTab[j-1])-1 > 0):
+                    for d in len(bkTab[j-1])-1:
+                        nState = bkTab[j-1][d][0]
+                        nBlock = bkTab[j-1][d][1]
+                        bkTab.append(build_m1_tree(nBlock, nState, m, K, j, block_list, containerSize))
+            for j in range(1,L):
+                if bkTab[j][0][0].get_utilization() > best_solution.get_utilization():
+                    best_solution = bkTab[j][0][0]
     """
     # test return
     res_space = [Space([0, 0, 0], [1, 1, 1], 'x')]
