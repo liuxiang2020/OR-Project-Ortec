@@ -8,16 +8,35 @@ Class Block :
 """
 
 class Block:
-    def __init__(self, block_id):
+    def __init__(self, block_id, simple_block=False):
         self.id = block_id
         self.quantity = 0
         self.volume = 0
         self.size = 0
         self.orientation = 0
         self.fitness = 0
+        self.is_simple_block = simple_block
+
+    def get_unique_id(self):
+        return self.unique_id
+
+    def get_block_uids(self):
+        return self.block_uids    
 
     def get_id(self):
         return self.id
+    
+    def get_is_simple_block(self):
+        return self.is_simple_block
+
+    def get_upper_face(self):
+        return self.upper_face
+
+    def get_added_direction(self):
+        return self.added_direction
+
+    def get_dr_quantity(self):
+        return self.dr_quantity
 
     def get_item_quantity(self):
         return self.quantity
@@ -36,6 +55,21 @@ class Block:
 
     def get_fitness(self):
         return self.fitness
+
+    def set_block_uids(self, block_uids):
+        self.block_uids = block_uids    
+
+    def set_unique_id(self, unique_id):
+        self.unique_id = unique_id
+    
+    def set_upper_face(self,upper_face):
+        self.upper_face = upper_face
+    
+    def set_added_direction(self,added_direction):
+        self.added_direction = added_direction
+    
+    def set_dr_quantity(self, dr_quantity):
+        self.dr_quantity = dr_quantity
 
     def set_item_quantity(self, quantity):
         self.quantity = quantity

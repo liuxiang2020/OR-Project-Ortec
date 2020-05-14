@@ -22,6 +22,10 @@ class State:
     def add_block_planListBlock(self, block):
         self.planListBlock.append(block)
         self.block_volume += block.get_volume()
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 86b06e016b5d15244b5a1ce19390590d82397cd1
     def add_space_planListSpace(self, space):
 
         self.planListSpace.append(space)
@@ -50,6 +54,9 @@ class State:
 
     def set_residualSpaceList(self, residualSpaceList):
         self.residualSpaceList = residualSpaceList
+
+    def set_utilization(self, utilization):
+        self.utilization = utilization
 
     def update_utilization(self):
         if self.space_volume == 0:
