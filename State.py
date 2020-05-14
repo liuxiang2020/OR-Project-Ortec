@@ -17,6 +17,13 @@ class State:
         self.available = {}
         self.space_volume = 0
         self.block_volume = 0
+    
+    def add_block_to_space(self, block, space):
+        self.add_block_planListBlock(block)
+        self.add_space_planListSpace(space)
+        self.update_available_items(block)
+        self.update_utilization()
+
 
     def add_block_planListBlock(self, block):
         self.planListBlock.append(block)
