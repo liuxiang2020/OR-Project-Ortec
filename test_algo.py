@@ -75,14 +75,16 @@ if __name__ == "__main__":
     # get container and boxes file information
     instance = parse_args()
     containerSize, itemKinds = parse_yaml(instance)
-    config.init(containerSize)
-    # config.containerSize = containerSize
-    # print(globals().update(a))
+    # config.init(containerSize)
+    # print(config.CONTAINER_SIZE)
+    # globals().update({'CONTAINERSIZE': containerSize})
     # print(globals())
+    # a = (create_general_blocks(itemKinds))
+    state = find_solution(itemKinds)
     print(50*'#')
     # print(state)
     # print(testvariable)
-    print(transfer_residual_space([]))
+    # print(transfer_residual_space([]))
     print("Everything passed")
 
 

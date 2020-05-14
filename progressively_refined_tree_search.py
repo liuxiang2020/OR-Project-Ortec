@@ -4,11 +4,12 @@ from build_m1_tree import build_m1_tree
 from Functions import update_available_boxes
 from time import sleep
 import math
-
-K = 3
-M_Zero = 3
-SCALE = 3
-STAGE_L = 5
+from config import *
+#
+# K = 3
+# M_Zero = 3
+# SCALE = 3
+# STAGE_L = 5
 
 def calc_L(k,m):
     m_root =  int(math.sqrt(m))
@@ -20,7 +21,7 @@ def calc_L(k,m):
 
 
 #search best solution for Block block and State state
-def Progressively_Refined_Tree_Search(block, state, block_list, containerSize):
+def Progressively_Refined_Tree_Search(block, state, block_list):
     space = state.get_residualSpaceList()[-1] # get last item in list
     #put block into the space and update residualSpaceList
     state.add_block_planListBlock(block)
@@ -28,7 +29,7 @@ def Progressively_Refined_Tree_Search(block, state, block_list, containerSize):
     state.update_available_items(block)
     state.update_utilization()
 
-    _ = create_residual_space(block, containerSize, state.get_residualSpaceList())
+    _ = create_residual_space(block, state.get_residualSpaceList())
 
     # Generate Blocklist for new spaces?
     cBlocKList = generate_candidate_block_list(space.get_size(), block_list, state.get_available_items())
@@ -43,13 +44,13 @@ def Progressively_Refined_Tree_Search(block, state, block_list, containerSize):
             #what is L?
             L = int(calc_L(K,m))
             print(L)
-            bkTab.append(build_m1_tree(block, state, m, K, 0, block_list, containerSize))
+            bkTab.append(build_m1_tree(block, state, m, K, 0, block_list))
             for j in range(1, L):
                 if(len(bkTab[j-1])-1 > 0):
                     for d in len(bkTab[j-1])-1:
                         nState = bkTab[j-1][d][0]
                         nBlock = bkTab[j-1][d][1]
-                        bkTab.append(build_m1_tree(nBlock, nState, m, K, j, block_list, containerSize))
+                        bkTab.append(build_m1_tree(nBlock, nState, m, K, j, block_list))
             for j in range(1,L):
                 if bkTab[j][0][0].get_utilization() > best_solution.get_utilization():
                     best_solution = bkTab[j][0][0]

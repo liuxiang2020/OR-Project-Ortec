@@ -1,6 +1,6 @@
 import numpy as np
 from Block import Block
-
+from config import *
 
 def Size2Pos(size, orientation='LWH'):
     mask = {'L': 'length', 'W': 'width', 'H': 'height'}
@@ -8,12 +8,12 @@ def Size2Pos(size, orientation='LWH'):
 
 
 # Creating Simple Blocks from item boxes
-def create_simple_blocks(itemkinds, containerSize):
+def create_simple_blocks(itemkinds):
     simple_block_list = []
     unique_ids = 0
-    containerlength = containerSize[0]
-    containerwidth = containerSize[1]
-    containerheight = containerSize[2]
+    containerlength = CONTAINER_SIZE[0]
+    containerwidth = CONTAINER_SIZE[1]
+    containerheight = CONTAINER_SIZE[2]
     for itemkind in range(len(itemkinds)):
         quantity_boxes = itemkinds[itemkind]['quantity']
         for orientation in itemkinds[itemkind]['orientations'].split(','):
@@ -44,8 +44,8 @@ def create_simple_blocks(itemkinds, containerSize):
 
 
 # Creating general blocks from simple blocks
-def create_general_blocks(itemkinds, containerSize):
-    general_blocks_list, unique_ids = create_simple_blocks(itemkinds, containerSize)
+def create_general_blocks(itemkinds):
+    general_blocks_list, unique_ids = create_simple_blocks(itemkinds)
     for _ in range(1, 2):
         a = len(general_blocks_list)
         for i in range(0, a):
@@ -81,9 +81,9 @@ def create_general_blocks(itemkinds, containerSize):
                             upper_face = (block_i.get_size()[0]+block_j.get_size()[0],min(block_i.get_size()[1],block_j.get_size()[1]))
                         if dr == 1:
                             upper_face = (min(block_i.get_size()[0],block_j.get_size()[0]), block_i.get_size()[1]+block_j.get_size()[1])    
-                    if (g_block_size[0] <= containerSize[0] and
-                            g_block_size[1] <= containerSize[1] and
-                            g_block_size[2] <= containerSize[2]):
+                    if (g_block_size[0] <= CONTAINER_SIZE[0] and
+                            g_block_size[1] <= CONTAINER_SIZE[1] and
+                            g_block_size[2] <= CONTAINER_SIZE[2]):
                         gen_block_volume = g_block_size[0] * g_block_size[1] * g_block_size[2]
                         if ((block_i.get_volume() + block_j.get_volume()) / gen_block_volume) > filling_rate:
                             if (block_i.get_id() == block_j.get_id() and

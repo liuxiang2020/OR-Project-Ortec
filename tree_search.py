@@ -2,10 +2,11 @@ from create_residual_space import create_residual_space
 from create_general_candidate_block import generate_candidate_block_list
 from Build_m1_Tree import Build_m1_Tree
 import math
-K = 3
-M_Zero = 3
-SCALE = 3
-STAGE_L = 5
+from config import *
+# K = 3
+# M_Zero = 3
+# SCALE = 3
+# STAGE_L = 5
 
 def calc_L(k,m):
     m_root =  int(math.sqrt(m))

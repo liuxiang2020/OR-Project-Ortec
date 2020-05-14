@@ -1,3 +1,4 @@
+import config
 def check_availability(gb, item_available):
     for i in range(len(gb.get_id())):
         id = gb.get_id()[i]

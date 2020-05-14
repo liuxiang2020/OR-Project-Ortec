@@ -9,6 +9,7 @@ from progressively_refined_tree_search import Progressively_Refined_Tree_Search
 
 
 # from OR-Project-ORTEC import *
+from config import *
 """
 NOTE:  Space.py add information of filled blocks and utilization rate
 """
@@ -26,7 +27,7 @@ MAX_SIZE = 10
 bestUtilization = 0.9
 
 
-def search_block(packState, candidateBlockList, block_list, available_boxes, containerSize):
+def search_block(packState, candidateBlockList, block_list, available_boxes):
     size = len(candidateBlockList)
     # if only wants to limited the length of list, just limit the loop times?
     # if size > MAX_SIZE:
@@ -44,7 +45,7 @@ def search_block(packState, candidateBlockList, block_list, available_boxes, con
         currBlock = candidateBlockList[i]
         # Sol is a packState, assume it has a total utilization
         #print("curr in search block before progress", currState, currBlock)
-        Sol = Progressively_Refined_Tree_Search(currBlock, currState, block_list, containerSize)
+        Sol = Progressively_Refined_Tree_Search(currBlock, currState, block_list)
 
         #print("Sol returned in searchblock", Sol)
         if Sol.get_utilization() > bestUtilization:
