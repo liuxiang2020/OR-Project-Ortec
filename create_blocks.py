@@ -126,7 +126,7 @@ def create_general_blocks(itemkinds, containerSize):
                                 gen_block.set_unique_id(unique_ids)
                                 unique_ids += 1
                                 gen_block.set_block_uids((block_i.get_unique_id(), block_j.get_unique_id()))
-                                gen_block.set_upper_face = upper_face
+                                gen_block.set_upper_face(upper_face)
                                 gen_block.set_added_direction((dr))
                                 general_blocks_list.append(gen_block)
         general_blocks_list = filter_redundant_blocks(general_blocks_list)                                                    

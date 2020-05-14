@@ -32,6 +32,7 @@ def search_block(packState, candidateBlockList, block_list, available_boxes, con
         currState = packState
         # first block from candidateBlockList, which has the highest fitness score
         currBlock = candidateBlockList[i]
+        print(currBlock.get_upper_face())
         # Sol is a packState, assume it has a total utilization
         #print("curr in search block before progress", currState, currBlock)
         Sol = Progressively_Refined_Tree_Search(currBlock, currState, block_list, containerSize)
