@@ -1,4 +1,5 @@
 from Space import Space
+from create_residual_space import calc_corner_for_placement
 def transfer_residual_space(spaceStack):
     kindcheck = False
     adjacentx = False
@@ -56,5 +57,5 @@ def transfer_residual_space(spaceStack):
                 #case4: block was at corner [X,0,0]
                 newcorner = nextSpace.get_corner()
 
-    spaceStack.append(Space(newcorner,newsize,nextSpace.get_kind()))
+    spaceStack.append(Space(newcorner,newsize,nextSpace.get_kind(),calc_corner_for_placement(newcorner,newsize,containerSize)))
     return spaceStack
