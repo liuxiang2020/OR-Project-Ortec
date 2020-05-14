@@ -5,11 +5,6 @@ from Functions import update_available_boxes
 from time import sleep
 import math
 from config import *
-#
-# K = 3
-# M_Zero = 3
-# SCALE = 3
-# STAGE_L = 5
 
 def calc_L(k,m):
     m_root =  int(math.sqrt(m))
@@ -24,10 +19,7 @@ def calc_L(k,m):
 def Progressively_Refined_Tree_Search(block, state, block_list):
     space = state.get_residualSpaceList()[-1] # get last item in list
     #put block into the space and update residualSpaceList
-    state.add_block_planListBlock(block)
-    state.add_space_planListSpace(space)
-    state.update_available_items(block)
-    state.update_utilization()
+    state.add_block_to_space(block, space)
 
     _ = create_residual_space(block, state.get_residualSpaceList())
 
@@ -38,52 +30,25 @@ def Progressively_Refined_Tree_Search(block, state, block_list):
 
     if cBlocKList:
         m = 1
-        for _ in range(STAGE_L-1):
-            bkTab = [] # packing strategy # maybe need a own datatype..
+        bkTab = []
+        for _ in range(STAGE_L -1):
             m = m*SCALE
             #what is L?
             L = int(calc_L(K,m))
-            print(L)
             bkTab.append(build_m1_tree(block, state, m, K, 0, block_list))
-            for j in range(1, L):
-                if(len(bkTab[j-1])-1 > 0):
-                    for d in len(bkTab[j-1])-1:
+            for j in range(1, min(L , len(bkTab))):
+                # no space left??
+                if type(bkTab[j-1]) == type(None):
+                    pass
+                else:
+                    for d in range(len(bkTab[j-1]) -1):
                         nState = bkTab[j-1][d][0]
                         nBlock = bkTab[j-1][d][1]
                         bkTab.append(build_m1_tree(nBlock, nState, m, K, j, block_list))
-            for j in range(1,L):
-                if bkTab[j][0][0].get_utilization() > best_solution.get_utilization():
+            for j in range(min(L, len(bkTab))):
+                # same as in line 40
+                if type(bkTab[j]) == type(None):
+                    pass
+                elif bkTab[j][0][2] > best_solution.get_utilization():
                     best_solution = bkTab[j][0][0]
-    """
-    # test return
-    res_space = [Space([0, 0, 0], [1, 1, 1], 'x')]
-    occupied_space = [Space([0, 0, 0], [100, 50, 100], 'x')]
-    filled_block = [Block(2)]
-    filled_block[0].set_size([100, 50, 100])
-    filled_block[0].set_item_quantity(4)
-    filled_block[0].set_volume(500000)
-    filled_block[0].set_orientation(['LHW'])
-    filled_block[0].set_volume_loss(1)
-    s = State(res_space, occupied_space, filled_block)
-    s.set_utilization(0.98)
-    return s
-    """
-    """
-    #TODO
-    m = 1
-    #TODO
-    for i in range(STAGE_L-1):
-        bkTab = []
-        m = m*SCALE
-        L = calc_L(K,m)
-        bkTab.append(Build_m1_Tree(block, state, m, K, 0))
-        for j in range(1, L):
-            for d in bkTab[j-1].size()-1:
-                nState = bkTab[j-1][d].state
-                nBlock = bkTab[j-1][d].block
-                bkTab.append(Build_m1_Tree(nBlock, nState, m, K, j))
-        for j in range(1,L):
-            if bkTab[j][0].state.get_utilization() > best_solution.get_utilization():
-                best_solution = bkTab[j][0]
-    """
     return best_solution

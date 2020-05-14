@@ -17,18 +17,12 @@ def completing_process(prevState, block_list):
         if cBlocKList:
             #add best fitting block to space
             bestBlock = cBlocKList[0]
-            curState.add_space_planListSpace(space)
-            curState.add_block_planListBlock(bestBlock)
-            curState.update_utilization()
+            curState.add_block_to_space(bestBlock, space)
+
             _ = create_residual_space(bestBlock, curState.get_residualSpaceList())
-            # available_boxes = update_available_boxes(curState.get_available_items(), bestBlock)
-            curState.update_available_items(bestBlock)
-            # curState.set_available_items(available_boxes)
+
 
         else:
-            _ = transfer_residual_space(curState.get_residualSpaceList()[i-1])
+            _ = transfer_residual_space(curState.get_residualSpaceList())
 
-
-        #                                           curState.add_block_planListBlock(bestBlock) so that utilization is set immediantly
-        # curState.update_utilization()
     return curState

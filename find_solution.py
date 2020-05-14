@@ -14,7 +14,7 @@ from config import *
 
 def lineno():
     frameinfo = getframeinfo(currentframe())
-    print("Currently in", frameinfo.filename, "with line number", currentframe().f_back.f_lineno)
+    #print("Currently in", frameinfo.filename, "with line number", currentframe().f_back.f_lineno)
 
 
 """
@@ -43,9 +43,8 @@ def find_solution(itemKinds):
         # print("with space", considered_space, "the candidate_list", candidate_list)
         if candidate_list:
             packed_block = search_block(packState, candidate_list, block_list, available_items)
-            packState.add_block_planListBlock(packed_block)
-            packState.add_space_planListSpace(considered_space)
-            packState.update_available_items(packed_block)
+            packState.add_block_to_space(packed_block, considered_space)
+
             space_list = create_residual_space(packed_block, space_list)
         else:
             if len(space_list) <= 1:
