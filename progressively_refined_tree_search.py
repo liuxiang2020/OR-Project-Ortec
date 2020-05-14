@@ -25,8 +25,7 @@ def Progressively_Refined_Tree_Search(block, state, block_list, containerSize):
     #put block into the space and update residualSpaceList
     state.add_block_planListBlock(block)
     state.add_space_planListSpace(space)
-    available_boxes = update_available_boxes(state.get_available_items(), block)
-    state.set_available_items(available_boxes)
+    state.update_available_items(block)
     state.update_utilization()
 
     _ = create_residual_space(block, containerSize, state.get_residualSpaceList())

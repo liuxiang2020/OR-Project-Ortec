@@ -18,16 +18,11 @@ class State:
         self.space_volume = 0
         self.block_volume = 0
 
-    # TODO rest of the three methods maybe has the similar function?
     def add_block_planListBlock(self, block):
         self.planListBlock.append(block)
         self.block_volume += block.get_volume()
-<<<<<<< HEAD
-=======
-    
->>>>>>> 86b06e016b5d15244b5a1ce19390590d82397cd1
-    def add_space_planListSpace(self, space):
 
+    def add_space_planListSpace(self, space):
         self.planListSpace.append(space)
         self.space_volume += (space.get_size()[0] * space.get_size()[1] * space.get_size()[2])
 
