@@ -1,5 +1,5 @@
 from create_residual_space import create_residual_space
-from generate_candidate_blocklist_2 import generate_candidate_block_list
+from generate_candidate_blocklist import generate_candidate_block_list
 from build_m1_tree import build_m1_tree
 from Functions import update_available_boxes
 from time import sleep
