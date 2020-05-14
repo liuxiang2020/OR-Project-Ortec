@@ -22,7 +22,7 @@ candidateBlockList: a (type)List wil candiate (type)Blocks
 MAX_SIZE = 10
 
 def search_block(packState, candidateBlockList, block_list, available_boxes, containerSize):
-    size = len(candidateBlockList) - 1
+    size = len(candidateBlockList)
     # if only wants to limited the length of list, just limit the loop times?
     # if size > MAX_SIZE:
     #     size = MAX_SIZE 

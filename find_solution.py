@@ -31,7 +31,6 @@ def find_solution(itemKinds, containerSize):
 
     # create general block list
     block_list = create_general_blocks(itemKinds, containerSize)
-
     space = Space([0, 0, 0], containerSize, 'x', [0,0,0])
     space_list = [space]
     packState = State(space_list)
@@ -44,24 +43,15 @@ def find_solution(itemKinds, containerSize):
         # print("with space", considered_space, "the candidate_list", candidate_list)
         if candidate_list:
             packed_block = search_block(packState, candidate_list, block_list, available_items, containerSize)
-
-            # print("if candidate list is not zero, packed block",packed_block)
             packState.add_block_planListBlock(packed_block)
             packState.add_space_planListSpace(considered_space)
-            # TODO: needs check -- checked
-            available_boxes = update_available_boxes(available_boxes, packed_block)
-
-            # print("available boxes quantity", available_items,"\n",
-            #       "with choosen block size", block_size)
+            packState.update_available_items(packed_block)
             space_list = create_residual_space(packed_block, containerSize, space_list)
-
-            # print("residual space", space_list)
         else:
             if len(space_list) <= 1:
                 break
             else:
                 space_list = transfer_residual_space(space_list)
     packState.set_residualSpaceList(space_list)
-    packState.set_available_items(available_items)
     # print("packstate", packState)
     return packState
