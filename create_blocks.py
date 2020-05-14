@@ -65,6 +65,9 @@ def create_general_blocks(itemkinds, containerSize):
                         if (block_i.get_size()[orientation[0]] <= block_j.get_size()[orientation[0]] and
                             block_i.get_size()[orientation[1]] <= block_j.get_size()[orientation[1]]):
                             upper_face = (block_i.get_size()[orientation[0]],block_i.get_size()[orientation[1]])
+                            triangle = block_i
+                            block_i = block_j
+                            block_j = triangle
                         elif (block_i.get_size()[orientation[0]] >= block_j.get_size()[orientation[0]] and
                             block_i.get_size()[orientation[1]] >= block_j.get_size()[orientation[1]]):
                             upper_face = (block_j.get_size()[orientation[0]],block_j.get_size()[orientation[1]])
