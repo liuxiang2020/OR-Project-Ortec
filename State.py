@@ -50,6 +50,9 @@ class State:
 
     def set_residualSpaceList(self, residualSpaceList):
         self.residualSpaceList = residualSpaceList
+      
+    def set_utilization(self, utilization):
+        self.utilization = utilization
 
     def update_utilization(self):
         if self.space_volume == 0:
