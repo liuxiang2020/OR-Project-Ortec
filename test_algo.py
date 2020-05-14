@@ -2,6 +2,8 @@ import numpy as np
 import inspect
 import sys
 import yaml
+
+import config
 from Functions import *
 from Block import Block
 from Space import Space
@@ -9,12 +11,13 @@ from State import State
 from create_blocks import *
 from inspect import currentframe, getframeinfo
 from venv import *
-from create_general_candidate_block import generate_candidate_block_list
+from generate_candidate_blocklist import generate_candidate_block_list
 from create_residual_space import *
 from search_block import search_block
 import traceback
 from find_solution import find_solution
-
+from transfer_residual_space import transfer_residual_space
+from config import *
 """
 Global Variables
 """
@@ -70,19 +73,16 @@ def parse_yaml(yamlfile: yaml) -> object:
 
 if __name__ == "__main__":
     # get container and boxes file information
-    #instance = parse_args()
-    instance = 'br00.000.yaml'
-    # parse_instance files and update available items
+    instance = parse_args()
     containerSize, itemKinds = parse_yaml(instance)
-
-    # test tree_search
-
-    state = find_solution(itemKinds,containerSize)
-    # test only completing progress
+    config.init(containerSize)
+    # config.containerSize = containerSize
+    # print(globals().update(a))
+    # print(globals())
     print(50*'#')
-    print(state)
-
-
+    # print(state)
+    # print(testvariable)
+    print(transfer_residual_space([]))
     print("Everything passed")
 
 
