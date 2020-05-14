@@ -75,8 +75,26 @@ if __name__ == "__main__":
     # parse_instance files and update available items
     containerSize, itemKinds = parse_yaml(instance)
 
-    # test find_solution
-    state = find_solution(itemKinds,containerSize,availableItems)
+    # test tree_search
+
+    state = find_solution(itemKinds,containerSize)
+    # test only completing progress
+    print(50*'#')
+    print(state)
+
+
+    print("Everything passed")
+
+
+
+
+
+
+
+
+
+
+
 
     # Global variables
     # print(availableItems)
@@ -101,7 +119,3 @@ if __name__ == "__main__":
     # state.set_residualSpaceList(residualSpace)
     # # state.set_occupiedSpaceList(state.get_r)
     # print(residualSpace)
-
-    print(50*'#')
-    print(state)
-    print("Everything passed")
