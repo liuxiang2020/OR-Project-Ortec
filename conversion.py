@@ -56,17 +56,22 @@ def convert_state_to_solution(instancename,state,block_dict):
     blocks = state.get_planListBlock()
     spaces = state.get_planListSpace()
     solution = SkeletonSolution()
+
     with open(instancename) as f:
         import yaml
         instance = yaml.load( f, Loader=yaml.FullLoader )
     solution['description'] = instance['description']
+    
+    itemKinds = instance['data']['itemkinds'] 
     simple_list = []
+    id=0
+    placements = []
     for i in range(len(blocks)):
         cur_block = blocks[i]
         cur_space = spaces[i]  
         cor = cur_space.get_corner()
         pla = cur_space.get_block_corner()
-        simple_list = break_down_block(cur_block,simple_list,cor,pla)
+        simple_list = break_down_block(cur_block,simple_list,block_dict,cor,pla)
     for si in simple_list:
             simple_block_id = si[0]
             position = si[1]
@@ -103,9 +108,11 @@ def convert_state_to_solution(instancename,state,block_dict):
     solution['layout']['containers'][0]['loadingspaces'][0]['placements'] = placements
     solution['layout']['unplaced'] = unplaced
 
-    if create_yaml == 1:
-        import yaml
-        with open('store_file.yaml', 'w') as file:
-            documents = yaml.dump(solution, file)
+
+    import yaml
+    with open('store_file.yaml', 'w') as file:
+        documents = yaml.dump(solution, file)
+
+    # view result in osbl-solution-viewer --instance INSTANCE_FILE.yaml --solution SOLUTION_FILE.yaml
 
     return

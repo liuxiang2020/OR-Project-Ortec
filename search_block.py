@@ -3,6 +3,7 @@ from Block import Block
 from Space import Space
 from State import State
 from time import sleep
+import copy
 from create_residual_space import create_residual_space
 from progressively_refined_tree_search import Progressively_Refined_Tree_Search
 
@@ -21,6 +22,10 @@ candidateBlockList: a (type)List wil candiate (type)Blocks
 """
 MAX_SIZE = 10
 
+
+bestUtilization = 0.9
+
+
 def search_block(packState, candidateBlockList, block_list, available_boxes, containerSize):
     size = len(candidateBlockList)
     # if only wants to limited the length of list, just limit the loop times?
@@ -28,19 +33,25 @@ def search_block(packState, candidateBlockList, block_list, available_boxes, con
     #     size = MAX_SIZE 
     bestIndex = -1
     bestUtilization = -1
+    #print(candidateBlockList[0:2])
     for i in range(min(size, MAX_SIZE)):
-        currState = packState
+        # curent packState needed to be considered contains 
+        # (residual space) and (used space and corresponding filled block) 
+        # and (? List of blocks that still feasible)
+        currState = copy.deepcopy(packState)
+
         # first block from candidateBlockList, which has the highest fitness score
         currBlock = candidateBlockList[i]
-        print(currBlock.get_upper_face())
         # Sol is a packState, assume it has a total utilization
         #print("curr in search block before progress", currState, currBlock)
         Sol = Progressively_Refined_Tree_Search(currBlock, currState, block_list, containerSize)
-        print("Sol returned in searchblock", Sol)
+
+        #print("Sol returned in searchblock", Sol)
         if Sol.get_utilization() > bestUtilization:
-            print("curr sol.get_utilization", i, currBlock, Sol.get_planListBlock())
+            #print("curr sol.get_utilization", i, currBlock, Sol.get_planListBlock())
+
             bestIndex = i
             bestUtilization = Sol.get_utilization()
-            print("bestUtilization", bestUtilization)
+            #print("bestUtilization", bestUtilization)
     # return the suitable block for the residual space
     return candidateBlockList[bestIndex]
