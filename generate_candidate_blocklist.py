@@ -1,10 +1,7 @@
 import config
 def check_availability(gb, item_available):
-    for i in range(len(gb.get_id())):
-        id = gb.get_id()[i]
-        if item_available[id] >= gb.get_item_quantity()[i]:
-            continue;
-        else:
+    for ids,quantity in gb.get_id_quantity().items():
+        if item_available[ids] < quantity:
             return False
     return True
 

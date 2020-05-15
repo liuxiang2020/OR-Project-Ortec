@@ -8,12 +8,11 @@ Class Block :
 """
 
 class Block:
-    def __init__(self, block_id, simple_block=False):
-        self.id = block_id
-        self.quantity = 0
+    def __init__(self, id_quantity, simple_block=False):
+        #self.id = block_id
+        self.id_quantity = id_quantity
         self.volume = 0
         self.size = 0
-        self.orientation = 0
         self.fitness = 0
         self.is_simple_block = simple_block
 
@@ -23,8 +22,8 @@ class Block:
     def get_block_uids(self):
         return self.block_uids    
 
-    def get_id(self):
-        return self.id
+    def get_id_quantity(self):
+        return self.id_quantity
     
     def get_is_simple_block(self):
         return self.is_simple_block
@@ -43,9 +42,6 @@ class Block:
 
     def get_size(self):
         return self.size
-
-    def get_orientation(self):
-        return self.orientation
 
     def get_volume(self):
         return self.volume
@@ -67,18 +63,15 @@ class Block:
     
     def set_added_direction(self,added_direction):
         self.added_direction = added_direction
+        
+    def set_id_quantity(self, id_quantity):
+        self.id_quantity = id_quantity
     
     def set_dr_quantity(self, dr_quantity):
         self.dr_quantity = dr_quantity
 
-    def set_item_quantity(self, quantity):
-        self.quantity = quantity
-
     def set_size(self, size):
         self.size = size
-
-    def set_orientation(self, orientation):
-        self.orientation = orientation
 
     def set_volume(self, volume):
         self.volume = volume
@@ -90,5 +83,5 @@ class Block:
         self.fitness = fitness
 
     def __repr__(self):
-        return "{id: %s\n, quantity:%s\n, volume: %s\n, size: %s\n, orientation:%s\n, fitness:%s\n, volumeloss:%s" \
-               % (self.id, self.quantity, self.volume, self.size, self.orientation,self.fitness,self.volume_loss) + "}\n"
+        return "{id_quantity: %s\n, volume: %s\n, size: %s\n, fitness:%s\n, volumeloss:%s" \
+               % (self.id_quantity, self.volume, self.size,self.fitness,self.volume_loss) + "}\n"

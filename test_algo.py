@@ -73,7 +73,7 @@ def parse_yaml(yamlfile: yaml) -> object:
 
 if __name__ == "__main__":
     # get container and boxes file information
-    instance = parse_args()
+    instance = "br00.000.yaml"
     containerSize, itemKinds = parse_yaml(instance)
     # config.init(containerSize)
     # print(config.CONTAINER_SIZE)
@@ -82,7 +82,7 @@ if __name__ == "__main__":
     # a = (create_general_blocks(itemKinds))
     state = find_solution(itemKinds)
     print(50*'#')
-    # print(state)
+    print(state)
     # print(testvariable)
     # print(transfer_residual_space([]))
     print("Everything passed")

@@ -32,10 +32,8 @@ added_block: block
 def update_available_boxes(available_boxes, added_block):
     boxes = available_boxes
     block = added_block
-    box_id = block.get_id()
-    box_quantity = block.get_item_quantity()
-    for i in range(len(box_id)):
-        boxes[box_id[i]]  = boxes[box_id[i]] - box_quantity[i]
+    for ids,quantity in added_block.get_id_quantity().items():
+        boxes[ids] = boxes[ids] - quantity
     return boxes
 
 

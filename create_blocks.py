@@ -26,16 +26,16 @@ def create_simple_blocks(itemkinds):
                         block_height = boxsize[2] * nz
                         if (block_length <= containerlength and block_width <= containerwidth and
                                 block_height <= containerheight and nx * ny * nz <= quantity_boxes):
-                            block = Block([itemkinds[itemkind]['id']], True)
-                            block.set_item_quantity([nx * ny * nz])
+                            block = Block({itemkinds[itemkind]['id']:nx * ny * nz}, True)
                             block.set_size([block_length, block_width, block_height])
-                            block.set_orientation([orientation])
                             volume = block_height * block_length * block_width
                             block.set_volume(volume)
                             block.set_volume_loss(0)
                             block.set_added_direction(0)
                             block.set_dr_quantity((nx, ny, nz))
                             block.set_upper_face((block_length,block_width))
+                            #Set block orientation for solution mapping
+                            UID_ORIENTATION.update({unique_ids:orientation})
                             block.set_unique_id(unique_ids)
                             unique_ids += 1
                             simple_block_list.append(block)
@@ -86,42 +86,20 @@ def create_general_blocks(itemkinds):
                             g_block_size[2] <= CONTAINER_SIZE[2]):
                         gen_block_volume = g_block_size[0] * g_block_size[1] * g_block_size[2]
                         if ((block_i.get_volume() + block_j.get_volume()) / gen_block_volume) > filling_rate:
-                            if (block_i.get_id() == block_j.get_id() and
-                                    block_i.get_orientation() == block_j.get_orientation()):
-                                gen_block = Block(block_i.get_id())
-                                # TODO: add set_volume
-                                gen_block.set_volume(gen_block_volume)
-                                gen_block.set_item_quantity(0)
-                                gen_block.set_orientation(block_i.get_orientation())
-                                gen_block_item_quantity = []
-                                for i in range(len(block_i.get_id())):
-                                    gen_block_item_quantity.append(
-                                        # TODO set quantity?
-                                        block_i.get_item_quantity()[i] + block_j.get_item_quantity()[i])
-                                gen_block.set_item_quantity(gen_block_item_quantity)
-
-                            else:
-                                gen_block = Block(block_i.get_id() + block_j.get_id())
-                                # TODO: add set_volume
-                                gen_block.set_volume(gen_block_volume)
-                                # TODO
-                                gen_block_item_quantity = block_i.get_item_quantity() + block_j.get_item_quantity()
-                                block_orientations = block_i.get_orientation() + block_j.get_orientation()
-                                gen_block.set_orientation(block_orientations)
-                                gen_block.set_item_quantity(gen_block_item_quantity)
-
+                            merged_id_quantities = {x: block_i.get_id_quantity().get(x,0) + block_j.get_id_quantity().get(x,0) for x in set(block_i.get_id_quantity()).union(block_j.get_id_quantity())}
+                            
+                            gen_block = Block(merged_id_quantities)
+                            gen_block.set_volume(gen_block_volume)
+                            
                             block_volume_loss = gen_block_volume - (block_i.get_volume() + block_j.get_volume())
                             gen_block.set_size([g_block_size[0], g_block_size[1], g_block_size[2]])
                             gen_block.set_volume_loss(block_volume_loss)
                             too_many_items = False
-                            for itemkind in range(len(itemkinds)):
-                                quantity_boxes = itemkinds[itemkind]['quantity']
-                                used_boxes = 0
-                                for i in range(len(gen_block_item_quantity)):
-                                    if gen_block.get_id()[i] == itemkinds[itemkind]['id']:
-                                        used_boxes += gen_block_item_quantity[i]
-                                if used_boxes > quantity_boxes:
+                            for ids,quantity in gen_block.get_id_quantity().items():
+                                availableItems=itemkinds[ids-1]['quantity']
+                                if availableItems < quantity:
                                     too_many_items = True
+                                    
                             if not too_many_items:
                                 gen_block.set_unique_id(unique_ids)
                                 unique_ids += 1
@@ -139,9 +117,8 @@ def filter_redundant_blocks(blocklist):
         block_i = blocklist[i]
         for j in range(i + 1, a):
             block_j = blocklist[j]
-            if (block_i.get_id() == block_j.get_id() and
-                block_i.get_size() == block_j.get_size() and
-                block_i.get_item_quantity() == block_j.get_item_quantity()):
+            if (block_i.get_id_quantity() == block_j.get_id_quantity() and
+                block_i.get_size() == block_j.get_size()):
                 redundant_blocks.append(j)
     redundant_blocks = list(set(redundant_blocks))
     redundant_blocks = sorted(redundant_blocks)
