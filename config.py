@@ -10,6 +10,7 @@ M_Zero = 3
 SCALE = 3
 STAGE_L = 5
 CONTAINER_SIZE = [587, 233,220]
+# CONTAINER_SIZE = [101, 51, 101]
 #Empty dict, stores the unique id (+ orientation, if simple block)
 UID_ORIENTATION = {}
 

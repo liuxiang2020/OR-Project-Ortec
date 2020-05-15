@@ -33,7 +33,8 @@ def generate_candidate_block_list(currentSpace, generalBlockList, item_available
                 candidateBlockList.append(gb)
 
     candidateBlockList.sort(key=lambda x: x.get_fitness(), reverse=True)
-
+    if candidateBlockList!=[]:
+        print(candidateBlockList[0])
     '''DEBUG
     for i in range(len(candidateBlockList)):
     print(candidateBlockList[i].get_id(),candidateBlockList[i].get_item_quantity(),candidateBlockList[i].get_fitness(),candidateBlockList[i].get_orientation())
