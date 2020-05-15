@@ -1,4 +1,5 @@
 import numpy as np
+import config
 
 def String2Pos( string ):
     return np.asarray([int(p) for p in string.split(',')]).astype(int)
