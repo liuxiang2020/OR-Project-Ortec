@@ -18,6 +18,7 @@ import traceback
 from find_solution import find_solution
 from transfer_residual_space import transfer_residual_space
 from config import *
+from conversion import *
 """
 Global Variables
 """
@@ -72,16 +73,20 @@ def parse_yaml(yamlfile: yaml) -> object:
 
 
 if __name__ == "__main__":
+    import datetime
+    begin_time = datetime.datetime.now()
     # get container and boxes file information
     instance = parse_args()
     containerSize, itemKinds = parse_yaml(instance)
-    state = find_solution(itemKinds)
+    state, block_dict = find_solution(itemKinds)
     print(50*'#')
     print(state)
+    convert_state_to_solution(instance,state,block_dict)
     # print(testvariable)
     # print(transfer_residual_space([]))
     print("Everything passed")
-
+    print(datetime.datetime.now())
+    print(datetime.datetime.now() - begin_time)
 
 
 

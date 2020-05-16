@@ -53,4 +53,4 @@ def find_solution(itemKinds):
                 space_list = transfer_residual_space(space_list)
     packState.set_residualSpaceList(space_list)
     # print("packstate", packState)
-    return packState
+    return packState, block_list
