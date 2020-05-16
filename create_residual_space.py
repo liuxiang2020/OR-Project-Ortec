@@ -3,17 +3,24 @@ from config import *
 
 def create_residual_space(block, spaceStack):
     # space = spaceStack.top()
+    blockSize = block.get_size()
     space = spaceStack.pop()
+    w = space.get_size()[0]
+    l = space.get_size()[1]
+    h = space.get_size()[2]
+    
+    #return spaceStack without last space for wrong block input
+    if blockSize[0] > w or blockSize[1] > l or blockSize[2] > h:
+        return spaceStack
+        
     cornerx = [0, 0, 0]
     cornery = [0, 0, 0]
     cornerz = [0, 0, 0]
     sizex = [0, 0, 0]
     sizey = [0, 0, 0]
     sizez = [0, 0, 0]
-    blockSize = block.get_size()
-    w = space.get_size()[0]
-    l = space.get_size()[1]
-    h = space.get_size()[2]
+    
+    
     deltaw = w - blockSize[0]
     deltal = l - blockSize[1]
     deltah = h - blockSize[2]
