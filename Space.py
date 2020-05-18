@@ -18,4 +18,4 @@ class Space:
         return self.block_corner
     
     def __repr__(self):
-        return "Space{%s,%s,%s," % (self.corner, self.size, self.block_corner) + self.kind + "}"
+        return "Space{corner: %s, size: %s, block_corner: %s," % (self.corner, self.size, self.block_corner) + self.kind + "}\n"

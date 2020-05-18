@@ -19,6 +19,9 @@ class State:
         self.block_volume = 0
     
     def add_block_to_space(self, block, space):
+        space_volume = space.get_size()[0] * space.get_size()[1] * space.get_size()[2]
+        if block.get_volume() > space_volume:
+            print("Adding block not allowed, space to small.")
         self.add_block_planListBlock(block)
         self.add_space_planListSpace(space)
         self.update_available_items(block)
@@ -67,6 +70,6 @@ class State:
             self.utilization = self.block_volume/self.space_volume
 
     def __repr__(self):
-        return "{res: %s\n, occu:%s\n, fill: %s\n, ut: %s\n, avail:%s\n" \
+        return "{residualSpaceList: %s\n, planListSpace:%s\n, planListBlock: %s\n, utilization: %s\n, avail:%s\n" \
                % (self.residualSpaceList, self.planListSpace, self.planListBlock, self.utilization, self.available) + "}\n"
 

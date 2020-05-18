@@ -3,6 +3,7 @@ from Block import Block
 from Space import Space
 from State import State
 from time import sleep
+from completing_process import completing_process
 import copy
 from create_residual_space import create_residual_space
 from progressively_refined_tree_search import Progressively_Refined_Tree_Search
@@ -46,7 +47,7 @@ def search_block(packState, candidateBlockList, block_list, available_boxes):
         # Sol is a packState, assume it has a total utilization
         #print("curr in search block before progress", currState, currBlock)
         Sol = Progressively_Refined_Tree_Search(currBlock, currState, block_list)
-
+        #Sol = completing_process(currBlock, currState, block_list)
         #print("Sol returned in searchblock", Sol)
         if Sol.get_utilization() > bestUtilization:
             #print("curr sol.get_utilization", i, currBlock, Sol.get_planListBlock())
@@ -55,4 +56,6 @@ def search_block(packState, candidateBlockList, block_list, available_boxes):
             bestUtilization = Sol.get_utilization()
             #print("bestUtilization", bestUtilization)
     # return the suitable block for the residual space
+    if bestIndex==-1:
+        exit()
     return candidateBlockList[bestIndex]

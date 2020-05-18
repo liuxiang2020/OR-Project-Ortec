@@ -31,7 +31,8 @@ def break_down_block(cur_block,simple_list,block_dict,cor,pla):
         pos = (pla[0]-cur_block.get_size()[0],cor[1],cor[2])
     elif cor[0] == pla[0] and cor[1] < pla[1]:
         pos = (cor[0],pla[1]-cur_block.get_size()[1],cor[2])
-    elif cor[0] < pla[0] and cor[1] < pla[1]:
+    #elif cor[0] < pla[0] and cor[1] < pla[1]:
+    else:
         pos = (pla[0]-cur_block.get_size()[0],pla[1]-cur_block.get_size()[1],cor[2])
     if cur_block.get_is_simple_block():
         simple_list.append((cur_block.get_unique_id(),pos))

@@ -1,0 +1,37 @@
+description:
+  name: '000'
+  set: Bischoff & Ratcliff
+layout:
+  containers:
+  - id: 1
+    kindid: 1
+    loadingspaces:
+    - id: 1
+      placements:
+      - color: '#0173B2'
+        id: 0
+        itemid: 2
+        orientation: HLW
+        position: 0,0,0
+      - color: '#0173B2'
+        id: 1
+        itemid: 2
+        orientation: HLW
+        position: 0,0,50
+      - color: '#0173B2'
+        id: 2
+        itemid: 2
+        orientation: HLW
+        position: 50,0,0
+      - color: '#0173B2'
+        id: 3
+        itemid: 2
+        orientation: HLW
+        position: 50,0,50
+  unplaced:
+  - id: 0
+    itemid: 1
+    quantity: 10
+  - id: 1
+    itemid: 2
+    quantity: 1

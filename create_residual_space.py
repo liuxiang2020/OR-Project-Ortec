@@ -11,6 +11,9 @@ def create_residual_space(block, spaceStack):
     
     #return spaceStack without last space for wrong block input
     if blockSize[0] > w or blockSize[1] > l or blockSize[2] > h:
+        print("Wrong candidate block list!")
+        print(block,spaceStack)
+        exit()
         return spaceStack
         
     cornerx = [0, 0, 0]
