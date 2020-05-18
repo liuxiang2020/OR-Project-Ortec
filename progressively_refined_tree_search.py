@@ -40,7 +40,7 @@ def Progressively_Refined_Tree_Search(block, state, block_list):
                 if type(bkTab[j-1]) == type(None):
                     pass
                 else:
-                    for d in range(len(bkTab[j-1]) -1):
+                    for d in range(len(bkTab[j-1])):
                         nState = bkTab[j-1][d][0]
                         nBlock = bkTab[j-1][d][1]
                         bkTab.append(build_m1_tree(nBlock, nState, m, K, j, block_list))
