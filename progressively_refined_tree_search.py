@@ -20,9 +20,8 @@ def Progressively_Refined_Tree_Search(block, state, block_list):
     space = state.get_residualSpaceList()[-1] # get last item in list
     #put block into the space and update residualSpaceList
     state.add_block_to_space(block, space)
-
+    
     _ = create_residual_space(block, state.get_residualSpaceList())
-
     # Generate Blocklist for new spaces?
     cBlocKList = generate_candidate_block_list(space.get_size(), block_list, state.get_available_items())
     #current best solution is putting just one block in the empty size

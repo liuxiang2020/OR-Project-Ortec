@@ -29,8 +29,9 @@ def create_simple_blocks(itemkinds):
                             block = Block({itemkinds[itemkind]['id']:nx * ny * nz}, True)
                             block.set_size([block_length, block_width, block_height])
                             volume = block_height * block_length * block_width
-                            block.set_volume(volume)
-                            block.set_volume_loss(0)
+                            #For simple blocks, the real_volume equals the absolute volume
+                            block.set_real_volume(volume)
+                            block.set_absolute_volume(volume)
                             block.set_added_direction(0)
                             block.set_dr_quantity((nx, ny, nz))
                             block.set_upper_face((block_length,block_width))
@@ -55,12 +56,18 @@ def create_general_blocks(itemkinds):
                 orientation = [0, 1, 2]
                 for dr in range(len(orientation)):
                     filling_rate = 0.98
-                    g_block_size = [0, 0, 0]
-                    g_block_size[dr] = block_i.get_size()[orientation[dr]] + block_j.get_size()[orientation[dr]]
-                    g_block_size[dr - 2] = max(block_i.get_size()[orientation[dr] - 2],
+                    gen_block_candidate_size = [0, 0, 0]
+                    
+                    #Combine block in the direction given by 'dr'
+                    gen_block_candidate_size[dr] = block_i.get_size()[orientation[dr]] + block_j.get_size()[orientation[dr]]
+                    gen_block_candidate_size[dr - 2] = max(block_i.get_size()[orientation[dr] - 2],
                                                block_j.get_size()[orientation[dr] - 2])
-                    g_block_size[dr - 1] = max(block_i.get_size()[orientation[dr] - 1],
+                    gen_block_candidate_size[dr - 1] = max(block_i.get_size()[orientation[dr] - 1],
                                                block_j.get_size()[orientation[dr] - 1])
+                    
+                    #Only for conversion.py
+                    #If the combination is done on the z axis (on block ontop of the other)
+                    #then the upper_face is the smaller block
                     if dr == 2:
                         if (block_i.get_size()[orientation[0]] <= block_j.get_size()[orientation[0]] and
                             block_i.get_size()[orientation[1]] <= block_j.get_size()[orientation[1]]):
@@ -74,6 +81,8 @@ def create_general_blocks(itemkinds):
                         else:
                             continue
 
+                    #If the combination is done on the x or y axis, check if they have the same height.
+                    #Then calulate the upper_face
                     if dr < 2:
                         if block_i.get_size()[2] != block_j.get_size()[2]:
                             continue
@@ -81,33 +90,36 @@ def create_general_blocks(itemkinds):
                             upper_face = (block_i.get_size()[0]+block_j.get_size()[0],min(block_i.get_size()[1],block_j.get_size()[1]))
                         if dr == 1:
                             upper_face = (min(block_i.get_size()[0],block_j.get_size()[0]), block_i.get_size()[1]+block_j.get_size()[1])    
-                    if (g_block_size[0] <= CONTAINER_SIZE[0] and
-                            g_block_size[1] <= CONTAINER_SIZE[1] and
-                            g_block_size[2] <= CONTAINER_SIZE[2]):
-                        gen_block_volume = g_block_size[0] * g_block_size[1] * g_block_size[2]
-                        if ((block_i.get_volume() + block_j.get_volume()) / gen_block_volume) > filling_rate:
+                    
+                    
+                    #Check if the new block fits in the given container
+                    if (gen_block_candidate_size[0] <= CONTAINER_SIZE[0] and
+                            gen_block_candidate_size[1] <= CONTAINER_SIZE[1] and
+                            gen_block_candidate_size[2] <= CONTAINER_SIZE[2]):
+                        new_gb_absolute_volume = gen_block_candidate_size[0] * gen_block_candidate_size[1] * gen_block_candidate_size[2]
+                        if ((block_i.get_absolute_volume() + block_j.get_absolute_volume()) / new_gb_absolute_volume) > filling_rate:
                             merged_id_quantities = {x: block_i.get_id_quantity().get(x,0) + block_j.get_id_quantity().get(x,0) for x in set(block_i.get_id_quantity()).union(block_j.get_id_quantity())}
                             
-                            gen_block = Block(merged_id_quantities)
-                            gen_block.set_volume(gen_block_volume)
+                            new_gb = Block(merged_id_quantities)
+                            new_gb.set_absolute_volume(new_gb_absolute_volume)
+                            new_gb.set_real_volume(block_i.get_real_volume() + block_j.get_real_volume())
                             
-                            block_volume_loss = gen_block_volume - (block_i.get_volume() + block_j.get_volume())
-                            gen_block.set_size([g_block_size[0], g_block_size[1], g_block_size[2]])
-                            gen_block.set_volume_loss(block_volume_loss)
+                            new_gb.set_size([gen_block_candidate_size[0], gen_block_candidate_size[1], gen_block_candidate_size[2]])
+                            
                             too_many_items = False
-                            for ids,quantity in gen_block.get_id_quantity().items():
+                            for ids,quantity in new_gb.get_id_quantity().items():
                                 availableItems=itemkinds[ids-1]['quantity']
                                 if availableItems < quantity:
                                     too_many_items = True
                                     
                             if not too_many_items:
-                                gen_block.set_unique_id(unique_ids)
+                                new_gb.set_unique_id(unique_ids)
                                 unique_ids += 1
-                                gen_block.set_block_uids((block_i.get_unique_id(), block_j.get_unique_id()))
-                                gen_block.set_upper_face(upper_face)
-                                gen_block.set_added_direction((dr))
-                                general_blocks_list.append(gen_block)
-        general_blocks_list = filter_redundant_blocks(general_blocks_list)                                                    
+                                new_gb.set_block_uids((block_i.get_unique_id(), block_j.get_unique_id()))
+                                new_gb.set_upper_face(upper_face)
+                                new_gb.set_added_direction((dr))
+                                general_blocks_list.append(new_gb)
+    general_blocks_list = filter_redundant_blocks(general_blocks_list)                                              
     return general_blocks_list
 
 def filter_redundant_blocks(blocklist):

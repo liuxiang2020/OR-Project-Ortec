@@ -4,6 +4,7 @@ from config import *
 from State import State
 from Space import Space
 from create_residual_space import create_residual_space
+import copy
 """
 completing_process: If the fitness measure considers only the total volume of all boxes in
 each block, then the placement is simply placing the block with the biggest volume into each space.
