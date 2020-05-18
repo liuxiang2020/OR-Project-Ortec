@@ -19,6 +19,8 @@ layout:
     import yaml
     return yaml.load( skeleton, Loader=yaml.FullLoader )
 
+
+#block_dict is no dict, it's a list (the result of generate_general_blocks..)
 def search_for_uid (block_dict,uid):
     for i in range(len(block_dict)):
         if block_dict[i].get_unique_id() == uid:
@@ -66,6 +68,8 @@ def convert_state_to_solution(instancename,state,block_dict):
     simple_list = []
     id=0
     placements = []
+    
+    #
     for i in range(len(blocks)):
         cur_block = blocks[i]
         cur_space = spaces[i]  
@@ -74,7 +78,7 @@ def convert_state_to_solution(instancename,state,block_dict):
         simple_list = break_down_block(cur_block,simple_list,block_dict,cor,pla)
     
     for si in simple_list:
-        print(simple_list)
+        #print(simple_list)
         simple_block_id = si[0]
         position = list(si[1])
         initial_pos = position.copy()
@@ -114,7 +118,6 @@ def convert_state_to_solution(instancename,state,block_dict):
                     id += 1
                     position[2] = position[2] + boxsize[2] 
                     placements = placements + [placement]
-
     #unplaced blocks
     unplaced = solution['layout']['unplaced']
     import copy

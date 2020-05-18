@@ -35,9 +35,8 @@ def find_solution(itemKinds):
     space_list = [space]
     packState = State(space_list)
     packState.set_available_items(available_items)
-    i = 0
-    while True:
-        considered_space = space_list[-1]
+    while (packState.get_residualSpaceList()):
+        considered_space = packState.get_residualSpaceList()[-1]
         # print("in space", considered_space)
         candidate_list = generate_candidate_block_list(considered_space.get_size(), block_list, available_items)
         # print("with space", considered_space, "the candidate_list", candidate_list)

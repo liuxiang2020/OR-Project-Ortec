@@ -20,7 +20,7 @@ class State:
     
     def add_block_to_space(self, block, space):
         space_volume = space.get_size()[0] * space.get_size()[1] * space.get_size()[2]
-        if block.get_volume() > space_volume:
+        if block.get_absolute_volume() > space_volume:
             print("Adding block not allowed, space to small.")
         self.add_block_planListBlock(block)
         self.add_space_planListSpace(space,block.get_volume_loss())
@@ -30,7 +30,7 @@ class State:
 
     def add_block_planListBlock(self, block):
         self.planListBlock.append(block)
-        self.block_volume += block.get_volume()
+        self.block_volume += block.get_absolute_volume()
 
     def add_space_planListSpace(self, space, block_loss):
         self.planListSpace.append(space)

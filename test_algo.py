@@ -85,7 +85,7 @@ if __name__ == "__main__":
     import datetime
     begin_time = datetime.datetime.now()
     # get container and boxes file information
-    instance = "br00.000.yaml"
+    instance = "br01.001.yaml"
     itemKinds = parse_yaml(instance)
     state, block_dict = find_solution(itemKinds)
     print(50*'#')
@@ -93,7 +93,7 @@ if __name__ == "__main__":
     convert_state_to_solution(instance,state,block_dict)
     # print(testvariable)
     # print(transfer_residual_space([]))
-        
+    
     print("Everything passed")
     print(datetime.datetime.now())
     print(datetime.datetime.now() - begin_time)

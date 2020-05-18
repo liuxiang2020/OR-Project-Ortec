@@ -11,7 +11,8 @@ class Block:
     def __init__(self, id_quantity, simple_block=False):
         #self.id = block_id
         self.id_quantity = id_quantity
-        self.volume = 0
+        self.real_volume = 0
+        self.absolute_volume = 0
         self.size = 0
         self.fitness = 0
         self.is_simple_block = simple_block
@@ -43,11 +44,14 @@ class Block:
     def get_size(self):
         return self.size
 
-    def get_volume(self):
-        return self.volume
+    def get_real_volume(self):
+        return self.real_volume
+
+    def get_absolute_volume(self):
+        return self.absolute_volume
 
     def get_volume_loss(self):
-        return self.volume_loss
+        return (self.absolute_volume - self.real_volume)
 
     def get_fitness(self):
         return self.fitness
@@ -73,15 +77,15 @@ class Block:
     def set_size(self, size):
         self.size = size
 
-    def set_volume(self, volume):
-        self.volume = volume
-
-    def set_volume_loss(self, volume_loss):
-        self.volume_loss = volume_loss
+    def set_absolute_volume(self, absolute_volume):
+        self.absolute_volume = absolute_volume
+        
+    def set_real_volume(self, real_volume):
+        self.real_volume = real_volume        
 
     def set_fitness(self, fitness):
         self.fitness = fitness
 
     def __repr__(self):
-        return "{id_quantity: %s\n, volume: %s\n, size: %s\n, fitness:%s\n, volumeloss:%s" \
-               % (self.id_quantity, self.volume, self.size,self.fitness,self.volume_loss) + "}\n"
+        return "{id_quantity: %s\n, absolute_volume: %s\n, real_volume: %s\n, size: %s\n, fitness:%s\n, volumeloss:%s" \
+               % (self.id_quantity, self.absolute_volume, self. real_volume, self.size,self.fitness, self.get_volume_loss()) + "}\n"
