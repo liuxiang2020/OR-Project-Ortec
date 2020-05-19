@@ -11,7 +11,7 @@ def build_m1_tree(block, state, m, k, j, block_list):
     if state.get_residualSpaceList():
         print("line 11 build_m1_tree",block)
         space = state.get_residualSpaceList()[-1]
-        _ = create_residual_space(block, state.get_residualSpaceList())
+        #state.set_residualSpaceList(create_residual_space(block, state.get_residualSpaceList()))
     else:
         #there is no space left. So return the last state
         return bestTbl.append([state, block, state.get_utilization()])
