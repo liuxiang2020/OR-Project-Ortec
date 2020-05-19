@@ -31,7 +31,7 @@ def find_solution(itemKinds):
     
     # create general block list
     block_list = create_general_blocks(itemKinds)
-    space = Space([0, 0, 0], CONTAINER_SIZE, 'x', [0,0,0])
+    space = Space([0, 0, 0], CONTAINER_SIZE, 'x')
     space_list = [space]
     packState = State(space_list)
     packState.set_available_items(available_items)

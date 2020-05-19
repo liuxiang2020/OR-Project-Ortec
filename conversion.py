@@ -26,16 +26,7 @@ def search_for_uid (block_dict,uid):
         if block_dict[i].get_unique_id() == uid:
             return block_dict[i]
 
-def break_down_block(cur_block,simple_list,block_dict,cor,pla):
-    if cor == pla:
-        pos = (cor[0],cor[1],cor[2])
-    elif cor[0] < pla[0] and cor[1] == pla[1]:
-        pos = (pla[0]-cur_block.get_size()[0],cor[1],cor[2])
-    elif cor[0] == pla[0] and cor[1] < pla[1]:
-        pos = (cor[0],pla[1]-cur_block.get_size()[1],cor[2])
-    #elif cor[0] < pla[0] and cor[1] < pla[1]:
-    else:
-        pos = (pla[0]-cur_block.get_size()[0],pla[1]-cur_block.get_size()[1],cor[2])
+def break_down_block(cur_block,simple_list,block_dict,pos):
     if cur_block.get_is_simple_block():
         simple_list.append((cur_block.get_unique_id(),pos))
         return simple_list
@@ -44,14 +35,14 @@ def break_down_block(cur_block,simple_list,block_dict,cor,pla):
         block_i = search_for_uid(block_dict,i)
         block_j = search_for_uid(block_dict,j)
         dr = cur_block.get_added_direction()
-        simple_list = break_down_block(block_i,simple_list,block_dict,pos,pos)
+        simple_list = break_down_block(block_i,simple_list,block_dict,pos)
         if dr == 0:
             posj = (pos[0]+block_i.get_size()[0],pos[1],pos[2])
         elif dr == 1:
             posj = (pos[0],pos[1]+block_i.get_size()[1],pos[2])
         elif dr == 2:
             posj = (pos[0],pos[1],pos[2]+block_i.get_size()[2])
-        simple_list = break_down_block(block_j,simple_list,block_dict,posj,posj)
+        simple_list = break_down_block(block_j,simple_list,block_dict,posj)
         return simple_list
 # return[(uid,[0,0,0]),...]
 def convert_state_to_solution(instancename,state,block_dict):
@@ -73,9 +64,8 @@ def convert_state_to_solution(instancename,state,block_dict):
     for i in range(len(blocks)):
         cur_block = blocks[i]
         cur_space = spaces[i]  
-        cor = cur_space.get_corner()
-        pla = cur_space.get_block_corner()
-        simple_list = break_down_block(cur_block,simple_list,block_dict,cor,pla)
+        pos = cur_space.get_corner()
+        simple_list = break_down_block(cur_block,simple_list,block_dict,pos)
     
     for si in simple_list:
         #print(simple_list)

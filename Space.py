@@ -1,9 +1,8 @@
 class Space:
-    def __init__(self, corner, size, kind, block_corner):
+    def __init__(self, corner, size, kind):
         self.corner = corner
         self.size = size
         self.kind = kind
-        self.block_corner = block_corner
 
     def get_corner(self):
         return self.corner
@@ -13,9 +12,6 @@ class Space:
 
     def get_kind(self):
         return self.kind
-
-    def get_block_corner(self):
-        return self.block_corner
     
     def update_size_x(self, x):
         self.size[0] = x
@@ -27,4 +23,4 @@ class Space:
         self.size = size
     
     def __repr__(self):
-        return "Space{corner: %s, size: %s, block_corner: %s," % (self.corner, self.size, self.block_corner) + self.kind + "}\n"
+        return "Space{corner: %s, size: %s," % (self.corner, self.size,) + self.kind + "}\n"
