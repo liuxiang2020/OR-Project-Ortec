@@ -21,7 +21,7 @@ def create_residual_space(block, spaceStack):
     
     # Space Z is always the same
     # ! ! ! ! ! For the full suppport constraint, this space should only consist of the minimum 
-    spaceZ = [blockSize[0], blockSize[1], deltah]
+    spaceZ = [block.get_upper_face()[0], block.get_upper_face()[1], deltah]
     
     #The corner generation should be independent of the space splitting
     corner_of_spaceZ = [space.get_corner()[0], space.get_corner()[1], space.get_corner()[2] + blockSize[2]]

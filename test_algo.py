@@ -85,7 +85,7 @@ if __name__ == "__main__":
     import datetime
     begin_time = datetime.datetime.now()
     # get container and boxes file information
-    instance = "br01.001.yaml"
+    instance = "br03.001.yaml"
     itemKinds = parse_yaml(instance)
     state, block_dict = find_solution(itemKinds)
     print(50*'#')
