@@ -32,14 +32,14 @@ def create_residual_space(block, spaceStack):
     if (deltaw*l >= w*deltal):
         spaceX = [l, deltaw, h]
         spaceY = [deltal, w-deltaw, h]
-        spaceStack.append(Space(corner_of_spaceZ, spaceZ, 'z',corner_of_spaceZ))
-        spaceStack.append(Space(corner_of_spaceY, spaceY, 'y',corner_of_spaceY))
-        spaceStack.append(Space(corner_of_spaceX, spaceX, 'x',corner_of_spaceX))
+        spaceStack.append(Space(corner_of_spaceZ, spaceZ, 'z'))
+        spaceStack.append(Space(corner_of_spaceY, spaceY, 'y'))
+        spaceStack.append(Space(corner_of_spaceX, spaceX, 'x'))
     else:
         spaceX = [l-deltal, deltaw, h]
         spaceY = [deltal, w, h]
-        spaceStack.append(Space(corner_of_spaceZ, spaceZ, 'z',corner_of_spaceZ))
-        spaceStack.append(Space(corner_of_spaceX, spaceX, 'x',corner_of_spaceX))
-        spaceStack.append(Space(corner_of_spaceY, spaceY, 'y',corner_of_spaceY))
+        spaceStack.append(Space(corner_of_spaceZ, spaceZ, 'z'))
+        spaceStack.append(Space(corner_of_spaceX, spaceX, 'x'))
+        spaceStack.append(Space(corner_of_spaceY, spaceY, 'y'))
     
     return spaceStack
