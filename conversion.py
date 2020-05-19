@@ -66,7 +66,20 @@ def convert_state_to_solution(instancename,state,block_dict):
     
     itemKinds = instance['data']['itemkinds'] 
     simple_list = []
-    id=0
+    
+    #The ids for unplaced and placed blocks have to be unique.
+    #unplaced blocks
+    unplaced = solution['layout']['unplaced']
+    import copy
+    unplaced = [ copy.deepcopy(unplaced[0]) for i in range(len(itemKinds)) ]
+    id = 0
+    unplaced_items =  state.get_available_items()
+    unplaced_items = list(unplaced_items.values())
+    for itemKind in range(len(itemKinds)):
+        unplaced[itemKind]['id'] = id
+        unplaced[itemKind]['itemid'] = itemKinds[itemKind]['id']
+        unplaced[itemKind]['quantity'] = unplaced_items[itemKind]
+        id += 1
     placements = []
     
     #
@@ -118,18 +131,7 @@ def convert_state_to_solution(instancename,state,block_dict):
                     id += 1
                     position[2] = position[2] + boxsize[2] 
                     placements = placements + [placement]
-    #unplaced blocks
-    unplaced = solution['layout']['unplaced']
-    import copy
-    unplaced = [ copy.deepcopy(unplaced[0]) for i in range(len(itemKinds)) ]
-    id = 0
-    unplaced_items =  state.get_available_items()
-    unplaced_items = list(unplaced_items.values())
-    for itemKind in range(len(itemKinds)):
-        unplaced[itemKind]['id'] = id
-        unplaced[itemKind]['itemid'] = itemKinds[itemKind]['id']
-        unplaced[itemKind]['quantity'] = unplaced_items[itemKind]
-        id += 1
+
 
     solution['layout']['containers'][0]['loadingspaces'][0]['placements'] = placements
     solution['layout']['unplaced'] = unplaced
