@@ -28,8 +28,8 @@ def generate_candidate_block_list(currentSpace, generalBlockList, item_available
             gbVolume = gb.get_absolute_volume()
             if check_availability(gb, item_available):
                 # TODO : check which fitness measure way is best
-                fitness = gb.get_real_volume()
-                #fitness = 2*gbVolume- spaceVolume - gb.get_volume_loss()
+                #fitness = gb.get_real_volume()
+                fitness = 2*gbVolume- spaceVolume - gb.get_volume_loss()
                 gb.set_fitness(fitness)
                 candidateBlockList.append(gb)
 
