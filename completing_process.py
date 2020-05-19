@@ -3,7 +3,7 @@ from transfer_residual_space import transfer_residual_space
 from config import *
 from State import State
 from Space import Space
-from create_residual_space import create_residual_space
+from create_residual_space import *
 import copy
 """
 completing_process: If the fitness measure considers only the total volume of all boxes in

@@ -1,4 +1,4 @@
-from create_residual_space import create_residual_space
+from create_residual_space import *
 from search_block import search_block
 from Functions import update_available_boxes
 from transfer_residual_space import transfer_residual_space
@@ -35,6 +35,7 @@ def find_solution(itemKinds):
     space_list = [space]
     packState = State(space_list)
     packState.set_available_items(available_items)
+    
     while (packState.get_residualSpaceList()):
         considered_space = packState.get_residualSpaceList()[-1]
         # print("in space", considered_space)
@@ -44,13 +45,12 @@ def find_solution(itemKinds):
             #packed_block = search_block(packState, candidate_list, block_list, available_items)
             packed_block = candidate_list[0]
             packState.add_block_to_space(packed_block, considered_space)
-
             space_list = create_residual_space(packed_block, space_list)
         else:
             if len(space_list) <= 1:
                 break
             else:
                 space_list = transfer_residual_space(space_list)
-    packState.set_residualSpaceList(space_list)
+        packState.set_residualSpaceList(space_list)
     # print("packstate", packState)
     return packState, block_list
