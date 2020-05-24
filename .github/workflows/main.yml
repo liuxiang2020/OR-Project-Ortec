@@ -29,5 +29,9 @@ jobs:
       run: pip install ortec.scientific.benchmarks.loadbuilding
 
     # Runs a single command using the runners shell
-    - name: Run a one-line script
+    - name: Process instance br00.000.yaml
       run: python exec_get_results.py
+      
+    # Check if solutions are valid
+    - name: Solution validation
+      run: osbl-solution -I br00.001.yaml -S store_file.yaml | grep "Solution is valid"

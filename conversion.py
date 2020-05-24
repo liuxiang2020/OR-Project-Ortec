@@ -1,6 +1,8 @@
 from Block import *
 from Functions import *
 from config import *
+
+
 def SkeletonSolution():
     skeleton = """description:
   set: Bischoff & Ratcliff
@@ -127,8 +129,9 @@ def convert_state_to_solution(instancename,state,block_dict):
     solution['layout']['unplaced'] = unplaced
 
     import yaml
-    with open('test.yaml', 'w') as file:
+    with open(SOLUTION_FILE_NAME, 'w') as file:
         documents = yaml.dump(solution, file)
+    file.close()
 
     # view result in osbl-solution-viewer --instance INSTANCE_FILE.yaml --solution SOLUTION_FILE.yaml
 

@@ -1,0 +1,20 @@
+description:
+  name: '01.001'
+  set: Bischoff & Ratcliff
+layout:
+  containers:
+  - id: 1
+    kindid: 1
+    loadingspaces:
+    - id: 1
+      placements: []
+  unplaced:
+  - id: 0
+    itemid: 1
+    quantity: 40
+  - id: 1
+    itemid: 2
+    quantity: 33
+  - id: 2
+    itemid: 3
+    quantity: 39
