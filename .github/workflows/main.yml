@@ -26,15 +26,15 @@ jobs:
       run: pip install ortec.scientific.benchmarks.loadbuilding
       
     # Process instances
-    - name: Process instance br00.000.yaml
-      run: python exec_get_results.py br00.000.yaml
+    - name: Process instance br00.001.yaml
+      run: python exec_get_results.py br00.001.yaml
   
     # Store solutions
     - name: Save solutions as artifacts
       uses: actions/upload-artifact@v1
       with:
         name: solutions
-        path: solutions/br00.000.yaml
+        path: solutions/br00.001.yaml
   
   validate_instances:
     name: Validate instances
@@ -56,5 +56,5 @@ jobs:
         name: solutions
     
     # Check if solutions are valid
-    - name: Validate instance br00.000.yaml
+    - name: Validate instance br00.001.yaml
       run: osbl-solution -I instances/br00.001.yaml -S solutions/br00.001-solution.yaml | grep "Solution is valid"
