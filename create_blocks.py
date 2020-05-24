@@ -47,7 +47,7 @@ def create_simple_blocks(itemkinds,container_size):
 # Creating general blocks from simple blocks
 def create_general_blocks(itemkinds, container_size):
     general_blocks_list, unique_ids = create_simple_blocks(itemkinds, container_size)
-    for _ in range(1, 5):
+    for _ in range(1, MAX_GB):
         a = len(general_blocks_list)
         for i in range(0, a):
             block_i = general_blocks_list[i]
