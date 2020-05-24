@@ -147,29 +147,29 @@ jobs:
     # Calculate the utilization
     - name: Obtain and print utilizations
       run: |
-      printf "br00.001-solution.yaml utilization: " > utilizations.txt
-      osbl-solution -I instances/br00.001.yaml -S solutions/br00.001.yaml | grep Objective | grep -Eo '\[-[0-9]{1}.[0-9]*' | grep -Eo '[0-9]{1}.[0-9]*' >> utilizations.txt
-      printf "\nbr01.001-solution.yaml utilization: " >> utilizations.txt
-      osbl-solution -I instances/br01.001.yaml -S solutions/br01.001.yaml | grep Objective | grep -Eo '\[-[0-9]{1}.[0-9]*' | grep -Eo '[0-9]{1}.[0-9]*' >> utilizations.txt
-      printf "\nbr02.001-solution.yaml utilization: " >> utilizations.txt
-      osbl-solution -I instances/br02.001.yaml -S solutions/br02.001.yaml | grep Objective | grep -Eo '\[-[0-9]{1}.[0-9]*' | grep -Eo '[0-9]{1}.[0-9]*' >> utilizations.txt
-      printf "\nbr03.001-solution.yaml utilization: " >> utilizations.txt
-      osbl-solution -I instances/br03.001.yaml -S solutions/br03.001.yaml | grep Objective | grep -Eo '\[-[0-9]{1}.[0-9]*' | grep -Eo '[0-9]{1}.[0-9]*' >> utilizations.txt
-      printf "\nbr04.001-solution.yaml utilization: " >> utilizations.txt
-      osbl-solution -I instances/br04.001.yaml -S solutions/br04.001.yaml | grep Objective | grep -Eo '\[-[0-9]{1}.[0-9]*' | grep -Eo '[0-9]{1}.[0-9]*' >> utilizations.txt
-      printf "\nbr05.001-solution.yaml utilization: " >> utilizations.txt
-      osbl-solution -I instances/br05.001.yaml -S solutions/br05.001.yaml | grep Objective | grep -Eo '\[-[0-9]{1}.[0-9]*' | grep -Eo '[0-9]{1}.[0-9]*' >> utilizations.txt
-      printf "\nbr06.001-solution.yaml utilization: " >> utilizations.txt
-      osbl-solution -I instances/br06.001.yaml -S solutions/br06.001.yaml | grep Objective | grep -Eo '\[-[0-9]{1}.[0-9]*' | grep -Eo '[0-9]{1}.[0-9]*' >> utilizations.txt
-      printf "\nbr07.001-solution.yaml utilization: " >> utilizations.txt
-      osbl-solution -I instances/br07.001.yaml -S solutions/br07.001.yaml | grep Objective | grep -Eo '\[-[0-9]{1}.[0-9]*' | grep -Eo '[0-9]{1}.[0-9]*' >> utilizations.txt
-      printf "\nbr08.001-solution.yaml utilization: " >> utilizations.txt
-      osbl-solution -I instances/br08.001.yaml -S solutions/br08.001.yaml | grep Objective | grep -Eo '\[-[0-9]{1}.[0-9]*' | grep -Eo '[0-9]{1}.[0-9]*' >> utilizations.txt
-      printf "\nbr09.001-solution.yaml utilization: " >> utilizations.txt
-      osbl-solution -I instances/br09.001.yaml -S solutions/br09.001.yaml | grep Objective | grep -Eo '\[-[0-9]{1}.[0-9]*' | grep -Eo '[0-9]{1}.[0-9]*' >> utilizations.txt
-      printf "\nbr10.001-solution.yaml utilization: " >> utilizations.txt
-      osbl-solution -I instances/br10.001.yaml -S solutions/br10.001.yaml | grep Objective | grep -Eo '\[-[0-9]{1}.[0-9]*' | grep -Eo '[0-9]{1}.[0-9]*' >> utilizations.txt
-      cat utilizations.txt
+          printf "br00.001-solution.yaml utilization: " > utilizations.txt
+          osbl-solution -I instances/br00.001.yaml -S solutions/br00.001.yaml | grep Objective | grep -Eo '\[-[0-9]{1}.[0-9]*' | grep -Eo '[0-9]{1}.[0-9]*' >> utilizations.txt
+          printf "\nbr01.001-solution.yaml utilization: " >> utilizations.txt
+          osbl-solution -I instances/br01.001.yaml -S solutions/br01.001.yaml | grep Objective | grep -Eo '\[-[0-9]{1}.[0-9]*' | grep -Eo '[0-9]{1}.[0-9]*' >> utilizations.txt
+          printf "\nbr02.001-solution.yaml utilization: " >> utilizations.txt
+          osbl-solution -I instances/br02.001.yaml -S solutions/br02.001.yaml | grep Objective | grep -Eo '\[-[0-9]{1}.[0-9]*' | grep -Eo '[0-9]{1}.[0-9]*' >> utilizations.txt
+          printf "\nbr03.001-solution.yaml utilization: " >> utilizations.txt
+          osbl-solution -I instances/br03.001.yaml -S solutions/br03.001.yaml | grep Objective | grep -Eo '\[-[0-9]{1}.[0-9]*' | grep -Eo '[0-9]{1}.[0-9]*' >> utilizations.txt
+          printf "\nbr04.001-solution.yaml utilization: " >> utilizations.txt
+          osbl-solution -I instances/br04.001.yaml -S solutions/br04.001.yaml | grep Objective | grep -Eo '\[-[0-9]{1}.[0-9]*' | grep -Eo '[0-9]{1}.[0-9]*' >> utilizations.txt
+          printf "\nbr05.001-solution.yaml utilization: " >> utilizations.txt
+          osbl-solution -I instances/br05.001.yaml -S solutions/br05.001.yaml | grep Objective | grep -Eo '\[-[0-9]{1}.[0-9]*' | grep -Eo '[0-9]{1}.[0-9]*' >> utilizations.txt
+          printf "\nbr06.001-solution.yaml utilization: " >> utilizations.txt
+          osbl-solution -I instances/br06.001.yaml -S solutions/br06.001.yaml | grep Objective | grep -Eo '\[-[0-9]{1}.[0-9]*' | grep -Eo '[0-9]{1}.[0-9]*' >> utilizations.txt
+          printf "\nbr07.001-solution.yaml utilization: " >> utilizations.txt
+          osbl-solution -I instances/br07.001.yaml -S solutions/br07.001.yaml | grep Objective | grep -Eo '\[-[0-9]{1}.[0-9]*' | grep -Eo '[0-9]{1}.[0-9]*' >> utilizations.txt
+          printf "\nbr08.001-solution.yaml utilization: " >> utilizations.txt
+          osbl-solution -I instances/br08.001.yaml -S solutions/br08.001.yaml | grep Objective | grep -Eo '\[-[0-9]{1}.[0-9]*' | grep -Eo '[0-9]{1}.[0-9]*' >> utilizations.txt
+          printf "\nbr09.001-solution.yaml utilization: " >> utilizations.txt
+          osbl-solution -I instances/br09.001.yaml -S solutions/br09.001.yaml | grep Objective | grep -Eo '\[-[0-9]{1}.[0-9]*' | grep -Eo '[0-9]{1}.[0-9]*' >> utilizations.txt
+          printf "\nbr10.001-solution.yaml utilization: " >> utilizations.txt
+          osbl-solution -I instances/br10.001.yaml -S solutions/br10.001.yaml | grep Objective | grep -Eo '\[-[0-9]{1}.[0-9]*' | grep -Eo '[0-9]{1}.[0-9]*' >> utilizations.txt
+          cat utilizations.txt
       
     # Store utilization values
     - name: Store utilization values
