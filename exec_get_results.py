@@ -47,7 +47,7 @@ eg. python testfile.py instance.yaml
 
 
 def parse_args():
-    if sys.argv == [] or (len(sys.argv) != 2):
+    if sys.argv == []:
         print("USAGE: python exec_get_results instance.yaml")
         exit()
     return sys.argv[1]
