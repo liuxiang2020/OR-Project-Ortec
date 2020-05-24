@@ -36,6 +36,42 @@ jobs:
     # Process instances
     - name: Process instance br01.001.yaml
       run: python run.py instances/br01.001.yaml solutions/br01.001-solution.yaml
+
+    # Process instances
+    - name: Process instance br02.001.yaml
+      run: python run.py instances/br02.001.yaml solutions/br02.001-solution.yaml
+      
+    # Process instances
+    - name: Process instance br03.001.yaml
+      run: python run.py instances/br03.001.yaml solutions/br03.001-solution.yaml
+      
+    # Process instances
+    - name: Process instance br04.001.yaml
+      run: python run.py instances/br04.001.yaml solutions/br04.001-solution.yaml
+      
+    # Process instances
+    - name: Process instance br05.001.yaml
+      run: python run.py instances/br05.001.yaml solutions/br05.001-solution.yaml
+      
+    # Process instances
+    - name: Process instance br06.001.yaml
+      run: python run.py instances/br06.001.yaml solutions/br06.001-solution.yaml
+      
+    # Process instances
+    - name: Process instance br07.001.yaml
+      run: python run.py instances/br07.001.yaml solutions/br07.001-solution.yaml
+      
+    # Process instances
+    - name: Process instance br08.001.yaml
+      run: python run.py instances/br08.001.yaml solutions/br08.001-solution.yaml
+      
+    # Process instances
+    - name: Process instance br09.001.yaml
+      run: python run.py instances/br09.001.yaml solutions/br09.001-solution.yaml
+      
+    # Process instances
+    - name: Process instance br10.001.yaml
+      run: python run.py instances/br10.001.yaml solutions/br10.001-solution.yaml
   
     # Store solutions
     - name: Save solutions as artifacts
@@ -71,5 +107,40 @@ jobs:
     # Check if solutions are valid
     - name: Validate instance br01.001.yaml
       run: osbl-solution -I instances/br01.001.yaml -S solutions/br01.001-solution.yaml | grep "Solution is valid"
-
+    
+    # Check if solutions are valid
+    - name: Validate instance br02.001.yaml
+      run: osbl-solution -I instances/br02.001.yaml -S solutions/br02.001-solution.yaml | grep "Solution is valid"
+    
+    # Check if solutions are valid
+    - name: Validate instance br03.001.yaml
+      run: osbl-solution -I instances/br03.001.yaml -S solutions/br03.001-solution.yaml | grep "Solution is valid"
+    
+    # Check if solutions are valid
+    - name: Validate instance br04.001.yaml
+      run: osbl-solution -I instances/br04.001.yaml -S solutions/br04.001-solution.yaml | grep "Solution is valid"
+    
+    # Check if solutions are valid
+    - name: Validate instance br05.001.yaml
+      run: osbl-solution -I instances/br05.001.yaml -S solutions/br05.001-solution.yaml | grep "Solution is valid"
+    
+    # Check if solutions are valid
+    - name: Validate instance br06.001.yaml
+      run: osbl-solution -I instances/br06.001.yaml -S solutions/br06.001-solution.yaml | grep "Solution is valid"
+    
+    # Check if solutions are valid
+    - name: Validate instance br07.001.yaml
+      run: osbl-solution -I instances/br07.001.yaml -S solutions/br07.001-solution.yaml | grep "Solution is valid"
+    
+    # Check if solutions are valid
+    - name: Validate instance br08.001.yaml
+      run: osbl-solution -I instances/br08.001.yaml -S solutions/br08.001-solution.yaml | grep "Solution is valid"
+    
+    # Check if solutions are valid
+    - name: Validate instance br09.001.yaml
+      run: osbl-solution -I instances/br09.001.yaml -S solutions/br09.001-solution.yaml | grep "Solution is valid"
+    
+    # Check if solutions are valid
+    - name: Validate instance br10.001.yaml
+      run: osbl-solution -I instances/br10.001.yaml -S solutions/br10.001-solution.yaml | grep "Solution is valid"
 
