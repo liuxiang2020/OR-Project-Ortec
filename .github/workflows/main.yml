@@ -14,7 +14,6 @@ on:
 jobs:
   process_instances:
     name: Process instances
-    needs: build
     runs-on: ubuntu-latest
     steps:
     - name: Setup Python
