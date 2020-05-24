@@ -26,6 +26,9 @@ jobs:
     - name: Setup Ortec Tools
       run: pip install ortec.scientific.benchmarks.loadbuilding
       
+    - name: Create solutions folder
+      run: mkdir solutions
+      
     # Process instances
     - name: Process instance br00.001.yaml
       run: python run.py instances/br00.001.yaml solutions/br00.001-solution.yaml
@@ -64,11 +67,9 @@ jobs:
     # Check if solutions are valid
     - name: Validate instance br00.001.yaml
       run: osbl-solution -I instances/br00.001.yaml -S solutions/br00.001-solution.yaml | grep "Solution is valid"
-      continue-on-error: true
     
     # Check if solutions are valid
     - name: Validate instance br01.001.yaml
       run: osbl-solution -I instances/br01.001.yaml -S solutions/br01.001-solution.yaml | grep "Solution is valid"
-      continue-on-error: true
 
 
