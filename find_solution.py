@@ -23,17 +23,17 @@ CONTAINER_SIZE: [L,W,H]
 available: dictionary, key:value  <-> id:quantity
 """
 
-def find_solution(itemKinds):
+def find_solution(itemKinds, container_size):
     # create available items
     available_items = {}
     for i in range(len(itemKinds)):
         available_items[itemKinds[i]['id']] = itemKinds[i]['quantity']
     
     # create general block list
-    block_list = create_general_blocks(itemKinds)
-    space = Space([0, 0, 0], CONTAINER_SIZE, 'x')
+    block_list = create_general_blocks(itemKinds, container_size)
+    space = Space([0, 0, 0], container_size, 'x')
     space_list = [space]
-    packState = State(space_list)
+    packState = State(space_list, container_size)
     packState.set_available_items(available_items)
     
     while (packState.get_residualSpaceList()):

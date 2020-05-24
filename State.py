@@ -10,13 +10,14 @@ from Functions import update_available_boxes
 from config import *
 
 class State:
-    def __init__(self, residualSpaceList):
+    def __init__(self, residualSpaceList, container_size):
         self.residualSpaceList = residualSpaceList
         self.planListSpace = []
         self.planListBlock = []
         self.available = {}
         self.space_volume = 0
         self.real_block_volume = 0
+        self.container_size = container_size
     
     def add_block_to_space(self, block, space):
         space_volume_temp = space.get_size()[0] * space.get_size()[1] * space.get_size()[2]
@@ -45,7 +46,7 @@ class State:
         return self.planListBlock
 
     def get_utilization(self):
-        return (self.real_block_volume / (CONTAINER_SIZE[0]*CONTAINER_SIZE[1]*CONTAINER_SIZE[2]))
+        return (self.real_block_volume / (self.container_size[0]*self.container_size[1]*self.container_size[2]))
 
     def get_available_items(self):
         return self.available

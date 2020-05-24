@@ -47,7 +47,7 @@ def break_down_block(cur_block,simple_list,block_dict,pos):
         simple_list = break_down_block(block_j,simple_list,block_dict,posj)
         return simple_list
 # return[(uid,[0,0,0]),...]
-def convert_state_to_solution(instancename,state,block_dict):
+def convert_state_to_solution(instancename,state,block_dict,solution_file_name):
     blocks = state.get_planListBlock()
     spaces = state.get_planListSpace()
     solution = SkeletonSolution()
@@ -129,7 +129,7 @@ def convert_state_to_solution(instancename,state,block_dict):
     solution['layout']['unplaced'] = unplaced
 
     import yaml
-    with open(SOLUTION_FILE_NAME, 'w') as file:
+    with open(solution_file_name, 'w') as file:
         documents = yaml.dump(solution, file)
     file.close()
 

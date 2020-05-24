@@ -8,12 +8,12 @@ def Size2Pos(size, orientation='LWH'):
 
 
 # Creating Simple Blocks from item boxes
-def create_simple_blocks(itemkinds):
+def create_simple_blocks(itemkinds,container_size):
     simple_block_list = []
     unique_ids = 0
-    containerlength = CONTAINER_SIZE[0]
-    containerwidth = CONTAINER_SIZE[1]
-    containerheight = CONTAINER_SIZE[2]
+    containerlength = container_size[0]
+    containerwidth = container_size[1]
+    containerheight = container_size[2]
     for itemkind in range(len(itemkinds)):
         quantity_boxes = itemkinds[itemkind]['quantity']
         for orientation in itemkinds[itemkind]['orientations'].split(','):
@@ -45,8 +45,8 @@ def create_simple_blocks(itemkinds):
 
 
 # Creating general blocks from simple blocks
-def create_general_blocks(itemkinds):
-    general_blocks_list, unique_ids = create_simple_blocks(itemkinds)
+def create_general_blocks(itemkinds, container_size):
+    general_blocks_list, unique_ids = create_simple_blocks(itemkinds, container_size)
     for _ in range(1, 2):
         a = len(general_blocks_list)
         for i in range(0, a):
@@ -93,9 +93,9 @@ def create_general_blocks(itemkinds):
                     
                     
                     #Check if the new block fits in the given container
-                    if (gen_block_candidate_size[0] <= CONTAINER_SIZE[0] and
-                            gen_block_candidate_size[1] <= CONTAINER_SIZE[1] and
-                            gen_block_candidate_size[2] <= CONTAINER_SIZE[2]):
+                    if (gen_block_candidate_size[0] <= container_size[0] and
+                            gen_block_candidate_size[1] <= container_size[1] and
+                            gen_block_candidate_size[2] <= container_size[2]):
                         new_gb_absolute_volume = gen_block_candidate_size[0] * gen_block_candidate_size[1] * gen_block_candidate_size[2]
                         if ((block_i.get_absolute_volume() + block_j.get_absolute_volume()) / new_gb_absolute_volume) > filling_rate:
                             merged_id_quantities = {x: block_i.get_id_quantity().get(x,0) + block_j.get_id_quantity().get(x,0) for x in set(block_i.get_id_quantity()).union(block_j.get_id_quantity())}

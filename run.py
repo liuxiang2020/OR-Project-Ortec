@@ -17,7 +17,6 @@ import traceback
 from find_solution import find_solution
 from transfer_residual_space import transfer_residual_space
 from conversion import *
-from load_constants_to_config import load_constants
 
 
 """
@@ -50,7 +49,7 @@ def parse_args():
     if sys.argv == []:
         print("USAGE: python exec_get_results instance.yaml")
         exit()
-    return sys.argv[1]
+    return sys.argv[1], sys.argv[2]
 
 
 '''
@@ -69,24 +68,26 @@ def parse_yaml(yamlfile: yaml) -> object:
         for i in range(len(itemKinds)):
             availableItems[itemKinds[i]['id']] = itemKinds[i]['quantity']
             print(itemKinds[i]['quantity'])
-        return itemKinds
+        container_size = Size2Pos(file['data']['containerkinds'][0]['loadingspaces'][0]['size'])
+        return itemKinds, container_size
 
-
-
-if __name__ == "__main__":
-    load_constants(parse_args())
+def execute_algo(input, solution_file_name):
     import datetime
     begin_time = datetime.datetime.now()
     # get container and boxes file information
-    instance = parse_args()
-    itemKinds = parse_yaml(instance)
-    state, block_dict = find_solution(itemKinds)
+    instance = input
+    itemKinds, container_size = parse_yaml(instance)
+    state, block_dict = find_solution(itemKinds, container_size)
     print(50*'#')
     print(state)
-    convert_state_to_solution(instance,state,block_dict)
+    convert_state_to_solution(instance,state,block_dict,solution_file_name)
     # print(testvariable)
     # print(transfer_residual_space([]))
-    
+
     print("Everything passed, Runtime details:")
     print(datetime.datetime.now())
     print(datetime.datetime.now() - begin_time)
+
+if __name__ == "__main__":
+    execute_algo(*parse_args())
+    
