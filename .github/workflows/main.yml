@@ -28,18 +28,18 @@ jobs:
       
     # Process instances
     - name: Process instance br00.001.yaml
-      run: python exec_get_results.py br00.001.yaml
+      run: python exec_get_results.py instances/br00.001.yaml solutions/br00.001-solution.yaml
       
     # Process instances
     - name: Process instance br01.001.yaml
-      run: python exec_get_results.py br01.001.yaml
+      run: python exec_get_results.py instances/br01.001.yaml solutions/br01.001-solution.yaml
   
     # Store solutions
     - name: Save solutions as artifacts
       uses: actions/upload-artifact@v1
       with:
         name: solutions
-        path: br0?.001-solution.yaml
+        path: solutions/**
   
   validate_instances:
     name: Validate instances

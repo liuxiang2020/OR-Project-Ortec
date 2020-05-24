@@ -6,7 +6,7 @@ from Functions import Size2Pos
 
 
 def parse_input():
-    if sys.argv == [] or (len(sys.argv) != 2):
+    if sys.argv == []:
         print("USAGE: python load_constants_to_config.py instance.yaml")
         exit()
     return sys.argv[1]
@@ -28,7 +28,7 @@ def load_constants(yamlfile: yaml) -> object:
         #Append dynamic variables (currenlty only container_size)
         config_file = open("config.py","a")
         config_file.write("\n" + "CONTAINER_SIZE = " + ((str((Size2Pos(file['data']['containerkinds'][0]['loadingspaces'][0]['size'])))).replace(" ",",")).replace(",,",","))
-        config_file.write("\n" + "SOLUTION_FILE_NAME = \"" + (str(yamlfile)).replace(".yaml","") + "-solution.yaml\"")
+        config_file.write("\n" + "SOLUTION_FILE_NAME = \"" + sys.arv[2] + "\"")
         config_file.close()
     instanceyaml.close()
 
