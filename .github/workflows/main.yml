@@ -14,6 +14,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    name: Setup environment
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -27,11 +28,22 @@ jobs:
     
     - name: Setup Ortec Tools
       run: pip install ortec.scientific.benchmarks.loadbuilding
-
-    # Runs a single command using the runners shell
+    
+  process_instances:
+    name: Process instances
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    # Process instances
     - name: Process instance br00.000.yaml
-      run: python exec_get_results.py
-      
+      run: python exec_get_results.py br00.000.yaml
+  
+  
+  validate_instances:
+    name: Validate instances
+    needs: process_instances
+    runs-on: ubuntu-latest
+    steps:
     # Check if solutions are valid
-    - name: Solution validation
+    - name: Validate instance br00.000.yaml
       run: osbl-solution -I br00.001.yaml -S store_file.yaml | grep "Solution is valid"
