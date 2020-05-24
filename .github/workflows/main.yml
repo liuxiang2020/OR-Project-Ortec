@@ -57,4 +57,4 @@ jobs:
     
     # Check if solutions are valid
     - name: Validate instance br00.001.yaml
-      run: osbl-solution -I instances/br00.001.yaml -S solutions/br00.001-solution.yaml | grep "Solution is valid"
+      run: osbl-solution -I br00.001.yaml -S solutions/br00.001-solution.yaml | grep "Solution is valid"
