@@ -10,7 +10,7 @@ Run it by calling `python run.py /path/to/instance.yaml /output_name.yaml`
 
 Parameters are set in `config.py`
 
-For fast runtime bypass the tree search (exchange this: `            packed_block = search_block(packState, candidate_list, block_list, available_items)`with this: `packed_block = candidate_list[0]`)
+For fast runtime bypass the tree search (exchange this: `            packed_block = search_block(packState, candidate_list, block_list, available_items)`with this: `packed_block = candidate_list[0]` in `find_solution.py`)
 
 # Using the CI
 
