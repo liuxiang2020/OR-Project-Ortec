@@ -1,3 +1,5 @@
+![Solution verification](https://github.com/dungNV3/OR-Project-Ortec/workflows/Solution%20verification/badge.svg)
+
 # OR-Project-Ortec
 
 Repository for the OR Lab 2020
