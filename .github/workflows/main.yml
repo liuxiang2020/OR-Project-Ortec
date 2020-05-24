@@ -42,7 +42,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: solutions
-        path: solutions/**
+        path: solutions/*
   
   validate_instances:
     name: Validate instances
