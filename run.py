@@ -47,7 +47,7 @@ eg. python testfile.py instance.yaml
 
 def parse_args():
     if sys.argv == []:
-        print("USAGE: python exec_get_results instance.yaml")
+        print("USAGE: python run.py instance.yaml output_name.yaml")
         exit()
     return sys.argv[1], sys.argv[2]
 

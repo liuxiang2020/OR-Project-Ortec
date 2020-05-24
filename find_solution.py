@@ -42,8 +42,8 @@ def find_solution(itemKinds, container_size):
         candidate_list = generate_candidate_block_list(considered_space.get_size(), block_list, available_items)
         # print("with space", considered_space, "the candidate_list", candidate_list)
         if candidate_list:
-            #packed_block = search_block(packState, candidate_list, block_list, available_items)
-            packed_block = candidate_list[0]
+            packed_block = search_block(packState, candidate_list, block_list, available_items)
+            #packed_block = candidate_list[0]
             packState.add_block_to_space(packed_block, considered_space)
             space_list = create_residual_space(packed_block, space_list)
         else:
