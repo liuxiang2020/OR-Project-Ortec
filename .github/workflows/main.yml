@@ -12,13 +12,35 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    name: Setup environment
-    # The type of runner that the job will run on
+  process_instances:
+    name: Process instances
+    needs: build
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+    
+    - name: Install dependencies
+      run: pip install numpy
+      
+    # Process instances
+    - name: Process instance br00.000.yaml
+      run: python exec_get_results.py br00.000.yaml
+  
+    # Store solutions
+    - name: Save solutions as artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: solutions
+        path: solutions/br00.000.yaml
+  
+  validate_instances:
+    name: Validate instances
+    needs: process_instances
+    runs-on: ubuntu-latest
     steps:
     - name: Setup Python
       uses: actions/setup-python@v2
@@ -29,21 +51,11 @@ jobs:
     - name: Setup Ortec Tools
       run: pip install ortec.scientific.benchmarks.loadbuilding
     
-  process_instances:
-    name: Process instances
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    # Process instances
-    - name: Process instance br00.000.yaml
-      run: python exec_get_results.py br00.000.yaml
-  
-  
-  validate_instances:
-    name: Validate instances
-    needs: process_instances
-    runs-on: ubuntu-latest
-    steps:
+    - name: Load solutions from previous job
+      uses: actions/download-artifact@v1
+      with:
+        name: solutions
+    
     # Check if solutions are valid
     - name: Validate instance br00.000.yaml
-      run: osbl-solution -I br00.001.yaml -S store_file.yaml | grep "Solution is valid"
+      run: osbl-solution -I instances/br00.001.yaml -S solutions/br00.001-solution.yaml | grep "Solution is valid"
