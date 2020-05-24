@@ -39,8 +39,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: solutions
-        path: br00.001-solution.yaml
-        path: br01.001-solution.yaml
+        path: br??.001-solution.yaml
   
   validate_instances:
     name: Validate instances
