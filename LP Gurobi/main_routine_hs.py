@@ -281,10 +281,8 @@ def solve(I, M, p, q, r, o, itemid, L, W, H, I_heur, o_heur, pos_heur, color_heu
                 hx[i].start = 0; hy[i].start = 1; hz[i].start = 0
 
            
-            print(lx[i].start)
             #start cannot take souble value, I guess only binary variables can be started 
            
-            print(x[i].start)
 
             model.getVarByName("x_%i" % (i)).start = int(pos_heur[k].split(',')[0])
             model.getVarByName("y_%i" % (i)).start = int(pos_heur[k].split(',')[1])
@@ -306,16 +304,22 @@ def solve(I, M, p, q, r, o, itemid, L, W, H, I_heur, o_heur, pos_heur, color_heu
                 if k in itemindex and i!=k:
                     if x[k].start + p[k] * lx[k].start + q[k] * wx[k].start + r[k] * hx[k].start <= x[i].start:
                         a[i, k].start = 1; a[k, i].start = 0
+                    elif x[i].start + p[i] * lx[i].start + q[i] * wx[i].start + r[i] * hx[i].start <= x[k].start:
+                        a[i, k].start = 0; a[k, i].start = 1     
                     else:
-                        a[i, k].start = 0; a[k, i].start = 1                    
+                        a[i, k].start = 0; a[k, i].start = 0             
                     if y[k].start + p[k] * ly[k].start + q[k] * wy[k].start + r[k] * hy[k].start <= y[i].start:
                         b[i, k].start = 1; b[k, i].start = 0
-                    else:
+                    elif y[i].start + p[i] * ly[i].start + q[i] * wy[i].start + r[i] * hy[i].start <= y[k].start:
                         b[i, k].start = 0; b[k, i].start = 1
+                    else:
+                        b[i, k].start = 0; b[k, i].start = 0
                     if z[k].start + p[k] * lz[k].start + q[k] * wz[k].start + r[k] * hz[k].start <= z[i].start:
                         c[i, k].start = 1; c[k, i].start = 0
-                    else:
+                    elif z[i].start + p[i] * lz[i].start + q[i] * wz[i].start + r[i] * hz[i].start <= z[k].start:
                         c[i, k].start = 0; c[k, i].start = 1
+                    else:
+                        c[i, k].start = 0; c[k, i].start = 0
 
 
                     if x[i].start <= x[k].start:
@@ -380,14 +384,11 @@ def solve(I, M, p, q, r, o, itemid, L, W, H, I_heur, o_heur, pos_heur, color_heu
                     else:
                         s2[i,k].start = 0    
 
-
-
         else:
             s[i].start = 0   
 
-
-
-
+    model.update()
+    print(x[1].start)
     model.optimize()
 
     if model.status == GRB.OPTIMAL:
