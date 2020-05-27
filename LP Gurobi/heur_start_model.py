@@ -137,6 +137,7 @@ def solve(I, M, p, q, r, o, itemid, L, W, H, I_heur, o_heur, pos_heur, color_heu
                 s2[i,k] = model.addVar(vtype=GRB.BINARY, name="o_%i_%i" % (i, k))
 
     #giving the starting solutions
+    model.update()
     k = -1
     for i in I:
         if i in itemindex:
@@ -170,13 +171,23 @@ def solve(I, M, p, q, r, o, itemid, L, W, H, I_heur, o_heur, pos_heur, color_heu
            
 
             #start cannot take souble value, I guess only binary variables can be started 
-            #x[i].start = pos_heur[i][0]
-            #y[i].start = pos_heur[i][1]              
-            #z[i].start = pos_heur[i][2]
+            print("first look here", "x_%i" % (i))
+            print("then look here", pos_heur[k][int(pos_heur[k].split(',')[0])])
+            model.getVarByName("x_%i" % (i)).start = pos_heur[k][int(pos_heur[k].split(',')[0])]
+            
+            
+            x[i].start = pos_heur[k][int(pos_heur[k].split(',')[0])]
+            #y[i].start = pos_heur[k][int(pos_heur[k].split(',')[1])]             
+            #z[i].start = pos_heur[k][int(pos_heur[k].split(',')[2])]
 
             #xr[i].start = x[i].start + lx[i].start * p[i] + wx[i].start * q[i] + hx[i].start * r[i]
             #yr[i].start = y[i].start + ly[i].start * p[i] + wy[i].start * q[i] + hy[i].start * r[i]
             #zr[i].start = z[i].start + lz[i].start * p[i] + wz[i].start * q[i] + hz[i].start * r[i]
+
+            #if z[i].start == 0
+                #g[i].start = 1
+            #else:
+                #g[i].start = 0
 
 
             #for k in I:
@@ -184,24 +195,87 @@ def solve(I, M, p, q, r, o, itemid, L, W, H, I_heur, o_heur, pos_heur, color_heu
                     #if x[k].start + p[k] * lx[k].start + q[k] * wx[k].start + r[k] * hx[k].start <= x[i].start:
                         #a[i, k].start = 1; a[k, i].start = 0
                     #else:
-                        #a[i, k].start = 0; a[k, i].start = 1
-                    
+                        #a[i, k].start = 0; a[k, i].start = 1                    
                     #if y[k].start + p[k] * ly[k].start + q[k] * wy[k].start + r[k] * hy[k].start <= y[i].start
                         #b[i, k].start = 1; b[k, i].start = 0
                     #else:
                         #b[i, k].start = 0; b[k, i].start = 1
-
                     #if z[k].start + p[k] * lz[k].start + q[k] * wz[k].start + r[k] * hz[k].start <= z[i].start
                         #c[i, k].start = 1; c[k, i].start = 0
                     #else:
                         #c[i, k].start = 0; c[k, i].start = 1
 
 
-                        
+                    #if x[i].start <= x[k].start:
+                        #n1[i, k].start = 1; n1[k, i].start = 0
+                    #else:
+                        #n1[i, k].start = 0; n1[k, i].start = 1                    
+                    #if y[i].start <= y[k].start:
+                        #n2[i, k].start = 1; n2[k, i].start = 0
+                    #else:
+                        #n2[i, k].start = 0; n2[k, i].start = 1
+                    #if xr[i].start <= xr[k].start:
+                        #n3[i, k].start = 1; n3[k, i].start = 0
+                    #else:
+                        #n3[i, k].start = 0; n3[k, i].start = 1                    
+                    #if yr[i].start <= yr[k].start:
+                        #n4[i, k].start = 1; n4[k, i].start = 0
+                    #else:
+                        #n4[i, k].start = 0; n4[k, i].start = 1
+
+
+                    #if z[i].start == zr[k].start
+                        #h[i,k].start = 0
+                    #else:
+                        #h[i,k].start = 1
+                    
+
+                    #if a[i, k].start + a[k, i].start + b[i, k].start + b[k, i].start >= 1
+                        #o[i,k].start = 0
+                    #else:
+                        #o[i,k].start = 1
+
+
+                    #if h[i,k].start + o[i,k].start == 0
+                        #sk[i,k].start = 1
+                    #else:
+                        #sk[i,k].start = 0
+
+
+                    #if (sk[i, k].start == 1) and (n1[i, k].start + n2[i, k].start >= 1)
+                        #vs[i,k,0].start = 0
+                    #else:
+                        #vs[i,k,0].start = 1
+                    #if (sk[i, k].start == 1) and (n2[i, k].start + n3[i, k].start >= 1)
+                        #vs[i,k,1].start = 0
+                    #else:
+                        #vs[i,k,1].start = 1
+                    #if (sk[i, k].start == 1) and (n3[i, k].start + n4[i, k].start >= 1)
+                        #vs[i,k,2].start = 0
+                    #else:
+                        #vs[i,k,2].start = 1
+                    #if (sk[i, k].start == 1) and (n1[i, k].start + n4[i, k].start >= 1)
+                        #vs[i,k,3].start = 0
+                    #else:
+                        #vs[i,k,3].start = 1
+
+                    
+                    #s1[i,k].start = abs(zr[k].start-z[i].start)
+
+
+                    #if zr[k].start >= z[i].start
+                        #s2[i,k].start = 1
+                    #else:
+                        #s2[i,k].start = 0    
+
+                    
+
+
+
         else:
             s[i].start = 0   
 
-
+    model.update()
     # objective
     model.setObjective(quicksum(p[i] * q[i] * r[i] * s[i] for i in I), GRB.MAXIMIZE)
 
