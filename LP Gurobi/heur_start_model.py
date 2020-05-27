@@ -143,45 +143,61 @@ def solve(I, M, p, q, r, o, itemid, L, W, H, I_heur, o_heur, pos_heur, color_heu
             s[i].start = 1  
             k +=1
             if o_heur[k] == "LWH":
-                lx[i].start = 1
-                lz[i].start = 0
-                wy[i].start = 1
-                hz[i].start = 1
+                lx[i].start = 1; ly[i].start = 0; lz[i].start = 0
+                wx[i].start = 0; wy[i].start = 1; wz[i].start = 0
+                hx[i].start = 0; hy[i].start = 0; hz[i].start = 1
+            elif o_heur[k] == "WHL":
+                lx[i].start = 0; ly[i].start = 0; lz[i].start = 1
+                wx[i].start = 1; wy[i].start = 0; wz[i].start = 0
+                hx[i].start = 0; hy[i].start = 1; hz[i].start = 0            
+            elif o_heur[k] == "HLW":
+                lx[i].start = 0; ly[i].start = 1; lz[i].start = 0
+                wx[i].start = 0; wy[i].start = 0; wz[i].start = 1
+                hx[i].start = 1; hy[i].start = 0; hz[i].start = 0  
             elif o_heur[k] == "WLH":
-                lx[i].start = 0
-                lz[i].start = 0
-                wy[i].start = 0
-                hz[i].start = 1            
-            elif o_heur[k] == "HWL":
-                lx[i].start = 0
-                lz[i].start = 1
-                wy[i].start = 1
-                hz[i].start = 0
-            elif o_heur[k] == "LHW":
-                lx[i].start = 1
-                lz[i].start = 0
-                wy[i].start = 0
-                hz[i].start = 0
-            elif o_heur[k] == "HLW":    
-                lx[i].start = 0
-                lz[i].start = 0
-                wy[i].start = 0
-                hz[i].start = 0
-            elif o_heur[k] == "WHL": 
-                lx[i].start = 0
-                lz[i].start = 1
-                wy[i].start = 0
-                hz[i].start = 0
-                
+                lx[i].start = 0; ly[i].start = 1; lz[i].start = 0
+                wx[i].start = 1; wy[i].start = 0; wz[i].start = 0
+                hx[i].start = 0; hy[i].start = 0; hz[i].start = 1  
+            elif o_heur[k] == "HWL":    
+                lx[i].start = 0; ly[i].start = 0; lz[i].start = 1
+                wx[i].start = 0; wy[i].start = 1; wz[i].start = 0
+                hx[i].start = 1; hy[i].start = 0; hz[i].start = 0
+            elif o_heur[k] == "LHW": 
+                lx[i].start = 1; ly[i].start = 0; lz[i].start = 0
+                wx[i].start = 0; wy[i].start = 0; wz[i].start = 1
+                hx[i].start = 0; hy[i].start = 1; hz[i].start = 0
+
+           
 
             #start cannot take souble value, I guess only binary variables can be started 
             #x[i].start = pos_heur[i][0]
             #y[i].start = pos_heur[i][1]              
             #z[i].start = pos_heur[i][2]
 
-            #xr[itemid_heur[i]].start = p[itemid_heur[i]]
-            #yr[itemid_heur[i]].start = q[itemid_heur[i]]
-            #zr[itemid_heur[i]].start = r[itemid_heur[i]]
+            #xr[i].start = x[i].start + lx[i].start * p[i] + wx[i].start * q[i] + hx[i].start * r[i]
+            #yr[i].start = y[i].start + ly[i].start * p[i] + wy[i].start * q[i] + hy[i].start * r[i]
+            #zr[i].start = z[i].start + lz[i].start * p[i] + wz[i].start * q[i] + hz[i].start * r[i]
+
+
+            #for k in I:
+                #if k in itemindex:
+                    #if x[k].start + p[k] * lx[k].start + q[k] * wx[k].start + r[k] * hx[k].start <= x[i].start:
+                        #a[i, k].start = 1; a[k, i].start = 0
+                    #else:
+                        #a[i, k].start = 0; a[k, i].start = 1
+                    
+                    #if y[k].start + p[k] * ly[k].start + q[k] * wy[k].start + r[k] * hy[k].start <= y[i].start
+                        #b[i, k].start = 1; b[k, i].start = 0
+                    #else:
+                        #b[i, k].start = 0; b[k, i].start = 1
+
+                    #if z[k].start + p[k] * lz[k].start + q[k] * wz[k].start + r[k] * hz[k].start <= z[i].start
+                        #c[i, k].start = 1; c[k, i].start = 0
+                    #else:
+                        #c[i, k].start = 0; c[k, i].start = 1
+
+
+                        
         else:
             s[i].start = 0   
 
