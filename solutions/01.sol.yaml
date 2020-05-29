@@ -1,0 +1,515 @@
+description:
+  name: '01.001'
+  set: Bischoff & Ratcliff
+layout:
+  containers:
+  - id: 1
+    kindid: 1
+    loadingspaces:
+    - id: 1
+      placements:
+      - color: '#DE8F05'
+        id: 3
+        itemid: 3
+        orientation: WHL
+        position: 0,0,0
+      - color: '#DE8F05'
+        id: 4
+        itemid: 3
+        orientation: WHL
+        position: 0,0,92
+      - color: '#DE8F05'
+        id: 5
+        itemid: 3
+        orientation: WHL
+        position: 0,55,0
+      - color: '#DE8F05'
+        id: 6
+        itemid: 3
+        orientation: WHL
+        position: 0,55,92
+      - color: '#DE8F05'
+        id: 7
+        itemid: 3
+        orientation: WHL
+        position: 0,110,0
+      - color: '#DE8F05'
+        id: 8
+        itemid: 3
+        orientation: WHL
+        position: 0,110,92
+      - color: '#DE8F05'
+        id: 9
+        itemid: 3
+        orientation: WHL
+        position: 0,165,0
+      - color: '#DE8F05'
+        id: 10
+        itemid: 3
+        orientation: WHL
+        position: 0,165,92
+      - color: '#DE8F05'
+        id: 11
+        itemid: 3
+        orientation: WHL
+        position: 81,0,0
+      - color: '#DE8F05'
+        id: 12
+        itemid: 3
+        orientation: WHL
+        position: 81,0,92
+      - color: '#DE8F05'
+        id: 13
+        itemid: 3
+        orientation: WHL
+        position: 81,55,0
+      - color: '#DE8F05'
+        id: 14
+        itemid: 3
+        orientation: WHL
+        position: 81,55,92
+      - color: '#DE8F05'
+        id: 15
+        itemid: 3
+        orientation: WHL
+        position: 81,110,0
+      - color: '#DE8F05'
+        id: 16
+        itemid: 3
+        orientation: WHL
+        position: 81,110,92
+      - color: '#DE8F05'
+        id: 17
+        itemid: 3
+        orientation: WHL
+        position: 81,165,0
+      - color: '#DE8F05'
+        id: 18
+        itemid: 3
+        orientation: WHL
+        position: 81,165,92
+      - color: '#DE8F05'
+        id: 19
+        itemid: 3
+        orientation: WHL
+        position: 162,0,0
+      - color: '#DE8F05'
+        id: 20
+        itemid: 3
+        orientation: WHL
+        position: 162,0,92
+      - color: '#DE8F05'
+        id: 21
+        itemid: 3
+        orientation: WHL
+        position: 162,55,0
+      - color: '#DE8F05'
+        id: 22
+        itemid: 3
+        orientation: WHL
+        position: 162,55,92
+      - color: '#DE8F05'
+        id: 23
+        itemid: 3
+        orientation: WHL
+        position: 162,110,0
+      - color: '#DE8F05'
+        id: 24
+        itemid: 3
+        orientation: WHL
+        position: 162,110,92
+      - color: '#DE8F05'
+        id: 25
+        itemid: 3
+        orientation: WHL
+        position: 162,165,0
+      - color: '#DE8F05'
+        id: 26
+        itemid: 3
+        orientation: WHL
+        position: 162,165,92
+      - color: '#DE8F05'
+        id: 27
+        itemid: 3
+        orientation: WHL
+        position: 243,0,0
+      - color: '#DE8F05'
+        id: 28
+        itemid: 3
+        orientation: WHL
+        position: 243,0,92
+      - color: '#DE8F05'
+        id: 29
+        itemid: 3
+        orientation: WHL
+        position: 243,55,0
+      - color: '#DE8F05'
+        id: 30
+        itemid: 3
+        orientation: WHL
+        position: 243,55,92
+      - color: '#DE8F05'
+        id: 31
+        itemid: 3
+        orientation: WHL
+        position: 243,110,0
+      - color: '#DE8F05'
+        id: 32
+        itemid: 3
+        orientation: WHL
+        position: 243,110,92
+      - color: '#DE8F05'
+        id: 33
+        itemid: 3
+        orientation: WHL
+        position: 243,165,0
+      - color: '#DE8F05'
+        id: 34
+        itemid: 3
+        orientation: WHL
+        position: 243,165,92
+      - color: '#029E73'
+        id: 35
+        itemid: 1
+        orientation: LWH
+        position: 324,0,0
+      - color: '#029E73'
+        id: 36
+        itemid: 1
+        orientation: LWH
+        position: 324,0,30
+      - color: '#029E73'
+        id: 37
+        itemid: 1
+        orientation: LWH
+        position: 324,0,60
+      - color: '#029E73'
+        id: 38
+        itemid: 1
+        orientation: LWH
+        position: 324,0,90
+      - color: '#029E73'
+        id: 39
+        itemid: 1
+        orientation: LWH
+        position: 324,76,0
+      - color: '#029E73'
+        id: 40
+        itemid: 1
+        orientation: LWH
+        position: 324,76,30
+      - color: '#029E73'
+        id: 41
+        itemid: 1
+        orientation: LWH
+        position: 324,76,60
+      - color: '#029E73'
+        id: 42
+        itemid: 1
+        orientation: LWH
+        position: 324,76,90
+      - color: '#029E73'
+        id: 43
+        itemid: 1
+        orientation: LWH
+        position: 324,152,0
+      - color: '#029E73'
+        id: 44
+        itemid: 1
+        orientation: LWH
+        position: 324,152,30
+      - color: '#029E73'
+        id: 45
+        itemid: 1
+        orientation: LWH
+        position: 324,152,60
+      - color: '#029E73'
+        id: 46
+        itemid: 1
+        orientation: LWH
+        position: 324,152,90
+      - color: '#029E73'
+        id: 47
+        itemid: 1
+        orientation: LWH
+        position: 432,0,0
+      - color: '#029E73'
+        id: 48
+        itemid: 1
+        orientation: LWH
+        position: 432,0,30
+      - color: '#029E73'
+        id: 49
+        itemid: 1
+        orientation: LWH
+        position: 432,0,60
+      - color: '#029E73'
+        id: 50
+        itemid: 1
+        orientation: LWH
+        position: 432,0,90
+      - color: '#029E73'
+        id: 51
+        itemid: 1
+        orientation: LWH
+        position: 432,76,0
+      - color: '#029E73'
+        id: 52
+        itemid: 1
+        orientation: LWH
+        position: 432,76,30
+      - color: '#029E73'
+        id: 53
+        itemid: 1
+        orientation: LWH
+        position: 432,76,60
+      - color: '#029E73'
+        id: 54
+        itemid: 1
+        orientation: LWH
+        position: 432,76,90
+      - color: '#029E73'
+        id: 55
+        itemid: 1
+        orientation: LWH
+        position: 432,152,0
+      - color: '#029E73'
+        id: 56
+        itemid: 1
+        orientation: LWH
+        position: 432,152,30
+      - color: '#029E73'
+        id: 57
+        itemid: 1
+        orientation: LWH
+        position: 432,152,60
+      - color: '#029E73'
+        id: 58
+        itemid: 1
+        orientation: LWH
+        position: 432,152,90
+      - color: '#0173B2'
+        id: 59
+        itemid: 2
+        orientation: WLH
+        position: 540,0,0
+      - color: '#0173B2'
+        id: 60
+        itemid: 2
+        orientation: WLH
+        position: 540,0,25
+      - color: '#0173B2'
+        id: 61
+        itemid: 2
+        orientation: WLH
+        position: 540,0,50
+      - color: '#0173B2'
+        id: 62
+        itemid: 2
+        orientation: WLH
+        position: 540,0,75
+      - color: '#0173B2'
+        id: 63
+        itemid: 2
+        orientation: WLH
+        position: 540,0,100
+      - color: '#0173B2'
+        id: 64
+        itemid: 2
+        orientation: WLH
+        position: 540,0,125
+      - color: '#0173B2'
+        id: 65
+        itemid: 2
+        orientation: WLH
+        position: 540,0,150
+      - color: '#0173B2'
+        id: 66
+        itemid: 2
+        orientation: WLH
+        position: 540,0,175
+      - color: '#0173B2'
+        id: 67
+        itemid: 2
+        orientation: WLH
+        position: 540,110,0
+      - color: '#0173B2'
+        id: 68
+        itemid: 2
+        orientation: WLH
+        position: 540,110,25
+      - color: '#0173B2'
+        id: 69
+        itemid: 2
+        orientation: WLH
+        position: 540,110,50
+      - color: '#0173B2'
+        id: 70
+        itemid: 2
+        orientation: WLH
+        position: 540,110,75
+      - color: '#0173B2'
+        id: 71
+        itemid: 2
+        orientation: WLH
+        position: 540,110,100
+      - color: '#0173B2'
+        id: 72
+        itemid: 2
+        orientation: WLH
+        position: 540,110,125
+      - color: '#0173B2'
+        id: 73
+        itemid: 2
+        orientation: WLH
+        position: 540,110,150
+      - color: '#0173B2'
+        id: 74
+        itemid: 2
+        orientation: WLH
+        position: 540,110,175
+      - color: '#029E73'
+        id: 75
+        itemid: 1
+        orientation: LWH
+        position: 324,0,120
+      - color: '#029E73'
+        id: 76
+        itemid: 1
+        orientation: LWH
+        position: 324,0,150
+      - color: '#029E73'
+        id: 77
+        itemid: 1
+        orientation: LWH
+        position: 324,0,180
+      - color: '#029E73'
+        id: 78
+        itemid: 1
+        orientation: LWH
+        position: 324,76,120
+      - color: '#029E73'
+        id: 79
+        itemid: 1
+        orientation: LWH
+        position: 324,76,150
+      - color: '#029E73'
+        id: 80
+        itemid: 1
+        orientation: LWH
+        position: 324,76,180
+      - color: '#029E73'
+        id: 81
+        itemid: 1
+        orientation: LWH
+        position: 324,152,120
+      - color: '#029E73'
+        id: 82
+        itemid: 1
+        orientation: LWH
+        position: 324,152,150
+      - color: '#029E73'
+        id: 83
+        itemid: 1
+        orientation: LWH
+        position: 324,152,180
+      - color: '#DE8F05'
+        id: 84
+        itemid: 3
+        orientation: WHL
+        position: 432,0,120
+      - color: '#DE8F05'
+        id: 85
+        itemid: 3
+        orientation: WHL
+        position: 432,55,120
+      - color: '#DE8F05'
+        id: 86
+        itemid: 3
+        orientation: WHL
+        position: 432,110,120
+      - color: '#DE8F05'
+        id: 87
+        itemid: 3
+        orientation: WHL
+        position: 432,165,120
+      - color: '#0173B2'
+        id: 88
+        itemid: 2
+        orientation: HLW
+        position: 513,0,120
+      - color: '#0173B2'
+        id: 89
+        itemid: 2
+        orientation: HLW
+        position: 513,0,163
+      - color: '#0173B2'
+        id: 90
+        itemid: 2
+        orientation: HLW
+        position: 513,110,120
+      - color: '#0173B2'
+        id: 91
+        itemid: 2
+        orientation: HLW
+        position: 513,110,163
+      - color: '#029E73'
+        id: 92
+        itemid: 1
+        orientation: WLH
+        position: 0,0,184
+      - color: '#029E73'
+        id: 93
+        itemid: 1
+        orientation: WLH
+        position: 76,0,184
+      - color: '#029E73'
+        id: 94
+        itemid: 1
+        orientation: WLH
+        position: 152,0,184
+      - color: '#029E73'
+        id: 95
+        itemid: 1
+        orientation: WLH
+        position: 228,0,184
+      - color: '#029E73'
+        id: 96
+        itemid: 1
+        orientation: WLH
+        position: 0,108,184
+      - color: '#029E73'
+        id: 97
+        itemid: 1
+        orientation: WLH
+        position: 76,108,184
+      - color: '#0173B2'
+        id: 98
+        itemid: 2
+        orientation: WLH
+        position: 152,108,184
+      - color: '#0173B2'
+        id: 99
+        itemid: 2
+        orientation: WLH
+        position: 195,108,184
+      - color: '#0173B2'
+        id: 100
+        itemid: 2
+        orientation: WLH
+        position: 238,108,184
+      - color: '#0173B2'
+        id: 101
+        itemid: 2
+        orientation: WLH
+        position: 281,108,184
+  unplaced:
+  - id: 0
+    itemid: 1
+    quantity: 1
+  - id: 1
+    itemid: 2
+    quantity: 9
+  - id: 2
+    itemid: 3
+    quantity: 3

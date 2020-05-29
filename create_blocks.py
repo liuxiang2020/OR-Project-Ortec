@@ -119,7 +119,7 @@ def create_general_blocks(itemkinds, container_size):
                                 new_gb.set_upper_face(upper_face)
                                 new_gb.set_added_direction((dr))
                                 general_blocks_list.append(new_gb)
-    general_blocks_list = filter_redundant_blocks(general_blocks_list)                                              
+        general_blocks_list = filter_redundant_blocks(general_blocks_list)                                              
     return general_blocks_list
 
 def filter_redundant_blocks(blocklist):

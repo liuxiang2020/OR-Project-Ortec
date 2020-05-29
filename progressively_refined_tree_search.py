@@ -29,7 +29,7 @@ def Progressively_Refined_Tree_Search(block, state, block_list):
     best_solution = state 
 
     if cBlocKList:
-        m = 1
+        m = M_Zero
         bkTab = []
         for _ in range(STAGE_L -1):
             m = m*SCALE
