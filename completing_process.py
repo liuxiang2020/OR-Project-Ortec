@@ -12,7 +12,7 @@ each block, then the placement is simply placing the block with the biggest volu
 def completing_process(prevState, block_list):
     curState = prevState
     # loop through residual space list backwards (largest space first，index range [length, 0))
-    for i in range(len(curState.get_residualSpaceList()), 0 , -1):
+    while curState.get_residualSpaceList() != []:
         space = curState.get_residualSpaceList()[-1]
         cBlocKList = generate_candidate_block_list(space.get_size(), block_list, curState.get_available_items())
         if cBlocKList:
@@ -20,10 +20,10 @@ def completing_process(prevState, block_list):
             bestBlock = cBlocKList[0]
             curState.add_block_to_space(bestBlock, space)
 
-            _ = create_residual_space(bestBlock, curState.get_residualSpaceList())
+            curState.set_residualSpaceList = create_residual_space(bestBlock, curState.get_residualSpaceList())
 
 
         else:
-            _ = transfer_residual_space(curState.get_residualSpaceList())
+            curState.set_residualSpaceList = transfer_residual_space(curState.get_residualSpaceList())
 
     return curState
