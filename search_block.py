@@ -1,15 +1,5 @@
-import numpy as np
-from Block import Block
-from Space import Space
-from State import State
-from time import sleep
-from completing_process import completing_process
 import copy
-from create_residual_space import create_residual_space
 from progressively_refined_tree_search import Progressively_Refined_Tree_Search
-
-
-# from OR-Project-ORTEC import *
 from config import *
 """
 NOTE:  Space.py add information of filled blocks and utilization rate
@@ -22,8 +12,6 @@ changing list of (List of (type)Spaces) residual spaces.
 
 candidateBlockList: a (type)List wil candiate (type)Blocks
 """
-MAX_SIZE = 10
-
 
 bestUtilization = 0.9
 

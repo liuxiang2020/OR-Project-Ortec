@@ -1,7 +1,6 @@
 from create_residual_space import create_residual_space
 from generate_candidate_blocklist import generate_candidate_block_list
 from completing_process import completing_process
-from Functions import update_available_boxes
 import copy
 
 
@@ -28,6 +27,7 @@ def build_m1_tree(block, state, m, k, j, block_list):
             prevSpace = space
             cBlock = cBlocKList[i]
             prevState.add_block_to_space(cBlock, prevSpace)
+            prevState.set_residualSpaceList = create_residual_space(cBlock, prevState.get_residualSpaceList())
             fState = completing_process(prevState, block_list)
 
             if len(bestTbl) == k:
