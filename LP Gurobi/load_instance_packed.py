@@ -44,8 +44,9 @@ def load_instance_packed(path):
         for i in instance["data"]["itemkinds"]:
             if i["id"] == item.id:
                 stop = i["placed"]
-                given_orientation += i["given_orientation"]
-                positions += i["positions"]
+                if stop > 0:
+                    given_orientation += i["given_orientation"]
+                    positions += i["positions"]
                 for c in range(item.quantity):
                     color.append(i["color"])
         #print(stop)

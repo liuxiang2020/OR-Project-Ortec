@@ -302,6 +302,26 @@ data:
       length: 81
       width: 33
     support: 1.0
+  - color: '#FBAFE4'
+    id: 8
+    orientations: LWH,WLH
+    placed: 0
+    quantity: 3
+    size:
+      height: 31
+      length: 95
+      width: 66
+    support: 1.0
+  - color: '#949494'
+    id: 9
+    orientations: LWH,WLH
+    placed: 0
+    quantity: 9
+    size:
+      height: 30
+      length: 85
+      width: 84
+    support: 1.0
   palletkinds: []
 description:
   name: '1.1'

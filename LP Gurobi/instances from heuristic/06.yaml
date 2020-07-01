@@ -414,6 +414,16 @@ data:
       length: 95
       width: 66
     support: 1.0
+  - color: '#949494'
+    id: 9
+    orientations: LWH,WLH
+    placed: 0
+    quantity: 8
+    size:
+      height: 30
+      length: 85
+      width: 84
+    support: 1.0
   palletkinds: []
 description:
   name: '1.1'

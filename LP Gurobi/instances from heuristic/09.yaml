@@ -692,6 +692,56 @@ data:
       length: 118
       width: 25
     support: 1.0
+  - color: '#56B4E9'
+    id: 1
+    orientations: LWH,WLH
+    placed: 0
+    quantity: 1
+    size:
+      height: 30
+      length: 108
+      width: 76
+    support: 1.0
+  - color: '#DE8F05'
+    id: 3
+    orientations: HWL,WHL,HLW,LHW,LWH,WLH
+    placed: 0
+    quantity: 2
+    size:
+      height: 55
+      length: 92
+      width: 81
+    support: 1.0
+  - color: '#CC78BC'
+    id: 6
+    orientations: HLW,LHW,LWH,WLH
+    placed: 0
+    quantity: 1
+    size:
+      height: 48
+      length: 111
+      width: 70
+    support: 1.0
+  - color: '#CC78BC'
+    id: 26
+    orientations: LWH,WLH
+    placed: 0
+    quantity: 2
+    size:
+      height: 29
+      length: 80
+      width: 65
+    support: 1.0
+  - color: '#ECE133'
+    id: 30
+    orientations: LWH,WLH
+    placed: 0
+    quantity: 5
+    size:
+      height: 26
+      length: 87
+      width: 83
+    support: 1.0
   palletkinds: []
 description:
   name: '1.1'

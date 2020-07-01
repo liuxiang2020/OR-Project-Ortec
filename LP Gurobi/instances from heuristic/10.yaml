@@ -686,6 +686,136 @@ data:
       length: 93
       width: 31
     support: 1.0
+  - color: '#56B4E9'
+    id: 1
+    orientations: LWH,WLH
+    placed: 0
+    quantity: 1
+    size:
+      height: 30
+      length: 108
+      width: 76
+    support: 1.0
+  - color: '#0173B2'
+    id: 2
+    orientations: HLW,LHW,LWH,WLH
+    placed: 0
+    quantity: 2
+    size:
+      height: 25
+      length: 110
+      width: 43
+    support: 1.0
+  - color: '#CA9161'
+    id: 7
+    orientations: HLW,LHW,LWH,WLH
+    placed: 0
+    quantity: 1
+    size:
+      height: 46
+      length: 98
+      width: 72
+    support: 1.0
+  - color: '#FBAFE4'
+    id: 8
+    orientations: LWH,WLH
+    placed: 0
+    quantity: 2
+    size:
+      height: 31
+      length: 95
+      width: 66
+    support: 1.0
+  - color: '#949494'
+    id: 9
+    orientations: LWH,WLH
+    placed: 0
+    quantity: 2
+    size:
+      height: 30
+      length: 85
+      width: 84
+    support: 1.0
+  - color: '#949494'
+    id: 19
+    orientations: LWH,WLH
+    placed: 0
+    quantity: 2
+    size:
+      height: 34
+      length: 104
+      width: 78
+    support: 1.0
+  - color: '#ECE133'
+    id: 20
+    orientations: HWL,WHL,HLW,LHW,LWH,WLH
+    placed: 0
+    quantity: 1
+    size:
+      height: 46
+      length: 83
+      width: 77
+    support: 1.0
+  - color: '#D55E00'
+    id: 25
+    orientations: LWH,WLH
+    placed: 0
+    quantity: 1
+    size:
+      height: 30
+      length: 88
+      width: 68
+    support: 1.0
+  - color: '#ECE133'
+    id: 30
+    orientations: LWH,WLH
+    placed: 0
+    quantity: 1
+    size:
+      height: 26
+      length: 87
+      width: 83
+    support: 1.0
+  - color: '#0173B2'
+    id: 32
+    orientations: HLW,LHW,LWH,WLH
+    placed: 0
+    quantity: 3
+    size:
+      height: 21
+      length: 118
+      width: 25
+    support: 1.0
+  - color: '#029E73'
+    id: 34
+    orientations: HLW,LHW,LWH,WLH
+    placed: 0
+    quantity: 1
+    size:
+      height: 26
+      length: 120
+      width: 30
+    support: 1.0
+  - color: '#ECE133'
+    id: 40
+    orientations: LWH,WLH
+    placed: 0
+    quantity: 1
+    size:
+      height: 36
+      length: 119
+      width: 94
+    support: 1.0
+  - color: '#D55E00'
+    id: 45
+    orientations: LWH,WLH
+    placed: 0
+    quantity: 1
+    size:
+      height: 26
+      length: 76
+      width: 74
+    support: 1.0
   palletkinds: []
 description:
   name: '1.1'

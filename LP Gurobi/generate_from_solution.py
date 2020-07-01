@@ -76,6 +76,22 @@ def create_instance(instance, solution, solution_file_name):
             for i in solution['layout']['unplaced']:
                 if i['itemid'] in ids:
                     itemkinds[ids.index(i['itemid'])]["quantity"] += i["quantity"]
+                else:
+                    ids.append(i['itemid'])
+                    temp_block_dict = {}
+                    temp_block_dict["id"] = i['itemid']
+                    temp_block_dict["quantity"] = i["quantity"]
+                    temp_block_dict["placed"] = 0
+                    temp_block_dict["support"] = 1.0
+                    temp_block_dict["color"] = instance['data']['itemkinds'][i['itemid']-1]['color']
+                    #only possible orientation is to place facing upwards like it was created
+                    temp_block_dict["orientations"] = instance['data']['itemkinds'][i['itemid']-1]['orientations']
+                    temp_block_dict["size"] = {}
+                    temp_block_dict["size"]["width"] = instance['data']['itemkinds'][i['itemid']-1]['size']["width"]
+                    temp_block_dict["size"]["length"] = instance['data']['itemkinds'][i['itemid']-1]['size']["length"]
+                    temp_block_dict["size"]["height"] = instance['data']['itemkinds'][i['itemid']-1]['size']["height"]
+                    itemkinds.append(temp_block_dict)
+
 
 
             container["itemkinds"] = itemkinds
