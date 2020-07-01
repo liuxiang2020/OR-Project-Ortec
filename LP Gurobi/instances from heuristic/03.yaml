@@ -1,0 +1,293 @@
+constraints:
+- name: orientation
+- name: support
+data:
+  boxkinds: []
+  containerkinds:
+  - id: 1
+    loadingspaces:
+    - id: 1
+      position: 0,0,0
+      size:
+        height: 220
+        length: 587
+        width: 233
+    quantity: 1
+  itemkinds:
+  - color: '#D55E00'
+    given_orientation:
+    - WLH
+    - WLH
+    - WLH
+    - WLH
+    - WLH
+    - WLH
+    - WLH
+    - WLH
+    - WLH
+    - LWH
+    id: 5
+    orientations: HWL,WHL,HLW,LHW,LWH,WLH
+    placed: 10
+    positions:
+    - 0,0,0
+    - 0,0,73
+    - 0,0,146
+    - 99,0,0
+    - 99,0,73
+    - 99,0,146
+    - 198,0,0
+    - 198,0,73
+    - 198,0,146
+    - 0,120,144
+    quantity: 11
+    size:
+      height: 73
+      length: 120
+      width: 99
+    support: 1.0
+  - color: '#949494'
+    given_orientation:
+    - LWH
+    - LWH
+    - LWH
+    - LWH
+    - LWH
+    - LWH
+    - LWH
+    - LWH
+    - LWH
+    - LWH
+    - LWH
+    - LWH
+    - LWH
+    - LWH
+    - LWH
+    - LWH
+    - LWH
+    - LWH
+    - LWH
+    - LWH
+    - LWH
+    - WLH
+    - WLH
+    id: 1
+    orientations: LWH,WLH
+    placed: 23
+    positions:
+    - 297,0,0
+    - 297,0,30
+    - 297,0,60
+    - 297,0,90
+    - 297,0,120
+    - 297,0,150
+    - 297,0,180
+    - 297,76,0
+    - 297,76,30
+    - 297,76,60
+    - 297,76,90
+    - 297,76,120
+    - 297,76,150
+    - 297,76,180
+    - 297,152,0
+    - 297,152,30
+    - 297,152,60
+    - 297,152,90
+    - 297,152,120
+    - 297,152,150
+    - 297,152,180
+    - 405,0,184
+    - 405,108,184
+    quantity: 24
+    size:
+      height: 30
+      length: 108
+      width: 76
+    support: 1.0
+  - color: '#DE8F05'
+    given_orientation:
+    - WHL
+    - WHL
+    - WHL
+    - WHL
+    - WHL
+    - WHL
+    - WHL
+    - WHL
+    id: 3
+    orientations: HWL,WHL,HLW,LHW,LWH,WLH
+    placed: 8
+    positions:
+    - 405,0,0
+    - 405,0,92
+    - 405,55,0
+    - 405,55,92
+    - 405,110,0
+    - 405,110,92
+    - 405,165,0
+    - 405,165,92
+    quantity: 8
+    size:
+      height: 55
+      length: 92
+      width: 81
+    support: 1.0
+  - color: '#CA9161'
+    given_orientation:
+    - LHW
+    - LHW
+    - LHW
+    - LHW
+    - LHW
+    - LHW
+    - LHW
+    - LHW
+    - LHW
+    - HLW
+    - HLW
+    - HLW
+    id: 7
+    orientations: HLW,LHW,LWH,WLH
+    placed: 12
+    positions:
+    - 486,0,0
+    - 486,0,72
+    - 486,0,144
+    - 486,46,0
+    - 486,46,72
+    - 486,46,144
+    - 486,92,0
+    - 486,92,72
+    - 486,92,144
+    - 210,120,0
+    - 210,120,72
+    - 210,120,144
+    quantity: 12
+    size:
+      height: 46
+      length: 98
+      width: 72
+    support: 1.0
+  - color: '#FBAFE4'
+    given_orientation:
+    - WLH
+    - WLH
+    - WLH
+    - WLH
+    - WLH
+    id: 8
+    orientations: LWH,WLH
+    placed: 5
+    positions:
+    - 486,138,0
+    - 486,138,31
+    - 486,138,62
+    - 486,138,93
+    - 486,138,124
+    quantity: 9
+    size:
+      height: 31
+      length: 95
+      width: 66
+    support: 1.0
+  - color: '#029E73'
+    given_orientation:
+    - WLH
+    - WLH
+    - WLH
+    - WLH
+    - WLH
+    - WLH
+    - WLH
+    - WLH
+    - WLH
+    - WLH
+    - HLW
+    id: 4
+    orientations: HLW,LHW,LWH,WLH
+    placed: 11
+    positions:
+    - 552,138,0
+    - 552,138,28
+    - 552,138,56
+    - 552,138,84
+    - 552,138,112
+    - 552,138,140
+    - 552,138,168
+    - 486,138,155
+    - 519,138,155
+    - 519,138,183
+    - 486,138,183
+    quantity: 11
+    size:
+      height: 28
+      length: 81
+      width: 33
+    support: 1.0
+  - color: '#CC78BC'
+    given_orientation:
+    - WLH
+    - WLH
+    - WLH
+    - WLH
+    - WLH
+    - WLH
+    - WLH
+    - WLH
+    - WLH
+    - HLW
+    id: 6
+    orientations: HLW,LHW,LWH,WLH
+    placed: 10
+    positions:
+    - 0,120,0
+    - 0,120,48
+    - 0,120,96
+    - 70,120,0
+    - 70,120,48
+    - 70,120,96
+    - 140,120,0
+    - 140,120,48
+    - 140,120,96
+    - 120,120,144
+    quantity: 10
+    size:
+      height: 48
+      length: 111
+      width: 70
+    support: 1.0
+  - color: '#0173B2'
+    given_orientation:
+    - HLW
+    - HLW
+    - HLW
+    - HLW
+    - HLW
+    - HLW
+    id: 2
+    orientations: HLW,LHW,LWH,WLH
+    placed: 6
+    positions:
+    - 256,120,0
+    - 256,120,43
+    - 256,120,86
+    - 256,120,129
+    - 256,120,172
+    - 168,120,144
+    quantity: 9
+    size:
+      height: 25
+      length: 110
+      width: 43
+    support: 1.0
+  palletkinds: []
+description:
+  name: '1.1'
+  set: Bischoff & Ratcliff
+objectives:
+- name: average_fill_rate
+  priority: 1
+  weight: 1.0
+- name: item_count
+  priority: 2
+  weight: 1.0
