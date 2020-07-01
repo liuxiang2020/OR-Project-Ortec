@@ -126,7 +126,7 @@ data:
     - 405,110,92
     - 405,165,0
     - 405,165,92
-    quantity: 9
+    quantity: 8
     size:
       height: 55
       length: 92
@@ -162,7 +162,7 @@ data:
     - 210,120,0
     - 210,120,72
     - 210,120,144
-    quantity: 13
+    quantity: 12
     size:
       height: 46
       length: 98
@@ -184,7 +184,7 @@ data:
     - 486,138,62
     - 486,138,93
     - 486,138,124
-    quantity: 6
+    quantity: 9
     size:
       height: 31
       length: 95
@@ -218,7 +218,7 @@ data:
     - 519,138,155
     - 519,138,183
     - 486,138,183
-    quantity: 12
+    quantity: 11
     size:
       height: 28
       length: 81
@@ -250,7 +250,7 @@ data:
     - 140,120,48
     - 140,120,96
     - 120,120,144
-    quantity: 11
+    quantity: 10
     size:
       height: 48
       length: 111
@@ -274,7 +274,7 @@ data:
     - 256,120,129
     - 256,120,172
     - 168,120,144
-    quantity: 7
+    quantity: 9
     size:
       height: 25
       length: 110

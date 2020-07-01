@@ -28,7 +28,7 @@ data:
     - 73,0,0
     - 146,0,0
     - 219,0,0
-    quantity: 5
+    quantity: 4
     size:
       height: 73
       length: 120
@@ -76,7 +76,7 @@ data:
     - 108,166,44
     - 162,99,44
     - 162,166,44
-    quantity: 9
+    quantity: 8
     size:
       height: 54
       length: 91
@@ -102,7 +102,7 @@ data:
     - 315,126,0
     - 315,153,0
     - 292,49,147
-    quantity: 8
+    quantity: 7
     size:
       height: 26
       length: 95
@@ -122,7 +122,7 @@ data:
     - 220,99,70
     - 314,99,26
     - 314,99,70
-    quantity: 5
+    quantity: 4
     size:
       height: 44
       length: 94
@@ -146,7 +146,7 @@ data:
     - 410,99,93
     - 410,99,124
     - 410,99,155
-    quantity: 7
+    quantity: 6
     size:
       height: 31
       length: 95
@@ -170,7 +170,7 @@ data:
     - 410,165,90
     - 410,165,120
     - 410,165,150
-    quantity: 7
+    quantity: 6
     size:
       height: 30
       length: 88
@@ -186,7 +186,7 @@ data:
     positions:
     - 498,165,0
     - 498,165,97
-    quantity: 3
+    quantity: 2
     size:
       height: 62
       length: 97
@@ -212,7 +212,7 @@ data:
     - 560,165,132
     - 560,165,165
     - 560,190,108
-    quantity: 8
+    quantity: 7
     size:
       height: 23
       length: 33
@@ -230,7 +230,7 @@ data:
     - 560,190,0
     - 560,190,36
     - 560,190,72
-    quantity: 4
+    quantity: 3
     size:
       height: 25
       length: 36
@@ -244,7 +244,7 @@ data:
     placed: 1
     positions:
     - 498,165,194
-    quantity: 2
+    quantity: 1
     size:
       height: 26
       length: 64
@@ -264,7 +264,7 @@ data:
     - 410,198,180
     - 148,194,135
     - 181,194,135
-    quantity: 5
+    quantity: 4
     size:
       height: 33
       length: 56
@@ -284,7 +284,7 @@ data:
     - 554,99,0
     - 554,99,61
     - 554,99,122
-    quantity: 5
+    quantity: 4
     size:
       height: 31
       length: 61
@@ -302,7 +302,7 @@ data:
     - 505,99,0
     - 505,99,78
     - 292,0,147
-    quantity: 4
+    quantity: 3
     size:
       height: 49
       length: 78
@@ -318,7 +318,7 @@ data:
     positions:
     - 505,99,156
     - 506,38,144
-    quantity: 3
+    quantity: 2
     size:
       height: 41
       length: 60
@@ -344,7 +344,7 @@ data:
     - 552,0,62
     - 552,0,93
     - 552,0,124
-    quantity: 8
+    quantity: 7
     size:
       height: 31
       length: 93
@@ -364,7 +364,7 @@ data:
     - 220,180,43
     - 220,205,0
     - 220,205,43
-    quantity: 5
+    quantity: 4
     size:
       height: 25
       length: 110
@@ -384,7 +384,7 @@ data:
     - 330,180,36
     - 330,180,72
     - 330,180,108
-    quantity: 5
+    quantity: 4
     size:
       height: 36
       length: 52
@@ -402,7 +402,7 @@ data:
     - 371,180,0
     - 371,180,61
     - 371,180,122
-    quantity: 4
+    quantity: 3
     size:
       height: 39
       length: 61
@@ -420,7 +420,7 @@ data:
     - 330,180,144
     - 330,180,182
     - 506,0,144
-    quantity: 4
+    quantity: 3
     size:
       height: 38
       length: 41
@@ -440,7 +440,7 @@ data:
     - 220,180,135
     - 220,205,86
     - 220,205,135
-    quantity: 5
+    quantity: 4
     size:
       height: 25
       length: 107
@@ -462,7 +462,7 @@ data:
     - 324,99,191
     - 0,203,135
     - 0,203,167
-    quantity: 6
+    quantity: 5
     size:
       height: 25
       length: 71
@@ -480,7 +480,7 @@ data:
     - 220,99,114
     - 220,99,148
     - 220,99,182
-    quantity: 4
+    quantity: 3
     size:
       height: 34
       length: 104
@@ -498,7 +498,7 @@ data:
     - 324,99,114
     - 126,0,120
     - 209,0,120
-    quantity: 4
+    quantity: 3
     size:
       height: 46
       length: 83
@@ -516,7 +516,7 @@ data:
     - 324,145,114
     - 324,145,147
     - 324,145,180
-    quantity: 4
+    quantity: 3
     size:
       height: 28
       length: 81
@@ -550,7 +550,7 @@ data:
     - 148,99,135
     - 0,0,120
     - 63,0,120
-    quantity: 4
+    quantity: 3
     size:
       height: 63
       length: 95
@@ -568,7 +568,7 @@ data:
     - 71,203,135
     - 552,0,155
     - 472,0,108
-    quantity: 4
+    quantity: 3
     size:
       height: 30
       length: 74
@@ -584,7 +584,7 @@ data:
     positions:
     - 0,99,200
     - 0,0,200
-    quantity: 3
+    quantity: 5
     size:
       height: 20
       length: 113
@@ -602,7 +602,7 @@ data:
     - 292,0,0
     - 292,0,49
     - 292,0,98
-    quantity: 4
+    quantity: 3
     size:
       height: 49
       length: 96
@@ -620,7 +620,7 @@ data:
     - 387,0,0
     - 387,0,36
     - 387,0,72
-    quantity: 4
+    quantity: 3
     size:
       height: 36
       length: 119
@@ -636,7 +636,7 @@ data:
     positions:
     - 506,0,0
     - 506,0,72
-    quantity: 3
+    quantity: 2
     size:
       height: 46
       length: 98
@@ -672,7 +672,7 @@ data:
     - 126,46,120
     - 126,46,150
     - 126,46,180
-    quantity: 4
+    quantity: 3
     size:
       height: 26
       length: 120
@@ -686,7 +686,7 @@ data:
     placed: 1
     positions:
     - 126,72,120
-    quantity: 2
+    quantity: 1
     size:
       height: 21
       length: 118

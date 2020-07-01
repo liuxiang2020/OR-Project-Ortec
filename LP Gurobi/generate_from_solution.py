@@ -1,4 +1,4 @@
-from config import *
+
 import yaml
 import sys
 
@@ -75,7 +75,7 @@ def create_instance(instance, solution, solution_file_name):
                     itemkinds.append(temp_block_dict)
             for i in solution['layout']['unplaced']:
                 if i['itemid'] in ids:
-                    itemkinds[ids.index(i['itemid'])]["quantity"] += 1
+                    itemkinds[ids.index(i['itemid'])]["quantity"] += i["quantity"]
 
 
             container["itemkinds"] = itemkinds

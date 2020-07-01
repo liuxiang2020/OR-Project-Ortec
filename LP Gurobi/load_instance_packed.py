@@ -46,6 +46,8 @@ def load_instance_packed(path):
                 stop = i["placed"]
                 given_orientation += i["given_orientation"]
                 positions += i["positions"]
+                for c in range(item.quantity):
+                    color.append(i["color"])
         #print(stop)
         #print(item.quantity)
         for i in range(item.quantity):
@@ -53,7 +55,6 @@ def load_instance_packed(path):
             q.append(item.boundingBox[1])
             r.append(item.boundingBox[2])
             o.append(item.orientations)
-            color.append(instance["data"]["itemkinds"][counter]["color"])
             itemid.append(item.id)
             if i < stop:
                 placed.append(1)
@@ -65,7 +66,7 @@ def load_instance_packed(path):
     L = lbInstance.containerkinds[0].loadingspaces[0].boundingBox[0]
     W = lbInstance.containerkinds[0].loadingspaces[0].boundingBox[1]
     H = lbInstance.containerkinds[0].loadingspaces[0].boundingBox[2]
-    
+
     # big M
     M = max([L, W, H])*1.05
 

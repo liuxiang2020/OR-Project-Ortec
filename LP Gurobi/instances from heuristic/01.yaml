@@ -92,7 +92,7 @@ data:
     - 432,55,120
     - 432,110,120
     - 432,165,120
-    quantity: 37
+    quantity: 39
     size:
       height: 55
       length: 92
@@ -242,7 +242,7 @@ data:
     - 195,108,184
     - 238,108,184
     - 281,108,184
-    quantity: 25
+    quantity: 33
     size:
       height: 25
       length: 110

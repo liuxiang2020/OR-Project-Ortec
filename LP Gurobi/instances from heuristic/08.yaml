@@ -32,7 +32,7 @@ data:
     - 62,67,0
     - 124,0,0
     - 124,67,0
-    quantity: 7
+    quantity: 6
     size:
       height: 62
       length: 97
@@ -54,7 +54,7 @@ data:
     - 334,0,0
     - 408,0,0
     - 482,0,0
-    quantity: 6
+    quantity: 5
     size:
       height: 65
       length: 104
@@ -76,7 +76,7 @@ data:
     - 312,104,0
     - 375,104,0
     - 438,104,0
-    quantity: 6
+    quantity: 5
     size:
       height: 63
       length: 95
@@ -94,7 +94,7 @@ data:
     - 186,104,95
     - 290,104,95
     - 394,104,95
-    quantity: 4
+    quantity: 3
     size:
       height: 34
       length: 104
@@ -112,7 +112,7 @@ data:
     - 186,184,0
     - 186,184,96
     - 0,81,97
-    quantity: 4
+    quantity: 3
     size:
       height: 49
       length: 96
@@ -132,7 +132,7 @@ data:
     - 281,184,70
     - 186,104,129
     - 297,104,129
-    quantity: 5
+    quantity: 4
     size:
       height: 48
       length: 111
@@ -150,7 +150,7 @@ data:
     - 392,184,0
     - 392,184,77
     - 95,81,97
-    quantity: 4
+    quantity: 3
     size:
       height: 46
       length: 83
@@ -172,7 +172,7 @@ data:
     - 475,184,110
     - 475,184,165
     - 392,184,154
-    quantity: 6
+    quantity: 5
     size:
       height: 41
       length: 60
@@ -192,7 +192,7 @@ data:
     - 535,184,52
     - 535,184,104
     - 535,184,156
-    quantity: 5
+    quantity: 4
     size:
       height: 36
       length: 52
@@ -212,7 +212,7 @@ data:
     - 447,184,187
     - 447,207,154
     - 447,207,187
-    quantity: 5
+    quantity: 4
     size:
       height: 23
       length: 33
@@ -240,7 +240,7 @@ data:
     - 317,184,190
     - 186,184,192
     - 222,184,192
-    quantity: 9
+    quantity: 8
     size:
       height: 25
       length: 36
@@ -258,7 +258,7 @@ data:
     - 353,184,140
     - 353,184,179
     - 95,81,180
-    quantity: 4
+    quantity: 3
     size:
       height: 38
       length: 41
@@ -280,7 +280,7 @@ data:
     - 0,0,97
     - 55,0,97
     - 110,0,97
-    quantity: 6
+    quantity: 5
     size:
       height: 55
       length: 92
@@ -306,7 +306,7 @@ data:
     - 501,159,128
     - 501,159,160
     - 501,132,184
-    quantity: 8
+    quantity: 7
     size:
       height: 25
       length: 71
@@ -328,7 +328,7 @@ data:
     - 456,73,98
     - 456,73,131
     - 456,73,164
-    quantity: 6
+    quantity: 5
     size:
       height: 28
       length: 81
@@ -352,7 +352,7 @@ data:
     - 556,0,0
     - 556,0,56
     - 556,0,112
-    quantity: 7
+    quantity: 6
     size:
       height: 30
       length: 74
@@ -376,7 +376,7 @@ data:
     - 346,139,177
     - 271,0,153
     - 271,0,186
-    quantity: 7
+    quantity: 6
     size:
       height: 33
       length: 56
@@ -394,7 +394,7 @@ data:
     - 186,104,177
     - 266,104,177
     - 95,0,189
-    quantity: 4
+    quantity: 3
     size:
       height: 29
       length: 80
@@ -414,7 +414,7 @@ data:
     - 186,0,109
     - 267,0,65
     - 267,0,109
-    quantity: 5
+    quantity: 4
     size:
       height: 44
       length: 94
@@ -436,7 +436,7 @@ data:
     - 348,0,125
     - 348,0,155
     - 348,0,185
-    quantity: 6
+    quantity: 7
     size:
       height: 30
       length: 108
@@ -452,7 +452,7 @@ data:
     positions:
     - 456,0,65
     - 72,134,0
-    quantity: 3
+    quantity: 2
     size:
       height: 73
       length: 120
@@ -470,7 +470,7 @@ data:
     - 456,0,185
     - 456,31,185
     - 306,0,153
-    quantity: 4
+    quantity: 3
     size:
       height: 31
       length: 93
@@ -490,7 +490,7 @@ data:
     - 348,76,92
     - 348,76,119
     - 348,76,146
-    quantity: 5
+    quantity: 4
     size:
       height: 26
       length: 95
@@ -506,7 +506,7 @@ data:
     positions:
     - 186,0,153
     - 186,0,183
-    quantity: 3
+    quantity: 5
     size:
       height: 30
       length: 85
@@ -546,7 +546,7 @@ data:
     - 72,207,43
     - 72,207,86
     - 72,207,129
-    quantity: 5
+    quantity: 4
     size:
       height: 25
       length: 110
@@ -568,7 +568,7 @@ data:
     - 72,134,182
     - 0,134,184
     - 0,0,189
-    quantity: 6
+    quantity: 5
     size:
       height: 31
       length: 95

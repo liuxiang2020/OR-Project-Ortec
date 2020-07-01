@@ -38,7 +38,7 @@ data:
     - 198,0,0
     - 198,0,73
     - 198,0,146
-    quantity: 10
+    quantity: 9
     size:
       height: 73
       length: 120
@@ -150,7 +150,7 @@ data:
     - 478,110,46
     - 478,110,92
     - 478,110,138
-    quantity: 5
+    quantity: 4
     size:
       height: 46
       length: 98
@@ -214,7 +214,7 @@ data:
     - 478,135,184
     - 478,160,184
     - 469,84,184
-    quantity: 11
+    quantity: 10
     size:
       height: 25
       length: 71
@@ -324,7 +324,7 @@ data:
     - 0,120,180
     - 66,120,180
     - 132,120,180
-    quantity: 11
+    quantity: 12
     size:
       height: 31
       length: 95

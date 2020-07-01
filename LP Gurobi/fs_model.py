@@ -18,6 +18,10 @@ def solve(I, M, p, q, r, o, L, W, H, placed, given_orientation, positions):
     # init model
     model = Model(name="SCLP")
 
+    #model instructions
+    #model.Params.MIPFocus = 1 # focus on finding feasible solutions quickly
+    #model.Params.VarBranch = 3 # strong branching
+
     # decision variables
     ## s: equal to 1 if box i is placed in container and 0 otherwise
     s = {}
@@ -29,18 +33,18 @@ def solve(I, M, p, q, r, o, L, W, H, placed, given_orientation, positions):
     y = {}
     z = {}
     for i in I:
-        x[i] = model.addVar(vtype=GRB.CONTINUOUS, lb=0.0, ub=L, name="x_%i" % (i))
-        y[i] = model.addVar(vtype=GRB.CONTINUOUS, lb=0.0, ub=W, name="y_%i" % (i))
-        z[i] = model.addVar(vtype=GRB.CONTINUOUS, lb=0.0, ub=H, name="z_%i" % (i))
+        x[i] = model.addVar(vtype=GRB.INTEGER, lb=0.0, ub=L, name="x_%i" % (i))
+        y[i] = model.addVar(vtype=GRB.INTEGER, lb=0.0, ub=W, name="y_%i" % (i))
+        z[i] = model.addVar(vtype=GRB.INTEGER, lb=0.0, ub=H, name="z_%i" % (i))
 
     ## xr, yr, zr: coordinates of the rear-right corner of box i
     xr = {}
     yr = {}
     zr = {}
     for i in I:
-        xr[i] = model.addVar(vtype=GRB.CONTINUOUS, lb=0.0, ub=L, name="xr_%i" % (i))
-        yr[i] = model.addVar(vtype=GRB.CONTINUOUS, lb=0.0, ub=W, name="yr_%i" % (i))
-        zr[i] = model.addVar(vtype=GRB.CONTINUOUS, lb=0.0, ub=H, name="zr_%i" % (i))
+        xr[i] = model.addVar(vtype=GRB.INTEGER, lb=0.0, ub=L, name="xr_%i" % (i))
+        yr[i] = model.addVar(vtype=GRB.INTEGER, lb=0.0, ub=W, name="yr_%i" % (i))
+        zr[i] = model.addVar(vtype=GRB.INTEGER, lb=0.0, ub=H, name="zr_%i" % (i))
 
 
     ## lx, ly, lz, wx, wy, wz, hx, hy, hz: equal to 1 if the l-/w-/h-dimension of box i is parallel to to the x-/y-/z-axis
@@ -82,15 +86,15 @@ def solve(I, M, p, q, r, o, L, W, H, placed, given_orientation, positions):
                 f[i, k] = model.addVar(vtype=GRB.BINARY, name="f_%i_%i" % (i, k))
 
 
-    #stability variables
-    '''
+
     #1 if box i is on the ground
+    '''
     g = {}
     for i in I:
         g[i] = model.addVar(vtype=GRB.BINARY, name="g_%i" % (i))
 
     h = {}
-    o = {}
+    os = {}
     sk = {}
     n1 = {}
     n2 = {}
@@ -103,7 +107,7 @@ def solve(I, M, p, q, r, o, L, W, H, placed, given_orientation, positions):
                 #0 if box k has the suitable hight to support box i
                 h[i, k] = model.addVar(vtype=GRB.BINARY, name="h_%i_%i" % (i, k))
                 #0 if projections on the XY plane of the boxes i and k have a nonempty intersection
-                o[i, k] = model.addVar(vtype=GRB.BINARY, name="o_%i_%i" % (i, k))
+                os[i, k] = model.addVar(vtype=GRB.BINARY, name="o_%i_%i" % (i, k))
                 #1 if box k support
                 sk[i, k] = model.addVar(vtype=GRB.BINARY, name="sk_%i_%i" % (i, k))
                 #0 if xk<xi
@@ -132,7 +136,7 @@ def solve(I, M, p, q, r, o, L, W, H, placed, given_orientation, positions):
     #maximize used box volume
     model.setObjective(quicksum(p[i] * q[i] * r[i] * s[i] for i in I), GRB.MAXIMIZE)
     #minimize avaiable space
-    #model.setObjective(L*W*H - quicksum(p[i] * q[i] * r[i] * s[i] for i in I), GRB.MINIMIZE)
+    #model.setObjective(int(L*W*H) - quicksum(p[i] * q[i] * r[i] * s[i] for i in I), GRB.MINIMIZE)
 
     # constraints
 
@@ -140,7 +144,7 @@ def solve(I, M, p, q, r, o, L, W, H, placed, given_orientation, positions):
     for i in I:
         for k in I:
             if i != k:
-                '''
+
                 model.addConstr(x[k] + p[k] * lx[k] + q[k] * wx[k] + r[k] * hx[k] <= x[i] +  (1- a[i, k]) * L)
                 model.addConstr(a[i,k] + a[k,i] <= 1)
                 model.addConstr(y[k] + p[k] * ly[k] + q[k] * wy[k] + r[k] * hy[k] <= y[i] +  (1 - b[i, k]) * W)
@@ -159,17 +163,13 @@ def solve(I, M, p, q, r, o, L, W, H, placed, given_orientation, positions):
                 model.addConstr(z[k] + p[k] * lz[k] + q[k] * wz[k] + r[k] * hz[k] <= z[i] + (1 - f[i, k]) * M)
 
                 model.addConstr(a[i, k] + b[i, k] + c[i, k] + d[i, k] + e[i, k] + f[i, k] >= s[i] + s[k] - 1)
-
+                '''
     for i in I:
-        '''
-        model.addConstr(xr[i] <= L * s[i])
-        model.addConstr(yr[i] <= W * s[i])
-        model.addConstr(zr[i] <= H * s[i])
-        #
-        #model.addConstr(x[i] + p[i] * lx[i] + q[i] * wx[i] + r[i] * hx[i] <= L + (1 - s[i]) * M)
-        #model.addConstr(y[i] + p[i] * ly[i] + q[i] * wy[i] + r[i] * hy[i] <= W + (1 - s[i]) * M)
-        #model.addConstr(z[i] + p[i] * lz[i] + q[i] * wz[i] + r[i] * hz[i] <= H + (1 - s[i]) * M)
-        '''
+
+        #model.addConstr(xr[i] <= L * s[i])
+        #model.addConstr(yr[i] <= W * s[i])
+        #model.addConstr(zr[i] <= H * s[i])
+
         ## each box i must be placed completely inside of container
         model.addConstr(x[i] + p[i] * lx[i] + q[i] * wx[i] + r[i] * hx[i] <= L + (1 - s[i]) * M)
         model.addConstr(y[i] + p[i] * ly[i] + q[i] * wy[i] + r[i] * hy[i] <= W + (1 - s[i]) * M)
@@ -189,40 +189,37 @@ def solve(I, M, p, q, r, o, L, W, H, placed, given_orientation, positions):
         model.addConstr(lz[i] + wz[i] + hz[i] == 1)
 
 
-    """
+
     ## allowed orientations:
     for i in I:
-        # x axis
         string = ""
         for st in o[i]:
             string = string + st[0]
         if "L" not in string:
-            model.addConstr(lx[i] == 0)
+            model.addConstr(lx[i] == 0, name="19.L_%i" % (i))
         if "W" not in string:
-            model.addConstr(wx[i] == 0)
+            model.addConstr(wx[i] == 0, name="19.W_%i" % (i))
         if "H" not in string:
-            model.addConstr(hx[i] == 0)
-        # y axis
+            model.addConstr(hx[i] == 0, name="19.H_%i" % (i))
         string = ""
         for st in o[i]:
             string = string + st[1]
         if "L" not in string:
-            model.addConstr(ly[i] == 0)
+            model.addConstr(ly[i] == 0, name="20.L_%i" % (i))
         if "W" not in string:
-            model.addConstr(wy[i] == 0)
+            model.addConstr(wy[i] == 0, name="20.W_%i" % (i))
         if "H" not in string:
-            model.addConstr(hy[i] == 0)
-        # y axis
+            model.addConstr(hy[i] == 0, name="20.H_%i" % (i))
         string = ""
         for st in o[i]:
             string = string + st[2]
         if "L" not in string:
-            model.addConstr(lz[i] == 0)
+            model.addConstr(lz[i] == 0, name="21.L_%i" % (i))
         if "W" not in string:
-            model.addConstr(wz[i] == 0)
+            model.addConstr(wz[i] == 0, name="21.W_%i" % (i))
         if "H" not in string:
-            model.addConstr(hz[i] == 0)
-    """
+            model.addConstr(hz[i] == 0, name="21.H_%i" % (i))
+
 
 
     ## full support (box to box)
@@ -242,19 +239,19 @@ def solve(I, M, p, q, r, o, L, W, H, placed, given_orientation, positions):
                 model.addConstr(h[i,k] <= s1[i,k])
                 model.addConstr(s1[i,k] <= h[i,k] * H)
                 #boxes i and k share a part of their orthogonal projection
-                model.addConstr(o[i,k] <= a[i,k] + a[k,i] + b[i,k] + b[k,i])
-                model.addConstr(a[i,k] + a[k,i] + b[i,k] + b[k,i] <= 2 * o[i,k])
+                model.addConstr(os[i,k] <= a[i,k] + a[k,i] + b[i,k] + b[k,i])
+                model.addConstr(a[i,k] + a[k,i] + b[i,k] + b[k,i] <= 2 * os[i,k])
                 #if bottom of i supported by top of k, it implies h + o = 0
-                model.addConstr(1 - sk[i,k] <= h[i,k] + o[i,k])
-                model.addConstr(h[i,k] + o[i,k] <= 2 * (1 - sk[i,k]))
+                model.addConstr(1 - sk[i,k] <= h[i,k] + os[i,k])
+                model.addConstr(h[i,k] + os[i,k] <= 2 * (1 - sk[i,k]))
                 for t in range(0,4):
                     #box k supports one vertex of box i iff it is supported by box k (s(i,k) = 1)
                     model.addConstr(vs[i,k,t] <= sk[i,k])
                     #vertex support
-                    model.addConstr(n1[i,k] + n2[i,k] <= 2* (1 - vs[i,k,t]))
-                    model.addConstr(n2[i,k] + n3[i,k] <= 2* (1 - vs[i,k,t]))
-                    model.addConstr(n3[i,k] + n4[i,k] <= 2* (1 - vs[i,k,t]))
-                    model.addConstr(n1[i,k] + n4[i,k] <= 2* (1 - vs[i,k,t]))
+                model.addConstr(n1[i,k] + n2[i,k] <= 2* (1 - vs[i,k,t]))
+                model.addConstr(n2[i,k] + n3[i,k] <= 2* (1 - vs[i,k,t]))
+                model.addConstr(n3[i,k] + n4[i,k] <= 2* (1 - vs[i,k,t]))
+                model.addConstr(n1[i,k] + n4[i,k] <= 2* (1 - vs[i,k,t]))
                 #similar to
                 model.addConstr(x[k] <= x[i] + n1[i,k] * L)
                 model.addConstr(y[k] <= y[i] + n2[i,k] * W)
@@ -265,9 +262,10 @@ def solve(I, M, p, q, r, o, L, W, H, placed, given_orientation, positions):
     model.update()
 
     for i in I:
-        model.getVarByName("s_%i" % (i)).start = placed[i]
+        #s[i].start = placed[i]
 
         if(placed[i] == 1):
+            s[i].start = placed[i]
             temp = given_orientation.pop(0)
             if temp == "LWH":
                 lx[i].start = 1; ly[i].start = 0; lz[i].start = 0
@@ -303,7 +301,7 @@ def solve(I, M, p, q, r, o, L, W, H, placed, given_orientation, positions):
             model.getVarByName("xr_%i" % (i)).start = x[i].start + lx[i].start * p[i] + wx[i].start * q[i] + hx[i].start * r[i]
             model.getVarByName("yr_%i" % (i)).start = y[i].start + ly[i].start * p[i] + wy[i].start * q[i] + hy[i].start * r[i]
             model.getVarByName("zr_%i" % (i)).start = z[i].start + lz[i].start * p[i] + wz[i].start * q[i] + hz[i].start * r[i]
-
+    model.relax()
     model.optimize()
 
     if model.status == GRB.OPTIMAL:
