@@ -18,10 +18,10 @@ def completing_process(prevState, block_list):
             bestBlock = cBlocKList[0]
             curState.add_block_to_space(bestBlock, space)
 
-            curState.set_residualSpaceList = create_residual_space(bestBlock, curState.get_residualSpaceList())
+            curState.set_residualSpaceList(create_residual_space(bestBlock, curState.get_residualSpaceList()))
 
 
         else:
-            curState.set_residualSpaceList = transfer_residual_space(curState.get_residualSpaceList())
+            curState.set_residualSpaceList(transfer_residual_space(curState.get_residualSpaceList()))
 
     return curState

@@ -2,6 +2,7 @@ from create_residual_space import create_residual_space
 from generate_candidate_blocklist import generate_candidate_block_list
 from build_m1_tree import build_m1_tree
 import math
+import copy
 from config import *
 
 def calc_L(k,m):
@@ -24,7 +25,7 @@ def Progressively_Refined_Tree_Search(block, state, block_list):
     cBlocKList = generate_candidate_block_list(space.get_size(), block_list, state.get_available_items())
     #block = cBlocKList[0]
     #current best solution is putting just one block in the empty size
-    best_solution = state 
+    best_solution = copy.deepcopy(state) 
 
     if cBlocKList:
         m = M_Zero
@@ -40,7 +41,7 @@ def Progressively_Refined_Tree_Search(block, state, block_list):
                     pass
                 else:
                     for d in range(len(bkTab[j-1])):
-                        nState = bkTab[j-1][d][0]
+                        nState = copy.deepcopy(bkTab[j-1][d][0])
                         nBlock = bkTab[j-1][d][1]
                         bkTab.append(build_m1_tree(nBlock, nState, m, K, j, block_list))
             for j in range(min(L, len(bkTab))):
