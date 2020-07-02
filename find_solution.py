@@ -8,6 +8,7 @@ from State import State
 from generate_candidate_blocklist import generate_candidate_block_list
 from inspect import currentframe, getframeinfo
 from config import *
+import copy
 import datetime
 
 def lineno():
@@ -35,18 +36,20 @@ def find_solution(itemKinds, container_size):
     space_list = [space]
     packState = State(space_list, container_size)
     packState.set_available_items(available_items)
+    best_intermediate = copy.deepcopy(packState)
     print("Setup & Blocklist:")
     print(datetime.datetime.now() - time)
     while (packState.get_residualSpaceList()):
+        s = copy.deepcopy(packState)
         considered_space = packState.get_residualSpaceList()[-1]
         # print("in space", considered_space)
         candidate_list = generate_candidate_block_list(considered_space.get_size(), block_list, available_items)
         # print("with space", considered_space, "the candidate_list", candidate_list)
         if candidate_list:
             if Parallel:
-                packed_block = search_block_p(packState, candidate_list, block_list, available_items)
+                packed_block,intermediate = search_block_p(s, candidate_list, block_list, available_items)
             else:
-                packed_block = search_block(packState, candidate_list, block_list, available_items)
+                packed_block,intermediate = search_block(s, candidate_list, block_list, available_items)
             #packed_block = candidate_list[0]
             packState.add_block_to_space(packed_block, considered_space)
             space_list = create_residual_space(packed_block, space_list)
@@ -56,5 +59,10 @@ def find_solution(itemKinds, container_size):
             else:
                 space_list = transfer_residual_space(space_list)
         packState.set_residualSpaceList(space_list)
+        if intermediate.get_utilization() > best_intermediate.get_utilization():
+            best_intermediate = intermediate
     # print("packstate", packState)
-    return packState, block_list
+    if best_intermediate.get_utilization() > packState.get_utilization():
+        return best_intermediate,block_list
+    else:
+        return packState, block_list

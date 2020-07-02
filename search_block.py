@@ -23,6 +23,7 @@ def search_block(packState, candidateBlockList, block_list, available_boxes):
     #     size = MAX_SIZE 
     bestIndex = -1
     bestUtilization = -1
+    res = 0
     #print(candidateBlockList[0:2])
     for i in range(min(size, MAX_SIZE)):
         # curent packState needed to be considered contains 
@@ -42,8 +43,10 @@ def search_block(packState, candidateBlockList, block_list, available_boxes):
 
             bestIndex = i
             bestUtilization = Sol.get_utilization()
+            res = Sol
             #print("bestUtilization", bestUtilization)
     # return the suitable block for the residual space
     if bestIndex==-1:
         exit()
-    return candidateBlockList[bestIndex]
+    print(bestUtilization)
+    return candidateBlockList[bestIndex],res
