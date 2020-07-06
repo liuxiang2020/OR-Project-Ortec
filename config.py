@@ -6,7 +6,7 @@ global MAX_GB
 global Parallel
 global MAX_SIZE
 
-MAX_GB = 4 # Used in create_blocks.py, sets the number of general block combination iterations
+MAX_GB = 0 # Used in create_blocks.py, sets the number of general block combination iterations
 K = 9 # at every stage the k best solutions are used for the next layers treesearch, number of (m,1) trees
 M_Zero = 3 # Size of the (m,1) trees, branching factor
 SCALE = 3 #...
