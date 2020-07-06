@@ -6,7 +6,7 @@ name: Solution verification
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [ master, kk/new_tree_search ]
   pull_request:
     branches: [ master ]
 
