@@ -181,7 +181,7 @@ jobs:
           echo $ut10 >> utilizations.txt
           printf "\nAverage utilization over br01.001.yaml to br10.001.yaml: " >> utilizations.txt
           average=$(python -c "print (($ut1 + $ut2 + $ut3 + $ut4 + $ut5 + $ut6 + $ut7 + $ut8 + $ut9 + $ut10)/10)")
-          echo average >> utilizations.txt
+          echo $average >> utilizations.txt
           cat utilizations.txt
       
     # Store utilization values
