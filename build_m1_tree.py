@@ -4,43 +4,32 @@ from completing_process import completing_process
 import copy
 
 
-def build_m1_tree(block, state, m, k, j, block_list):
-    bestTbl = [] #list of k best interim solution saves [state,block and utilization]
-    s = copy.deepcopy(state)    
-    #print("line 10", state.get_residualSpaceList())
-    if state.get_residualSpaceList():
-        #print("line 11 build_m1_tree",block)
-        space = state.get_residualSpaceList()[-1]
-        #state.set_residualSpaceList(create_residual_space(block, state.get_residualSpaceList()))
-    else:
-        #there is no space left. So return the last state        
-        return bestTbl.append([s, block, state.get_utilization()])
-    #print("line 16",state.get_residualSpaceList())
-    scomp = completing_process(s, block_list)
-    bestTbl.append([scomp, block, scomp.get_utilization()])
-    cBlocKList = generate_candidate_block_list(space.get_size(), block_list, state.get_available_items())
-
-    if cBlocKList:
-        for i in range(min(len(cBlocKList), m-1)):
-            prevState = copy.deepcopy(state)
-            # if we use get residual ,then candidate block size need to recalculated since
-            # curently the candidate block list is based on previously space we got
-            # prevSpace = prevState.get_residualSpaceList()[-1]
-            prevSpace = space
-            cBlock = cBlocKList[i]
-            prevState.add_block_to_space(cBlock, prevSpace)
-            prevState.set_residualSpaceList(create_residual_space(cBlock, prevState.get_residualSpaceList()))
-            fState = completing_process(prevState, block_list)
-
-            if len(bestTbl) == k:
-                for l in range(k-1, 0 , -1):
-                    if bestTbl[l][0].get_utilization() < fState.get_utilization():
-                        bestTbl[l][0] = fState
-                        bestTbl[l][1] = cBlock
-                        bestTbl[l][2] = fState.get_utilization()
-                        break
+def build_m1_tree(block, input_state, m, k, j, block_list):
+    state = copy.deepcopy(input_state)
+    
+    space = copy.deepcopy(state.get_residualSpaceList())
+    
+    cBlockList = generate_candidate_block_list(state.get_residualSpaceList()[-1].get_size(), block_list, state.get_available_items())
+    
+    bestkTbl = []
+    
+    if cBlockList == []:
+        return []
+    
+    for i in range(m-1):
+        i = min(i, len(cBlockList)-1)
+        prevState = copy.deepcopy(state)
+        prevSpace = prevState.get_residualSpaceList()[-1]
+        cBlock = cBlockList[i]
+        prevState.add_block_to_space(cBlock, prevSpace)
+        prevState.set_residualSpaceList(create_residual_space(cBlock,prevState.get_residualSpaceList()))
+        fState = completing_process(prevState, block_list)
+        for l in range(k-1):
+            if (len(bestkTbl) == 0):
+                bestkTbl.append([copy.deepcopy(prevState), cBlock, copy.deepcopy(fState.get_utilization()), fState])
+                
             else:
-                bestTbl.append([fState, cBlock, fState.get_utilization()])
-            
-            bestTbl = sorted(bestTbl, key=lambda x: x[2], reverse=True)
-    return bestTbl
+                if bestkTbl[-1][2] < fState.get_utilization():
+                    bestkTbl.append([copy.deepcopy(prevState), cBlock, copy.deepcopy(fState.get_utilization()), fState])
+        bestkTbl = sorted(bestkTbl, key = lambda x: x[2], reverse = True)
+    return bestkTbl

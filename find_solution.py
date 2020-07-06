@@ -61,7 +61,6 @@ def find_solution(itemKinds, container_size):
         packState.set_residualSpaceList(space_list)
         if intermediate.get_utilization() > best_intermediate.get_utilization():
             best_intermediate = intermediate
-    # print("packstate", packState)
     if best_intermediate.get_utilization() > packState.get_utilization():
         return best_intermediate,block_list
     else:

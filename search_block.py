@@ -21,7 +21,7 @@ def search_block(packState, candidateBlockList, block_list, available_boxes):
     # if only wants to limited the length of list, just limit the loop times?
     # if size > MAX_SIZE:
     #     size = MAX_SIZE 
-    bestIndex = -1
+    bestIndex = -1 #-1 is an eligible index in python
     bestUtilization = -1
     res = 0
     #print(candidateBlockList[0:2])
@@ -38,15 +38,16 @@ def search_block(packState, candidateBlockList, block_list, available_boxes):
         Sol = Progressively_Refined_Tree_Search(currBlock, currState, block_list)
         #Sol = completing_process(currBlock, currState, block_list)
         #print("Sol returned in searchblock", Sol)
-        if Sol.get_utilization() > bestUtilization:
+        print(Sol[2])
+        if Sol[2] > bestUtilization:
             #print("curr sol.get_utilization", i, currBlock, Sol.get_planListBlock())
 
             bestIndex = i
-            bestUtilization = Sol.get_utilization()
-            res = Sol
+            bestUtilization = Sol[2]
+            res = copy.deepcopy(Sol[3])
             #print("bestUtilization", bestUtilization)
     # return the suitable block for the residual space
-    if bestIndex==-1:
-        exit()
+        if bestIndex==-1:
+            exit()
     print(bestUtilization)
     return candidateBlockList[bestIndex],res

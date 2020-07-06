@@ -5,49 +5,45 @@ import math
 import copy
 from config import *
 
-def calc_L(k,m):
-    m_root =  int(math.sqrt(m))
-    #why 6*7+1
-    numerator = ((6*7 + 1) * (m + m_root*m_root - m_root)) - m
-    denominator = k*m
-    return numerator/denominator
+
+def calc_L(m):
+    m_root = int(math.sqrt(m))
+    numerator = (((6*7 + 1) * (m + ((math.floor(m_root)*math.floor(m_root)) - (math.floor(m_root))))) - m)
+    denominator = (K*m)
+    return math.floor(numerator/denominator)
 
 
-
-#search best solution for Block block and State state
-def Progressively_Refined_Tree_Search(block, state, block_list):
-    space = state.get_residualSpaceList()[-1] # get last item in list
-    #put block into the space and update residualSpaceList
+def Progressively_Refined_Tree_Search(block, input_state, block_list):
+    state = copy.deepcopy(input_state)
+    
+    space = copy.deepcopy(state.get_residualSpaceList()[-1])
+    
     state.add_block_to_space(block, space)
-    state.set_residualSpaceList(create_residual_space(block, state.get_residualSpaceList()))
-    space = state.get_residualSpaceList()[-1]
-    # Generate Blocklist for new spaces?
-    cBlocKList = generate_candidate_block_list(space.get_size(), block_list, state.get_available_items())
-    #block = cBlocKList[0]
-    #current best solution is putting just one block in the empty size
-    best_solution = copy.deepcopy(state) 
-
-    if cBlocKList:
-        m = M_Zero
-        bkTab = []
-        for _ in range(STAGE_L -1):
-            m = m*SCALE
-            #what is L?
-            L = int(calc_L(K,m))
-            bkTab.append(build_m1_tree(block, state, m, K, 0, block_list))
-            for j in range(1, min(L , len(bkTab))):
-                # no space left??
-                if type(bkTab[j-1]) == type(None):
-                    pass
-                else:
-                    for d in range(len(bkTab[j-1])):
-                        nState = copy.deepcopy(bkTab[j-1][d][0])
-                        nBlock = bkTab[j-1][d][1]
-                        bkTab.append(build_m1_tree(nBlock, nState, m, K, j, block_list))
-            for j in range(min(L, len(bkTab))):
-                # same as in line 40
-                if type(bkTab[j]) == type(None):
-                    pass
-                elif bkTab[j][0][2] > best_solution.get_utilization():
-                    best_solution = bkTab[j][0][0]
-    return best_solution
+    
+    res_space = create_residual_space(block,state.get_residualSpaceList())
+    
+    state.set_residualSpaceList(res_space)
+    
+    cBlockList = generate_candidate_block_list(res_space[-1].get_size(), block_list, state.get_available_items())
+    
+    BestSl = [state, block, state.get_utilization(), state]
+    bkTab = []
+    
+    for i in range(STAGE_L-1):
+        m = M_Zero * SCALE
+        lm1 = calc_L(m)
+        bkTab.append(build_m1_tree(block, state, m, K, 0, block_list))
+        for j in range(1,lm1,1):
+            j = min (lm1, len(bkTab))
+            for d in range(len(bkTab[j-1])):
+                nState = copy.deepcopy(bkTab[j-1][d][0])
+                nBlock = copy.deepcopy(bkTab[j-1][d][1])
+                bkTab.append(build_m1_tree(nBlock, nState, m, K, j, block_list))
+        for j in range(min(lm1, len(bkTab)-1)):
+            if (len(bkTab[j]) == 0) : continue
+            if (bkTab[j][0][2] > BestSl[2]):
+                BestSl = bkTab[j][0]
+    return BestSl
+                
+                
+        

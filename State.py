@@ -22,7 +22,7 @@ class State:
     def add_block_to_space(self, block, space):
         space_volume_temp = space.get_size()[0] * space.get_size()[1] * space.get_size()[2]
         if block.get_absolute_volume() > space_volume_temp:
-            print("Adding block not allowed, space to small.")
+            raise Exception("Sorry, volume in State not sufficient!")
         self.add_block_planListBlock(block)
         self.add_space_planListSpace(space,block.get_volume_loss())
         self.update_available_items(block)
@@ -31,6 +31,7 @@ class State:
     def add_block_planListBlock(self, block):
         self.planListBlock.append(block)
         self.real_block_volume += block.get_real_volume()
+             
 
     def add_space_planListSpace(self, space, block_loss):
         self.planListSpace.append(space)
