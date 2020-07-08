@@ -1,6 +1,7 @@
 from create_residual_space import create_residual_space
 from generate_candidate_blocklist import generate_candidate_block_list
 from build_m1_tree import build_m1_tree
+from completing_process import completing_process
 import math
 import copy
 from config import *
@@ -43,7 +44,7 @@ def Progressively_Refined_Tree_Search(block, input_state, block_list):
             if (len(bkTab[j]) == 0) : continue
             if (bkTab[j][0][2] > BestSl[2]):
                 BestSl = bkTab[j][0]
-    return BestSl
+    return completing_process(BestSl, block_list)
                 
                 
         

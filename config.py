@@ -11,7 +11,7 @@ K = 10 # at every stage the k best solutions are used for the next layers treese
 M_Zero = 4 # Size of the (m,1) trees, branching factor
 SCALE = 3 #...
 STAGE_L = 5 #...
-MAX_SIZE = 20 # Number of candidate blocks taken as start of the tree search
+MAX_SIZE = 19 # Number of candidate blocks taken as start of the tree search
 Parallel = False
 
 #Should be removed from config file
