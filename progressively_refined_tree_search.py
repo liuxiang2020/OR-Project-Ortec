@@ -44,7 +44,7 @@ def Progressively_Refined_Tree_Search(block, input_state, block_list):
             if (len(bkTab[j]) == 0) : continue
             if (bkTab[j][0][2] > BestSl[2]):
                 BestSl = bkTab[j][0]
-    return [completing_process(BestSl[0], block_list), BestSl[1], BestSl[2]]
+    return [completing_process(BestSl[0], block_list), BestSl[1], BestSl[2], BestSl[3]]
                 
                 
         
