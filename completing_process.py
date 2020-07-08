@@ -1,6 +1,7 @@
 from generate_candidate_blocklist import generate_candidate_block_list
 from transfer_residual_space import transfer_residual_space
 from config import *
+import copy
 from create_residual_space import *
 
 """
@@ -8,7 +9,7 @@ completing_process: If the fitness measure considers only the total volume of al
 each block, then the placement is simply placing the block with the biggest volume into each space.
 """
 def completing_process(prevState, block_list):
-    curState = prevState
+    curState = copy.deepcopy(prevState)
     # loop through residual space list backwards (largest space first，index range [length, 0))
     while curState.get_residualSpaceList() != []:
         space = curState.get_residualSpaceList()[-1]

@@ -8,6 +8,7 @@ from State import State
 from generate_candidate_blocklist import generate_candidate_block_list
 from inspect import currentframe, getframeinfo
 from config import *
+from completing_process import completing_process
 import copy
 import datetime
 
@@ -59,10 +60,11 @@ def find_solution(itemKinds, container_size):
             else:
                 space_list = transfer_residual_space(space_list)
         packState.set_residualSpaceList(space_list)
-        if intermediate.get_utilization() > best_intermediate.get_utilization():
+        intermediate = completing_process(intermediate, block_list)
+        if (intermediate.get_utilization() > best_intermediate.get_utilization()):
             best_intermediate = intermediate
     # print("packstate", packState)
-    if best_intermediate.get_utilization() > packState.get_utilization():
-        return best_intermediate,block_list
+    if (best_intermediate.get_utilization() > packState.get_utilization()):
+        return (completing_process(best_intermediate,block_list), block_list)
     else:
         return packState, block_list
