@@ -60,11 +60,11 @@ def find_solution(itemKinds, container_size):
             else:
                 space_list = transfer_residual_space(space_list)
         packState.set_residualSpaceList(space_list)
-        intermediate = completing_process(intermediate, block_list)
+        print("utilization after search_block in find_solution: ", intermediate.get_utilization())
         if (intermediate.get_utilization() > best_intermediate.get_utilization()):
             best_intermediate = intermediate
     # print("packstate", packState)
     if (best_intermediate.get_utilization() > packState.get_utilization()):
-        return (completing_process(best_intermediate,block_list), block_list)
+        return best_intermediate, block_list
     else:
         return packState, block_list

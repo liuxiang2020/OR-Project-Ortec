@@ -1,6 +1,7 @@
 from create_residual_space import create_residual_space
 from generate_candidate_blocklist import generate_candidate_block_list
 from build_m1_tree import build_m1_tree
+from completing_process import completing_process
 import math
 import copy
 from config import *
@@ -50,4 +51,6 @@ def Progressively_Refined_Tree_Search(block, state, block_list):
                     pass
                 elif bkTab[j][0][2] > best_solution.get_utilization():
                     best_solution = bkTab[j][0][0]
+    else:
+        return completing_process(best_solution, block_list)
     return best_solution

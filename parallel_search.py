@@ -31,5 +31,4 @@ def search_block_p(packState, candidateBlockList, block_list, available_boxes):
             bestIndex = j
             bestUtilization = res[j].get_utilization()
     #print(bestIndex)
-    print(bestUtilization)
     return candidateBlockList[bestIndex],res[bestIndex]
