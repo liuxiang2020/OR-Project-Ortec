@@ -7,10 +7,10 @@ global Parallel
 global MAX_SIZE
 
 MAX_GB = 4 # Used in create_blocks.py, sets the number of general block combination iterations
-K = 12 # at every stage the k best solutions are used for the next layers treesearch, number of (m,1) trees
+K = 10 # at every stage the k best solutions are used for the next layers treesearch, number of (m,1) trees
 M_Zero = 4 # Size of the (m,1) trees, branching factor
-SCALE = 4 #...
-STAGE_L = 6 #...
+SCALE = 3 #...
+STAGE_L = 5 #...
 MAX_SIZE = 20 # Number of candidate blocks taken as start of the tree search
 Parallel = False
 
