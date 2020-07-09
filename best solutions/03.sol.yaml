@@ -313,21 +313,21 @@ layout:
         itemid: 4
         orientation: WLH
         position: 552,138,168
-      - color: '#029E73'
+      - color: '#949494'
         id: 69
-        itemid: 4
-        orientation: LHW
+        itemid: 1
+        orientation: WLH
         position: 405,0,184
       - color: '#029E73'
         id: 70
         itemid: 4
         orientation: LHW
-        position: 405,28,184
-      - color: '#949494'
+        position: 405,108,184
+      - color: '#029E73'
         id: 71
-        itemid: 1
-        orientation: WLH
-        position: 405,56,184
+        itemid: 4
+        orientation: LHW
+        position: 405,136,184
       - color: '#029E73'
         id: 72
         itemid: 4
@@ -368,98 +368,98 @@ layout:
         itemid: 6
         orientation: WLH
         position: 70,120,96
-      - color: '#0173B2'
+      - color: '#CC78BC'
         id: 80
-        itemid: 2
+        itemid: 6
         orientation: WLH
         position: 140,120,0
-      - color: '#0173B2'
+      - color: '#CC78BC'
         id: 81
-        itemid: 2
+        itemid: 6
         orientation: WLH
-        position: 140,120,25
-      - color: '#0173B2'
+        position: 140,120,48
+      - color: '#CC78BC'
         id: 82
-        itemid: 2
+        itemid: 6
         orientation: WLH
-        position: 140,120,50
+        position: 140,120,96
       - color: '#0173B2'
         id: 83
         itemid: 2
         orientation: WLH
-        position: 140,120,75
+        position: 210,120,0
       - color: '#0173B2'
         id: 84
         itemid: 2
         orientation: WLH
-        position: 183,120,0
+        position: 210,120,25
       - color: '#0173B2'
         id: 85
         itemid: 2
         orientation: WLH
-        position: 183,120,25
+        position: 210,120,50
       - color: '#0173B2'
         id: 86
         itemid: 2
         orientation: WLH
-        position: 183,120,50
+        position: 210,120,75
       - color: '#0173B2'
         id: 87
         itemid: 2
         orientation: WLH
-        position: 183,120,75
-      - color: '#CC78BC'
-        id: 88
-        itemid: 6
-        orientation: WLH
-        position: 226,120,0
-      - color: '#CC78BC'
-        id: 89
-        itemid: 6
-        orientation: WLH
-        position: 226,120,48
-      - color: '#CC78BC'
-        id: 90
-        itemid: 6
-        orientation: WLH
-        position: 226,120,96
-      - color: '#CC78BC'
-        id: 91
-        itemid: 6
-        orientation: WLH
-        position: 226,120,144
+        position: 253,120,0
       - color: '#0173B2'
-        id: 92
+        id: 88
         itemid: 2
         orientation: WLH
-        position: 226,120,192
+        position: 253,120,25
+      - color: '#0173B2'
+        id: 89
+        itemid: 2
+        orientation: WLH
+        position: 253,120,50
+      - color: '#0173B2'
+        id: 90
+        itemid: 2
+        orientation: WLH
+        position: 253,120,75
       - color: '#D55E00'
-        id: 93
+        id: 91
         itemid: 5
         orientation: HWL
-        position: 140,120,100
-      - color: '#CA9161'
-        id: 94
-        itemid: 7
-        orientation: HLW
+        position: 210,120,100
+      - color: '#949494'
+        id: 92
+        itemid: 1
+        orientation: WLH
         position: 0,120,144
+      - color: '#949494'
+        id: 93
+        itemid: 1
+        orientation: WLH
+        position: 76,120,144
+      - color: '#CC78BC'
+        id: 94
+        itemid: 6
+        orientation: HLW
+        position: 152,120,144
       - color: '#CA9161'
         id: 95
         itemid: 7
-        orientation: HLW
-        position: 46,120,144
+        orientation: WLH
+        position: 0,120,174
       - color: '#CA9161'
         id: 96
         itemid: 7
-        orientation: HLW
-        position: 92,120,144
+        orientation: WLH
+        position: 72,120,174
   unplaced:
   - id: 0
     itemid: 1
-    quantity: 2
+    quantity: 0
   - id: 1
     itemid: 2
-    quantity: 0
+    quantity: 1
   - id: 2
     itemid: 3
     quantity: 0
@@ -474,7 +474,7 @@ layout:
     quantity: 0
   - id: 6
     itemid: 7
-    quantity: 0
+    quantity: 1
   - id: 7
     itemid: 8
     quantity: 2
