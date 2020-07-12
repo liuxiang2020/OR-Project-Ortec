@@ -31,47 +31,47 @@ jobs:
       
     # Process instances
     - name: Process instance br00.001.yaml
-      run: python run.py instances/br00.001.yaml solutions/br00.001-solution.yaml
+      run: python run.py -I instances/br00.001.yaml -S solutions/br00.001-solution.yaml
       
     # Process instances
     - name: Process instance br01.001.yaml
-      run: python run.py instances/br01.001.yaml solutions/br01.001-solution.yaml
+      run: python run.py -I instances/br01.001.yaml -S solutions/br01.001-solution.yaml
 
     # Process instances
     - name: Process instance br02.001.yaml
-      run: python run.py instances/br02.001.yaml solutions/br02.001-solution.yaml
+      run: python run.py -I instances/br02.001.yaml -S solutions/br02.001-solution.yaml
       
     # Process instances
     - name: Process instance br03.001.yaml
-      run: python run.py instances/br03.001.yaml solutions/br03.001-solution.yaml
+      run: python run.py -I instances/br03.001.yaml -S solutions/br03.001-solution.yaml
       
     # Process instances
     - name: Process instance br04.001.yaml
-      run: python run.py instances/br04.001.yaml solutions/br04.001-solution.yaml
+      run: python run.py -I instances/br04.001.yaml -S solutions/br04.001-solution.yaml
       
     # Process instances
     - name: Process instance br05.001.yaml
-      run: python run.py instances/br05.001.yaml solutions/br05.001-solution.yaml
+      run: python run.py -I instances/br05.001.yaml -S solutions/br05.001-solution.yaml
       
     # Process instances
     - name: Process instance br06.001.yaml
-      run: python run.py instances/br06.001.yaml solutions/br06.001-solution.yaml
+      run: python run.py -I instances/br06.001.yaml -S solutions/br06.001-solution.yaml
       
     # Process instances
     - name: Process instance br07.001.yaml
-      run: python run.py instances/br07.001.yaml solutions/br07.001-solution.yaml
+      run: python run.py -I instances/br07.001.yaml -S solutions/br07.001-solution.yaml
       
     # Process instances
     - name: Process instance br08.001.yaml
-      run: python run.py instances/br08.001.yaml solutions/br08.001-solution.yaml
+      run: python run.py -I instances/br08.001.yaml -S solutions/br08.001-solution.yaml
       
     # Process instances
     - name: Process instance br09.001.yaml
-      run: python run.py instances/br09.001.yaml solutions/br09.001-solution.yaml
+      run: python run.py -I instances/br09.001.yaml -S solutions/br09.001-solution.yaml
       
     # Process instances
     - name: Process instance br10.001.yaml
-      run: python run.py instances/br10.001.yaml solutions/br10.001-solution.yaml
+      run: python run.py -I instances/br10.001.yaml -S solutions/br10.001-solution.yaml
   
     # Store solutions
     - name: Save solutions as artifacts

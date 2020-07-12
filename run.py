@@ -75,7 +75,19 @@ def execute_algo(input, solution_file_name):
     import datetime
     begin_time = datetime.datetime.now()
     # get container and boxes file information
-    instance = input
+
+    args = None
+    parser = argparse.ArgumentParser(description="Visualize loadbuilding solutions")
+    parser.add_argument('--instance', '-I',  metavar='INPUT_FILE', required=True, help='The instance file')
+    #parser.add_argument('--sol', '-IS',  metavar='INPUT_SOLUTION_FILE', required=True, help='The input solution file')
+    parser.add_argument('--solution', '-S',  metavar='SOLUTION_FILE', required=True, help='The solution file')    
+    args = parser.parse_args(args)   
+    
+    instance = args.instance
+    #i_sol_path = args.sol
+    solution_path = args.solution    
+    #instance = input
+
     itemKinds, container_size = parse_yaml(instance)
     state, block_dict = find_solution(itemKinds, container_size)
     print(50*'#')
