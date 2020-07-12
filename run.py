@@ -73,9 +73,9 @@ def parse_yaml(yamlfile: yaml) -> object:
 
 def execute_algo(input, solution_file_name):
     import datetime
-    import argparse
     begin_time = datetime.datetime.now()
     # get container and boxes file information
+
     args = None
     parser = argparse.ArgumentParser(description="Visualize loadbuilding solutions")
     parser.add_argument('--instance', '-I',  metavar='INPUT_FILE', required=True, help='The instance file')
@@ -87,11 +87,12 @@ def execute_algo(input, solution_file_name):
     #i_sol_path = args.sol
     solution_path = args.solution    
     #instance = input
+
     itemKinds, container_size = parse_yaml(instance)
     state, block_dict = find_solution(itemKinds, container_size)
     print(50*'#')
     print(state)
-    convert_state_to_solution(instance,state,block_dict,solution_path)
+    convert_state_to_solution(instance,state,block_dict,solution_file_name)
     # print(testvariable)
     # print(transfer_residual_space([]))
 
