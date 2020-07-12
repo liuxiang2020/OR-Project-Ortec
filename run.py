@@ -80,8 +80,7 @@ def execute_algo(input, solution_file_name):
     parser = argparse.ArgumentParser(description="Visualize loadbuilding solutions")
     parser.add_argument('--instance', '-I',  metavar='INPUT_FILE', required=True, help='The instance file')
     #parser.add_argument('--sol', '-IS',  metavar='INPUT_SOLUTION_FILE', required=True, help='The input solution file')
-    parser.add_argument('--solution', '-S',  metavar='SOLUTION_FILE', required=True, help='The solution file')
-    
+    parser.add_argument('--solution', '-S',  metavar='SOLUTION_FILE', required=True, help='The solution file')    
     args = parser.parse_args(args)   
     
     instance = args.instance
