@@ -9,11 +9,6 @@ def create_residual_space(block, spaceStack):
     w = space.get_size()[1]
     h = space.get_size()[2]
     
-    #return spaceStack without last space for wrong block input
-    if blockSize[0] > l or blockSize[1] > w or blockSize[2] > h:
-        print("Wrong candidate block list!")
-        print(block,spaceStack)
-        exit()
         
     deltal = l - blockSize[0]
     deltaw = w - blockSize[1]

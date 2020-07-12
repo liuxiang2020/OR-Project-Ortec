@@ -21,7 +21,6 @@ def completing_process(prevState, block_list):
 
             curState.set_residualSpaceList(create_residual_space(bestBlock, curState.get_residualSpaceList()))
 
-
         else:
             curState.set_residualSpaceList(transfer_residual_space(curState.get_residualSpaceList()))
 

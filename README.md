@@ -2,16 +2,16 @@
 
 # OR-Project-Ortec
 
-Repository for the OR Lab 2020
+Repository for the OR Lab 2020 @ ORTEC
 
 # Using the algorithm
 
-Run it by calling `python run.py /path/to/instance.yaml /output_name.yaml`
+Run our solution by calling `python3 run.py -I /path/to/instance.yaml -S /output_name.yaml -R runtime`
 
-Parameters are set in `config.py`
+`runtime` is a direction how long the algorithm should seek for a solution. The acutal runtime can be slightly longer, since the algorithm always completes the current progress to a valid solution.
 
-For fast runtime bypass the tree search (exchange this: `            packed_block = search_block(packState, candidate_list, block_list, available_items)`with this: `packed_block = candidate_list[0]` in `find_solution.py`)
+You can find configurable parameters in `./config.py` (along with explanations). Ideally, these are adjusted so that the maximum runtime (given by parameter) is higher than the actual runtime.
 
 # Using the CI
 
-The CI automatically generates solutions based on the instances given in `.github/workflows/main.yml`. They are stored as artifacts.
+The CI automatically generates solutions based on the instances given in `.github/workflows/main.yml`. They are stored as artifacts. Furthermore, one can find the execution time, utilization and average utilization in the Action Tab.

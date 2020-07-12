@@ -24,11 +24,9 @@ def search_block_p(packState, candidateBlockList, block_list, available_boxes, m
         t.start()
     for k in threads:
         k.join()
-    #print(res)
     for j in range(len(res)):
         if res[j].get_utilization() > bestUtilization:
-            #print("curr sol.get_utilization", i, currBlock, Sol.get_planListBlock())
             bestIndex = j
             bestUtilization = res[j].get_utilization()
-    #print(bestIndex)
+
     return candidateBlockList[bestIndex],res[bestIndex]

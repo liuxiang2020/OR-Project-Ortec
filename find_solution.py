@@ -12,9 +12,6 @@ from completing_process import completing_process
 import copy
 import datetime
 
-def lineno():
-    frameinfo = getframeinfo(currentframe())
-    #print("Currently in", frameinfo.filename, "with line number", currentframe().f_back.f_lineno)
 
 
 """
@@ -34,7 +31,7 @@ def find_solution(itemKinds, container_size, runtime):
     time = datetime.datetime.now()
     max_runtime = (datetime.datetime.now().timestamp() + runtime)
     
-    block_list = create_general_blocks(itemKinds, container_size)
+    block_list, uid_orientation = create_general_blocks(itemKinds, container_size)
     space = Space([0, 0, 0], container_size, 'x')
     space_list = [space]
     packState = State(space_list, container_size)
@@ -45,15 +42,15 @@ def find_solution(itemKinds, container_size, runtime):
     while (packState.get_residualSpaceList()):
         s = copy.deepcopy(packState)
         considered_space = packState.get_residualSpaceList()[-1]
-        # print("in space", considered_space)
+
         candidate_list = generate_candidate_block_list(considered_space.get_size(), block_list, available_items)
-        # print("with space", considered_space, "the candidate_list", candidate_list)
+
         if candidate_list:
             if Parallel:
                 packed_block,intermediate = search_block_p(s, candidate_list, block_list, available_items, max_runtime)
             else:
                 packed_block,intermediate = search_block(s, candidate_list, block_list, available_items)
-            #packed_block = candidate_list[0]
+            #packed_block = candidate_list[0] <- Use this for (really) fast execution
             packState.add_block_to_space(packed_block, considered_space)
             space_list = create_residual_space(packed_block, space_list)
         else:
@@ -67,8 +64,8 @@ def find_solution(itemKinds, container_size, runtime):
             best_intermediate = intermediate
         if (max_runtime < datetime.datetime.now().timestamp()):
             break
-    # print("packstate", packState)
+
     if (best_intermediate.get_utilization() > packState.get_utilization()):
-        return best_intermediate, block_list
+        return best_intermediate, block_list, uid_orientation
     else:
-        return packState, block_list
+        return packState, block_list, uid_orientation

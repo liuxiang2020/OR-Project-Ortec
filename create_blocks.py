@@ -10,6 +10,7 @@ def Size2Pos(size, orientation='LWH'):
 # Creating Simple Blocks from item boxes
 def create_simple_blocks(itemkinds,container_size):
     simple_block_list = []
+    uid_orientation = {}
     unique_ids = 0
     containerlength = container_size[0]
     containerwidth = container_size[1]
@@ -36,17 +37,17 @@ def create_simple_blocks(itemkinds,container_size):
                             block.set_dr_quantity((nx, ny, nz))
                             block.set_upper_face((block_length,block_width))
                             #Set block orientation for solution mapping
-                            UID_ORIENTATION.update({unique_ids:orientation})
+                            uid_orientation.update({unique_ids:orientation})
                             block.set_unique_id(unique_ids)
                             unique_ids += 1
                             simple_block_list.append(block)
     simple_block_list = filter_redundant_blocks(simple_block_list)                       
-    return simple_block_list, unique_ids
+    return simple_block_list, unique_ids, uid_orientation
 
 
 # Creating general blocks from simple blocks
 def create_general_blocks(itemkinds, container_size):
-    general_blocks_list, unique_ids = create_simple_blocks(itemkinds, container_size)
+    general_blocks_list, unique_ids, uid_orientation = create_simple_blocks(itemkinds, container_size)
     for _ in range(1, 2):
         a = len(general_blocks_list)
         for i in range(0, a):
@@ -120,7 +121,7 @@ def create_general_blocks(itemkinds, container_size):
                                 new_gb.set_added_direction((dr))
                                 general_blocks_list.append(new_gb)
         general_blocks_list = filter_redundant_blocks(general_blocks_list)                                              
-    return general_blocks_list
+    return general_blocks_list, uid_orientation
 
 def filter_redundant_blocks(blocklist):
     a = len(blocklist)

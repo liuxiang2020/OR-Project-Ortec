@@ -9,7 +9,7 @@ import datetime
 
 def calc_L(k,m):
     m_root =  int(math.sqrt(m))
-    #why 6*7+1
+
     numerator = ((6*7 + 1) * (m + m_root*m_root - m_root)) - m
     denominator = k*m
     return numerator/denominator
@@ -23,7 +23,7 @@ def Progressively_Refined_Tree_Search(block, state, block_list, max_runtime):
     state.add_block_to_space(block, space)
     state.set_residualSpaceList(create_residual_space(block, state.get_residualSpaceList()))
     space = state.get_residualSpaceList()[-1]
-    # Generate Blocklist for new spaces?
+    # Generate Blocklist for new spaces
     cBlocKList = generate_candidate_block_list(space.get_size(), block_list, state.get_available_items())
     #block = cBlocKList[0]
     #current best solution is putting just one block in the empty size
@@ -34,11 +34,11 @@ def Progressively_Refined_Tree_Search(block, state, block_list, max_runtime):
         bkTab = []
         for _ in range(STAGE_L -1):
             m = m*SCALE
-            #what is L?
+
             L = int(calc_L(K,m))
             bkTab.append(build_m1_tree(block, state, m, K, 0, block_list))
             for j in range(1, min(L , len(bkTab))):
-                # no space left??
+
                 if type(bkTab[j-1]) == type(None):
                     pass
                 else:
@@ -47,7 +47,7 @@ def Progressively_Refined_Tree_Search(block, state, block_list, max_runtime):
                         nBlock = bkTab[j-1][d][1]
                         bkTab.append(build_m1_tree(nBlock, nState, m, K, j, block_list))
             for j in range(min(L, len(bkTab))):
-                # same as in line 40
+
                 if type(bkTab[j]) == type(None):
                     pass
                 elif bkTab[j][0][2] > best_solution.get_utilization():

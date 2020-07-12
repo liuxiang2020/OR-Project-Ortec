@@ -47,7 +47,7 @@ def break_down_block(cur_block,simple_list,block_dict,pos):
         simple_list = break_down_block(block_j,simple_list,block_dict,posj)
         return simple_list
 # return[(uid,[0,0,0]),...]
-def convert_state_to_solution(instancename,state,block_dict,solution_file_name):
+def convert_state_to_solution(instancename,state,block_dict,solution_file_name, uid_orientation):
     blocks = state.get_planListBlock()
     spaces = state.get_planListSpace()
     solution = SkeletonSolution()
@@ -97,16 +97,7 @@ def convert_state_to_solution(instancename,state,block_dict,solution_file_name):
         if 'color' in itemKinds[item_id-1]:
             color = itemKinds[item_id-1]['color']
 
-#        for orientation in itemKinds[item_id-1]['orientations'].split(','):
-#            boxsize = Size2Pos(itemKinds[item_id-1]['size'], orientation)
-#            if (boxsize[0]*dr_quantity[0]==block_size[0] and
-#                boxsize[1]*dr_quantity[1]==block_size[1] and
-#                boxsize[2]*dr_quantity[2]==block_size[2]):
-#                    right_orientation = orientation
-#            else:
-#                print("no right_orientation mistake") 
-#                break
-        right_orientation = UID_ORIENTATION[simple_block_id]
+        right_orientation = uid_orientation[simple_block_id]
         boxsize = Size2Pos(itemKinds[item_id-1]['size'], right_orientation)
 
         for nx in range(1,dr_quantity[0]+1):
