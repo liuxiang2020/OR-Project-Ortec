@@ -86,8 +86,7 @@ def execute_algo(input, solution_file_name):
     
     instance = args.instance
     #i_sol_path = args.sol
-    solution_path = args.solution
-    
+    solution_path = args.solution    
     #instance = input
     itemKinds, container_size = parse_yaml(instance)
     state, block_dict = find_solution(itemKinds, container_size)
