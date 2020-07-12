@@ -71,7 +71,7 @@ jobs:
       
     # Process instances
     - name: Process instance br10.001.yaml
-      run: python run.py instances/br010.001.yaml solutions/br010.001-solution.yaml
+      run: python run.py instances/br10.001.yaml solutions/br10.001-solution.yaml
   
     # Store solutions
     - name: Save solutions as artifacts
