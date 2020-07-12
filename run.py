@@ -95,7 +95,7 @@ def execute_algo():
     state, block_dict = find_solution(itemKinds, container_size, args.runtime)
     print(50*'#')
     print(state)
-    convert_state_to_solution(instance,state,block_dict,solution_file_name)
+    convert_state_to_solution(instance,state,block_dict,solution_path)
     # print(testvariable)
     # print(transfer_residual_space([]))
 
