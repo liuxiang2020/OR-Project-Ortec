@@ -71,8 +71,9 @@ def parse_yaml(yamlfile: yaml) -> object:
         container_size = Size2Pos(file['data']['containerkinds'][0]['loadingspaces'][0]['size'])
         return itemKinds, container_size
 
-def execute_algo(input, solution_file_name):
+def execute_algo():
     import datetime
+    import argparse
     begin_time = datetime.datetime.now()
     # get container and boxes file information
 
@@ -80,7 +81,9 @@ def execute_algo(input, solution_file_name):
     parser = argparse.ArgumentParser(description="Visualize loadbuilding solutions")
     parser.add_argument('--instance', '-I',  metavar='INPUT_FILE', required=True, help='The instance file')
     #parser.add_argument('--sol', '-IS',  metavar='INPUT_SOLUTION_FILE', required=True, help='The input solution file')
-    parser.add_argument('--solution', '-S',  metavar='SOLUTION_FILE', required=True, help='The solution file')    
+    parser.add_argument('--solution', '-S',  metavar='SOLUTION_FILE', required=True, help='The solution file')
+    parser.add_argument('--runtime', '-R', metavar='MAX_RUNTIME', type = int, required=True, help='Maximum runtime to calculate solution in seconds')
+
     args = parser.parse_args(args)   
     
     instance = args.instance
@@ -89,7 +92,7 @@ def execute_algo(input, solution_file_name):
     #instance = input
 
     itemKinds, container_size = parse_yaml(instance)
-    state, block_dict = find_solution(itemKinds, container_size)
+    state, block_dict = find_solution(itemKinds, container_size, args.runtime)
     print(50*'#')
     print(state)
     convert_state_to_solution(instance,state,block_dict,solution_file_name)
@@ -101,5 +104,5 @@ def execute_algo(input, solution_file_name):
     print(datetime.datetime.now() - begin_time)
 
 if __name__ == "__main__":
-    execute_algo(*parse_args())
+    execute_algo()
     

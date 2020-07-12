@@ -23,7 +23,7 @@ CONTAINER_SIZE: [L,W,H]
 available: dictionary, key:value  <-> id:quantity
 """
 
-def find_solution(itemKinds, container_size):
+def find_solution(itemKinds, container_size, runtime):
     # create available items
     available_items = {}
     for i in range(len(itemKinds)):
@@ -32,6 +32,8 @@ def find_solution(itemKinds, container_size):
     
     # create general block list
     time = datetime.datetime.now()
+    max_runtime = (datetime.datetime.now().timestamp() + runtime)
+    
     block_list = create_general_blocks(itemKinds, container_size)
     space = Space([0, 0, 0], container_size, 'x')
     space_list = [space]
@@ -48,7 +50,7 @@ def find_solution(itemKinds, container_size):
         # print("with space", considered_space, "the candidate_list", candidate_list)
         if candidate_list:
             if Parallel:
-                packed_block,intermediate = search_block_p(s, candidate_list, block_list, available_items)
+                packed_block,intermediate = search_block_p(s, candidate_list, block_list, available_items, max_runtime)
             else:
                 packed_block,intermediate = search_block(s, candidate_list, block_list, available_items)
             #packed_block = candidate_list[0]
@@ -63,6 +65,8 @@ def find_solution(itemKinds, container_size):
         print("utilization after search_block in find_solution: ", intermediate.get_utilization())
         if (intermediate.get_utilization() > best_intermediate.get_utilization()):
             best_intermediate = intermediate
+        if (max_runtime < datetime.datetime.now().timestamp()):
+            break
     # print("packstate", packState)
     if (best_intermediate.get_utilization() > packState.get_utilization()):
         return best_intermediate, block_list
