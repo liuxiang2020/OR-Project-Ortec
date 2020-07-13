@@ -11,606 +11,616 @@ layout:
       - color: '#CC78BC'
         id: 15
         itemid: 6
-        orientation: LWH
+        orientation: HLW
         position: 0,0,0
       - color: '#CC78BC'
         id: 16
         itemid: 6
-        orientation: LWH
-        position: 0,0,48
+        orientation: HLW
+        position: 0,0,70
       - color: '#CC78BC'
         id: 17
         itemid: 6
-        orientation: LWH
-        position: 0,70,0
+        orientation: HLW
+        position: 0,0,140
       - color: '#CC78BC'
         id: 18
         itemid: 6
-        orientation: LWH
-        position: 0,70,48
+        orientation: HLW
+        position: 0,111,0
       - color: '#CC78BC'
         id: 19
         itemid: 6
-        orientation: LWH
-        position: 111,0,0
+        orientation: HLW
+        position: 0,111,70
       - color: '#CC78BC'
         id: 20
         itemid: 6
-        orientation: LWH
-        position: 111,0,48
+        orientation: HLW
+        position: 0,111,140
       - color: '#CC78BC'
         id: 21
         itemid: 6
-        orientation: LWH
-        position: 111,70,0
+        orientation: HLW
+        position: 48,0,0
       - color: '#CC78BC'
         id: 22
         itemid: 6
-        orientation: LWH
-        position: 111,70,48
+        orientation: HLW
+        position: 48,0,70
       - color: '#CC78BC'
         id: 23
         itemid: 6
-        orientation: LWH
-        position: 222,0,0
+        orientation: HLW
+        position: 48,0,140
       - color: '#CC78BC'
         id: 24
         itemid: 6
-        orientation: LWH
-        position: 222,0,48
+        orientation: HLW
+        position: 48,111,0
       - color: '#CC78BC'
         id: 25
         itemid: 6
-        orientation: LWH
-        position: 222,70,0
+        orientation: HLW
+        position: 48,111,70
       - color: '#CC78BC'
         id: 26
         itemid: 6
-        orientation: LWH
-        position: 222,70,48
-      - color: '#CC78BC'
+        orientation: HLW
+        position: 48,111,140
+      - color: '#D55E00'
         id: 27
-        itemid: 1
-        orientation: WLH
-        position: 333,0,0
-      - color: '#CC78BC'
+        itemid: 5
+        orientation: WHL
+        position: 96,0,0
+      - color: '#D55E00'
         id: 28
-        itemid: 1
-        orientation: WLH
-        position: 333,0,30
-      - color: '#CC78BC'
+        itemid: 5
+        orientation: WHL
+        position: 195,0,0
+      - color: '#D55E00'
         id: 29
-        itemid: 1
-        orientation: WLH
-        position: 333,0,60
-      - color: '#CC78BC'
+        itemid: 5
+        orientation: WHL
+        position: 294,0,0
+      - color: '#D55E00'
         id: 30
-        itemid: 1
-        orientation: WLH
-        position: 333,0,90
+        itemid: 5
+        orientation: WHL
+        position: 393,0,0
       - color: '#CC78BC'
         id: 31
         itemid: 1
-        orientation: WLH
-        position: 333,0,120
+        orientation: LWH
+        position: 96,73,0
       - color: '#CC78BC'
         id: 32
         itemid: 1
-        orientation: WLH
-        position: 333,0,150
+        orientation: LWH
+        position: 96,73,30
       - color: '#CC78BC'
         id: 33
         itemid: 1
-        orientation: WLH
-        position: 409,0,0
+        orientation: LWH
+        position: 96,73,60
       - color: '#CC78BC'
         id: 34
         itemid: 1
-        orientation: WLH
-        position: 409,0,30
+        orientation: LWH
+        position: 96,73,90
       - color: '#CC78BC'
         id: 35
         itemid: 1
-        orientation: WLH
-        position: 409,0,60
+        orientation: LWH
+        position: 96,73,120
       - color: '#CC78BC'
         id: 36
         itemid: 1
-        orientation: WLH
-        position: 409,0,90
+        orientation: LWH
+        position: 96,73,150
       - color: '#CC78BC'
         id: 37
         itemid: 1
-        orientation: WLH
-        position: 409,0,120
+        orientation: LWH
+        position: 204,73,0
       - color: '#CC78BC'
         id: 38
         itemid: 1
-        orientation: WLH
-        position: 409,0,150
-      - color: '#D55E00'
+        orientation: LWH
+        position: 204,73,30
+      - color: '#CC78BC'
         id: 39
-        itemid: 5
+        itemid: 1
         orientation: LWH
-        position: 333,108,0
-      - color: '#D55E00'
+        position: 204,73,60
+      - color: '#CC78BC'
         id: 40
-        itemid: 5
+        itemid: 1
         orientation: LWH
-        position: 333,108,73
-      - color: '#D55E00'
+        position: 204,73,90
+      - color: '#CC78BC'
         id: 41
-        itemid: 5
+        itemid: 1
         orientation: LWH
-        position: 453,108,0
-      - color: '#D55E00'
+        position: 204,73,120
+      - color: '#CC78BC'
         id: 42
-        itemid: 5
+        itemid: 1
         orientation: LWH
-        position: 453,108,73
-      - color: '#0173B2'
+        position: 204,73,150
+      - color: '#DE8F05'
         id: 43
-        itemid: 2
-        orientation: LHW
-        position: 333,207,0
-      - color: '#0173B2'
+        itemid: 3
+        orientation: HWL
+        position: 312,73,0
+      - color: '#DE8F05'
         id: 44
-        itemid: 2
-        orientation: LHW
-        position: 333,207,43
-      - color: '#0173B2'
+        itemid: 3
+        orientation: HWL
+        position: 312,73,92
+      - color: '#DE8F05'
         id: 45
-        itemid: 2
-        orientation: LHW
-        position: 333,207,86
-      - color: '#0173B2'
+        itemid: 3
+        orientation: HWL
+        position: 367,73,0
+      - color: '#DE8F05'
         id: 46
-        itemid: 2
-        orientation: LHW
-        position: 333,207,129
-      - color: '#0173B2'
+        itemid: 3
+        orientation: HWL
+        position: 367,73,92
+      - color: '#CA9161'
         id: 47
-        itemid: 2
-        orientation: LHW
-        position: 333,207,172
-      - color: '#0173B2'
+        itemid: 7
+        orientation: HLW
+        position: 422,73,0
+      - color: '#CA9161'
         id: 48
-        itemid: 2
-        orientation: LHW
-        position: 443,207,0
-      - color: '#0173B2'
+        itemid: 7
+        orientation: HLW
+        position: 422,73,72
+      - color: '#CA9161'
         id: 49
-        itemid: 2
-        orientation: LHW
-        position: 443,207,43
-      - color: '#0173B2'
+        itemid: 7
+        orientation: HLW
+        position: 422,73,144
+      - color: '#CA9161'
         id: 50
-        itemid: 2
-        orientation: LHW
-        position: 443,207,86
-      - color: '#0173B2'
+        itemid: 7
+        orientation: HLW
+        position: 468,73,0
+      - color: '#CA9161'
         id: 51
-        itemid: 2
-        orientation: LHW
-        position: 443,207,129
-      - color: '#0173B2'
+        itemid: 7
+        orientation: HLW
+        position: 468,73,72
+      - color: '#CA9161'
         id: 52
-        itemid: 2
-        orientation: LHW
-        position: 443,207,172
-      - color: '#56B4E9'
+        itemid: 7
+        orientation: HLW
+        position: 468,73,144
+      - color: '#CA9161'
         id: 53
-        itemid: 11
-        orientation: WHL
-        position: 553,207,0
-      - color: '#56B4E9'
+        itemid: 7
+        orientation: HLW
+        position: 514,73,0
+      - color: '#CA9161'
         id: 54
-        itemid: 11
-        orientation: WHL
-        position: 553,207,36
-      - color: '#56B4E9'
+        itemid: 7
+        orientation: HLW
+        position: 514,73,72
+      - color: '#CA9161'
         id: 55
-        itemid: 11
-        orientation: WHL
-        position: 553,207,72
-      - color: '#56B4E9'
+        itemid: 7
+        orientation: HLW
+        position: 514,73,144
+      - color: '#0173B2'
         id: 56
-        itemid: 11
+        itemid: 12
         orientation: WHL
-        position: 553,207,108
-      - color: '#56B4E9'
+        position: 422,171,0
+      - color: '#0173B2'
         id: 57
-        itemid: 11
+        itemid: 12
         orientation: WHL
-        position: 553,207,144
-      - color: '#56B4E9'
+        position: 422,171,97
+      - color: '#0173B2'
         id: 58
-        itemid: 11
+        itemid: 12
         orientation: WHL
-        position: 553,207,180
-      - color: '#CA9161'
+        position: 489,171,0
+      - color: '#0173B2'
         id: 59
-        itemid: 7
-        orientation: HLW
-        position: 333,108,146
-      - color: '#CA9161'
+        itemid: 12
+        orientation: WHL
+        position: 489,171,97
+      - color: '#56B4E9'
         id: 60
-        itemid: 7
-        orientation: HLW
-        position: 379,108,146
-      - color: '#CA9161'
+        itemid: 11
+        orientation: HWL
+        position: 556,171,0
+      - color: '#56B4E9'
         id: 61
-        itemid: 7
-        orientation: HLW
-        position: 425,108,146
-      - color: '#CA9161'
+        itemid: 11
+        orientation: HWL
+        position: 556,171,36
+      - color: '#56B4E9'
         id: 62
-        itemid: 7
-        orientation: HLW
-        position: 471,108,146
-      - color: '#CA9161'
+        itemid: 11
+        orientation: HWL
+        position: 556,171,72
+      - color: '#56B4E9'
         id: 63
-        itemid: 7
-        orientation: HLW
-        position: 517,108,146
-      - color: '#D55E00'
+        itemid: 11
+        orientation: HWL
+        position: 556,171,108
+      - color: '#56B4E9'
         id: 64
-        itemid: 15
-        orientation: LWH
-        position: 485,0,0
-      - color: '#D55E00'
+        itemid: 11
+        orientation: HWL
+        position: 556,171,144
+      - color: '#56B4E9'
         id: 65
-        itemid: 15
-        orientation: LWH
-        position: 485,0,44
-      - color: '#D55E00'
+        itemid: 11
+        orientation: HWL
+        position: 556,171,180
+      - color: '#DE8F05'
         id: 66
-        itemid: 15
-        orientation: LWH
-        position: 485,0,88
-      - color: '#D55E00'
+        itemid: 13
+        orientation: HWL
+        position: 556,205,0
+      - color: '#DE8F05'
         id: 67
-        itemid: 15
-        orientation: LWH
-        position: 485,0,132
-      - color: '#D55E00'
+        itemid: 13
+        orientation: HWL
+        position: 556,205,33
+      - color: '#DE8F05'
         id: 68
-        itemid: 15
-        orientation: LWH
-        position: 485,0,176
-      - color: '#029E73'
+        itemid: 13
+        orientation: HWL
+        position: 556,205,66
+      - color: '#DE8F05'
         id: 69
-        itemid: 14
-        orientation: LHW
-        position: 485,81,0
-      - color: '#029E73'
+        itemid: 13
+        orientation: HWL
+        position: 556,205,99
+      - color: '#DE8F05'
         id: 70
-        itemid: 14
-        orientation: LHW
-        position: 485,81,27
-      - color: '#029E73'
+        itemid: 13
+        orientation: HWL
+        position: 556,205,132
+      - color: '#DE8F05'
         id: 71
-        itemid: 14
-        orientation: LHW
-        position: 485,81,54
+        itemid: 13
+        orientation: HWL
+        position: 556,205,165
       - color: '#029E73'
         id: 72
         itemid: 14
-        orientation: LHW
-        position: 485,81,81
+        orientation: LWH
+        position: 422,171,194
       - color: '#029E73'
         id: 73
         itemid: 14
-        orientation: LHW
-        position: 485,81,108
-      - color: '#029E73'
+        orientation: LWH
+        position: 422,198,194
+      - color: '#56B4E9'
         id: 74
-        itemid: 14
-        orientation: LHW
-        position: 485,81,135
-      - color: '#029E73'
+        itemid: 11
+        orientation: LWH
+        position: 517,171,194
+      - color: '#DE8F05'
         id: 75
-        itemid: 14
+        itemid: 13
         orientation: LHW
-        position: 485,81,162
+        position: 517,205,194
       - color: '#029E73'
         id: 76
         itemid: 14
-        orientation: LHW
-        position: 485,81,189
-      - color: '#FBAFE4'
-        id: 77
-        itemid: 8
-        orientation: WLH
-        position: 333,0,180
-      - color: '#FBAFE4'
-        id: 78
-        itemid: 8
-        orientation: WLH
-        position: 399,0,180
-      - color: '#DE8F05'
-        id: 79
-        itemid: 3
-        orientation: WLH
-        position: 0,140,0
-      - color: '#DE8F05'
-        id: 80
-        itemid: 3
-        orientation: WLH
-        position: 0,140,55
-      - color: '#DE8F05'
-        id: 81
-        itemid: 3
-        orientation: WLH
-        position: 81,140,0
-      - color: '#DE8F05'
-        id: 82
-        itemid: 3
-        orientation: WLH
-        position: 81,140,55
-      - color: '#DE8F05'
-        id: 83
-        itemid: 3
-        orientation: WLH
-        position: 162,140,0
-      - color: '#DE8F05'
-        id: 84
-        itemid: 3
-        orientation: WLH
-        position: 162,140,55
-      - color: '#949494'
-        id: 85
-        itemid: 9
-        orientation: LWH
-        position: 243,140,0
-      - color: '#949494'
-        id: 86
-        itemid: 9
-        orientation: LWH
-        position: 243,140,30
-      - color: '#949494'
-        id: 87
-        itemid: 9
-        orientation: LWH
-        position: 243,140,60
-      - color: '#949494'
-        id: 88
-        itemid: 9
-        orientation: LWH
-        position: 243,140,90
-      - color: '#949494'
-        id: 89
-        itemid: 9
-        orientation: LWH
-        position: 243,140,120
-      - color: '#949494'
-        id: 90
-        itemid: 9
-        orientation: LWH
-        position: 243,140,150
-      - color: '#949494'
-        id: 91
-        itemid: 9
-        orientation: LWH
-        position: 243,140,180
-      - color: '#CA9161'
-        id: 92
-        itemid: 7
-        orientation: LHW
-        position: 0,140,110
-      - color: '#CA9161'
-        id: 93
-        itemid: 7
-        orientation: LHW
-        position: 0,186,110
-      - color: '#CA9161'
-        id: 94
-        itemid: 7
-        orientation: LHW
-        position: 98,140,110
-      - color: '#CA9161'
-        id: 95
-        itemid: 7
-        orientation: LHW
-        position: 98,186,110
-      - color: '#029E73'
-        id: 96
-        itemid: 4
         orientation: HLW
-        position: 196,140,110
+        position: 560,73,0
+      - color: '#029E73'
+        id: 77
+        itemid: 14
+        orientation: HLW
+        position: 560,73,27
+      - color: '#029E73'
+        id: 78
+        itemid: 14
+        orientation: HLW
+        position: 560,73,54
+      - color: '#029E73'
+        id: 79
+        itemid: 14
+        orientation: HLW
+        position: 560,73,81
+      - color: '#029E73'
+        id: 80
+        itemid: 14
+        orientation: HLW
+        position: 560,73,108
+      - color: '#029E73'
+        id: 81
+        itemid: 14
+        orientation: HLW
+        position: 560,73,135
+      - color: '#029E73'
+        id: 82
+        itemid: 14
+        orientation: HLW
+        position: 560,73,162
+      - color: '#029E73'
+        id: 83
+        itemid: 14
+        orientation: HLW
+        position: 560,73,189
+      - color: '#0173B2'
+        id: 84
+        itemid: 2
+        orientation: LHW
+        position: 312,154,0
+      - color: '#0173B2'
+        id: 85
+        itemid: 2
+        orientation: LHW
+        position: 312,154,43
+      - color: '#0173B2'
+        id: 86
+        itemid: 2
+        orientation: LHW
+        position: 312,154,86
+      - color: '#0173B2'
+        id: 87
+        itemid: 2
+        orientation: LHW
+        position: 312,154,129
+      - color: '#0173B2'
+        id: 88
+        itemid: 2
+        orientation: LHW
+        position: 312,179,0
+      - color: '#0173B2'
+        id: 89
+        itemid: 2
+        orientation: LHW
+        position: 312,179,43
+      - color: '#0173B2'
+        id: 90
+        itemid: 2
+        orientation: LHW
+        position: 312,179,86
+      - color: '#0173B2'
+        id: 91
+        itemid: 2
+        orientation: LHW
+        position: 312,179,129
+      - color: '#0173B2'
+        id: 92
+        itemid: 2
+        orientation: LHW
+        position: 312,204,0
+      - color: '#0173B2'
+        id: 93
+        itemid: 2
+        orientation: LHW
+        position: 312,204,43
+      - color: '#0173B2'
+        id: 94
+        itemid: 2
+        orientation: LHW
+        position: 312,204,86
+      - color: '#0173B2'
+        id: 95
+        itemid: 2
+        orientation: LHW
+        position: 312,204,129
+      - color: '#FBAFE4'
+        id: 96
+        itemid: 8
+        orientation: LWH
+        position: 312,154,172
       - color: '#029E73'
         id: 97
         itemid: 4
         orientation: HLW
-        position: 196,140,143
+        position: 312,73,184
       - color: '#029E73'
         id: 98
         itemid: 4
         orientation: HLW
-        position: 196,140,176
+        position: 340,73,184
       - color: '#029E73'
         id: 99
         itemid: 4
         orientation: HLW
-        position: 0,140,182
-      - color: '#029E73'
+        position: 368,73,184
+      - color: '#56B4E9'
         id: 100
-        itemid: 4
-        orientation: HLW
-        position: 28,140,182
-      - color: '#029E73'
+        itemid: 11
+        orientation: HWL
+        position: 396,73,184
+      - color: '#56B4E9'
         id: 101
-        itemid: 4
-        orientation: HLW
-        position: 56,140,182
-      - color: '#029E73'
+        itemid: 11
+        orientation: HWL
+        position: 396,107,184
+      - color: '#D55E00'
         id: 102
+        itemid: 15
+        orientation: LWH
+        position: 96,149,0
+      - color: '#D55E00'
+        id: 103
+        itemid: 15
+        orientation: LWH
+        position: 96,149,44
+      - color: '#D55E00'
+        id: 104
+        itemid: 15
+        orientation: LWH
+        position: 96,149,88
+      - color: '#D55E00'
+        id: 105
+        itemid: 15
+        orientation: LWH
+        position: 96,149,132
+      - color: '#D55E00'
+        id: 106
+        itemid: 15
+        orientation: LWH
+        position: 190,149,0
+      - color: '#D55E00'
+        id: 107
+        itemid: 15
+        orientation: LWH
+        position: 190,149,44
+      - color: '#D55E00'
+        id: 108
+        itemid: 15
+        orientation: LWH
+        position: 190,149,88
+      - color: '#D55E00'
+        id: 109
+        itemid: 15
+        orientation: LWH
+        position: 190,149,132
+      - color: '#029E73'
+        id: 110
         itemid: 4
         orientation: HLW
-        position: 84,140,182
-      - color: '#949494'
-        id: 103
-        itemid: 9
-        orientation: WLH
-        position: 112,140,182
-      - color: '#0173B2'
-        id: 104
-        itemid: 12
-        orientation: LWH
-        position: 0,0,96
-      - color: '#0173B2'
-        id: 105
-        itemid: 12
-        orientation: LWH
-        position: 0,0,158
-      - color: '#0173B2'
-        id: 106
-        itemid: 12
-        orientation: LWH
-        position: 97,0,96
-      - color: '#0173B2'
-        id: 107
-        itemid: 12
-        orientation: LWH
-        position: 97,0,158
-      - color: '#FBAFE4'
-        id: 108
-        itemid: 8
-        orientation: LWH
-        position: 0,67,96
-      - color: '#FBAFE4'
-        id: 109
-        itemid: 8
-        orientation: LWH
-        position: 0,67,127
-      - color: '#FBAFE4'
-        id: 110
-        itemid: 8
-        orientation: LWH
-        position: 0,67,158
-      - color: '#FBAFE4'
+        position: 284,149,0
+      - color: '#029E73'
         id: 111
-        itemid: 8
-        orientation: LWH
-        position: 0,67,189
-      - color: '#FBAFE4'
+        itemid: 4
+        orientation: HLW
+        position: 284,149,33
+      - color: '#029E73'
         id: 112
-        itemid: 8
-        orientation: LWH
-        position: 95,67,96
-      - color: '#FBAFE4'
+        itemid: 4
+        orientation: HLW
+        position: 284,149,66
+      - color: '#029E73'
         id: 113
-        itemid: 8
-        orientation: LWH
-        position: 95,67,127
-      - color: '#FBAFE4'
+        itemid: 4
+        orientation: HLW
+        position: 284,149,99
+      - color: '#029E73'
         id: 114
-        itemid: 8
-        orientation: LWH
-        position: 95,67,158
-      - color: '#FBAFE4'
+        itemid: 4
+        orientation: HLW
+        position: 284,149,132
+      - color: '#029E73'
         id: 115
-        itemid: 8
-        orientation: LWH
-        position: 95,67,189
+        itemid: 4
+        orientation: HLW
+        position: 284,149,165
       - color: '#D55E00'
         id: 116
-        itemid: 5
-        orientation: LHW
-        position: 190,67,96
-      - color: '#DE8F05'
-        id: 117
-        itemid: 13
-        orientation: HWL
-        position: 310,67,96
-      - color: '#DE8F05'
-        id: 118
-        itemid: 13
-        orientation: HWL
-        position: 310,67,129
-      - color: '#DE8F05'
-        id: 119
-        itemid: 13
-        orientation: HWL
-        position: 310,67,162
-      - color: '#DE8F05'
-        id: 120
-        itemid: 13
-        orientation: HWL
-        position: 310,92,96
-      - color: '#DE8F05'
-        id: 121
-        itemid: 13
-        orientation: HWL
-        position: 310,92,129
-      - color: '#DE8F05'
-        id: 122
-        itemid: 13
-        orientation: HWL
-        position: 310,92,162
-      - color: '#DE8F05'
-        id: 123
-        itemid: 13
-        orientation: HLW
-        position: 310,67,195
-      - color: '#56B4E9'
-        id: 124
-        itemid: 11
+        itemid: 15
         orientation: LWH
-        position: 190,67,195
-      - color: '#56B4E9'
-        id: 125
-        itemid: 11
-        orientation: LWH
-        position: 190,101,195
-      - color: '#56B4E9'
-        id: 126
-        itemid: 11
-        orientation: LWH
-        position: 226,67,195
-      - color: '#56B4E9'
-        id: 127
-        itemid: 11
-        orientation: LWH
-        position: 226,101,195
+        position: 96,149,176
       - color: '#ECE133'
-        id: 128
+        id: 117
         itemid: 10
-        orientation: WLH
-        position: 262,67,195
-      - color: '#0173B2'
-        id: 129
-        itemid: 12
+        orientation: HLW
+        position: 190,149,176
+      - color: '#ECE133'
+        id: 118
+        itemid: 10
+        orientation: HLW
+        position: 215,149,176
+      - color: '#ECE133'
+        id: 119
+        itemid: 10
+        orientation: HLW
+        position: 240,149,176
+      - color: '#FBAFE4'
+        id: 120
+        itemid: 8
+        orientation: LWH
+        position: 96,73,180
+      - color: '#FBAFE4'
+        id: 121
+        itemid: 8
+        orientation: LWH
+        position: 191,73,180
+      - color: '#56B4E9'
+        id: 122
+        itemid: 11
         orientation: HWL
-        position: 194,0,96
+        position: 286,73,180
+      - color: '#FBAFE4'
+        id: 123
+        itemid: 8
+        orientation: LWH
+        position: 492,0,0
+      - color: '#FBAFE4'
+        id: 124
+        itemid: 8
+        orientation: LWH
+        position: 492,0,31
+      - color: '#FBAFE4'
+        id: 125
+        itemid: 8
+        orientation: LWH
+        position: 492,0,62
+      - color: '#FBAFE4'
+        id: 126
+        itemid: 8
+        orientation: LWH
+        position: 492,0,93
+      - color: '#FBAFE4'
+        id: 127
+        itemid: 8
+        orientation: LWH
+        position: 492,0,124
+      - color: '#FBAFE4'
+        id: 128
+        itemid: 8
+        orientation: LWH
+        position: 492,0,155
+      - color: '#FBAFE4'
+        id: 129
+        itemid: 8
+        orientation: LWH
+        position: 492,0,186
       - color: '#0173B2'
         id: 130
         itemid: 12
         orientation: HWL
-        position: 256,0,96
-      - color: '#029E73'
+        position: 96,0,120
+      - color: '#0173B2'
         id: 131
-        itemid: 14
-        orientation: LHW
-        position: 194,0,193
-      - color: '#029E73'
+        itemid: 12
+        orientation: HWL
+        position: 158,0,120
+      - color: '#0173B2'
         id: 132
-        itemid: 14
+        itemid: 12
+        orientation: HWL
+        position: 220,0,120
+      - color: '#D55E00'
+        id: 133
+        itemid: 5
         orientation: LHW
-        position: 194,26,193
+        position: 282,0,120
+      - color: '#DE8F05'
+        id: 134
+        itemid: 3
+        orientation: WHL
+        position: 402,0,120
   unplaced:
   - id: 0
     itemid: 1
     quantity: 0
   - id: 1
     itemid: 2
-    quantity: 2
+    quantity: 0
   - id: 2
     itemid: 3
-    quantity: 0
+    quantity: 1
   - id: 3
     itemid: 4
-    quantity: 2
+    quantity: 0
   - id: 4
     itemid: 5
     quantity: 0
@@ -625,16 +635,16 @@ layout:
     quantity: 0
   - id: 8
     itemid: 9
-    quantity: 0
+    quantity: 8
   - id: 9
     itemid: 10
-    quantity: 2
+    quantity: 0
   - id: 10
     itemid: 11
     quantity: 0
   - id: 11
     itemid: 12
-    quantity: 1
+    quantity: 0
   - id: 12
     itemid: 13
     quantity: 0
@@ -643,4 +653,4 @@ layout:
     quantity: 0
   - id: 14
     itemid: 15
-    quantity: 4
+    quantity: 0
