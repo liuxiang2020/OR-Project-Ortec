@@ -36,7 +36,9 @@ def Progressively_Refined_Tree_Search(block, state, block_list, max_runtime):
             m = m*SCALE
 
             L = int(calc_L(K,m))
-            bkTab.append(build_m1_tree(block, state, m, K, 0, block_list))
+            tree = build_m1_tree(block, state, m, K, 0, block_list)
+            if type(tree) != type(None):
+                bkTab.append(tree)
             for j in range(1, min(L , len(bkTab))):
 
                 if type(bkTab[j-1]) == type(None):
@@ -45,7 +47,9 @@ def Progressively_Refined_Tree_Search(block, state, block_list, max_runtime):
                     for d in range(len(bkTab[j-1])):
                         nState = copy.deepcopy(bkTab[j-1][d][0])
                         nBlock = bkTab[j-1][d][1]
-                        bkTab.append(build_m1_tree(nBlock, nState, m, K, j, block_list))
+                        tree = build_m1_tree(nBlock, nState, m, K, j, block_list)
+                        if type(tree) != type(None):
+                            bkTab.append(tree)
             for j in range(min(L, len(bkTab))):
 
                 if type(bkTab[j]) == type(None):
