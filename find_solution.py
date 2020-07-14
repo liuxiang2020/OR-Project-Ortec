@@ -49,7 +49,7 @@ def find_solution(itemKinds, container_size, runtime):
             if Parallel:
                 packed_block,intermediate = search_block_p(s, candidate_list, block_list, available_items, max_runtime)
             else:
-                packed_block,intermediate = search_block(s, candidate_list, block_list, available_items)
+                packed_block,intermediate = search_block(s, candidate_list, block_list, available_items, max_runtime)
             #packed_block = candidate_list[0] <- Use this for (really) fast execution
             packState.add_block_to_space(packed_block, considered_space)
             space_list = create_residual_space(packed_block, space_list)
@@ -59,7 +59,7 @@ def find_solution(itemKinds, container_size, runtime):
             else:
                 space_list = transfer_residual_space(space_list)
         packState.set_residualSpaceList(space_list)
-        print("utilization after search_block in find_solution: ", intermediate.get_utilization())
+        #print("utilization after search_block in find_solution: ", intermediate.get_utilization())
         if (intermediate.get_utilization() > best_intermediate.get_utilization()):
             best_intermediate = intermediate
         if (max_runtime < datetime.datetime.now().timestamp()):

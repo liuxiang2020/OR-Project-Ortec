@@ -16,7 +16,7 @@ candidateBlockList: a (type)List wil candiate (type)Blocks
 bestUtilization = 0.9
 
 
-def search_block(packState, candidateBlockList, block_list, available_boxes):
+def search_block(packState, candidateBlockList, block_list, available_boxes, max_runtime):
     size = len(candidateBlockList)
     # if only wants to limited the length of list, just limit the loop times?
     # if size > MAX_SIZE:
@@ -34,7 +34,7 @@ def search_block(packState, candidateBlockList, block_list, available_boxes):
         # first block from candidateBlockList, which has the highest fitness score
         currBlock = candidateBlockList[i]
         # Sol is a packState, assume it has a total utilization
-        Sol = Progressively_Refined_Tree_Search(currBlock, currState, block_list)
+        Sol = Progressively_Refined_Tree_Search(currBlock, currState, block_list, max_runtime)
         if Sol.get_utilization() > bestUtilization:
 
             bestIndex = i
@@ -43,5 +43,5 @@ def search_block(packState, candidateBlockList, block_list, available_boxes):
     # return the suitable block for the residual space
     if bestIndex==-1:
         exit()
-    print(bestUtilization)
+    #print(bestUtilization)
     return candidateBlockList[bestIndex],res
