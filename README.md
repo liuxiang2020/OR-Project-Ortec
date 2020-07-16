@@ -8,7 +8,7 @@ Repository for the OR Lab 2020 @ ORTEC
 
 Run our solution by calling `python3 run.py -I /path/to/instance.yaml -S /output_name.yaml -R runtime`
 
-`runtime` is a direction how long the algorithm should seek for a solution. The acutal runtime can be slightly longer, since the algorithm always completes the current progress to a valid solution.
+`runtime` (seconds as integer) is a direction how long the algorithm should seek for a solution. The acutal runtime can be slightly longer, since the algorithm always completes the current progress to a valid solution.
 
 You can find configurable parameters in `./config.py` (along with explanations). Ideally, these are adjusted so that the maximum runtime (given by parameter) is higher than the actual runtime.
 
