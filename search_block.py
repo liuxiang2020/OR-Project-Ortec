@@ -1,6 +1,7 @@
 import copy
 from progressively_refined_tree_search import Progressively_Refined_Tree_Search
 from config import *
+from completing_process import completing_process
 import datetime
 """
 NOTE:  Space.py add information of filled blocks and utilization rate
@@ -42,8 +43,11 @@ def search_block(packState, candidateBlockList, block_list, available_boxes, max
                 bestIndex = i
                 bestUtilization = Sol.get_utilization()
                 res = Sol
-    # return the suitable block for the residual space
+        else:
+            return candidateBlockList[0], completing_process(packState, block_list)
+
+    
     if bestIndex==-1:
-        exit()
-    #print(bestUtilization)
+        return candidateBlockList[0], completing_process(packState, block_list)
+    # return the suitable block for the residual space
     return candidateBlockList[bestIndex],res
